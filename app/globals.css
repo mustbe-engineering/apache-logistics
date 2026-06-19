@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --section-y: clamp(3rem, 8vw, 5rem);
+  --gutter: clamp(1rem, 4vw, 1.5rem);
+  --nav-offset: 4rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-offset: 5rem;
+  }
+}
+
+body {
+  @apply bg-base text-ink font-mono antialiased;
+}
+
+.grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.macro-title {
+  @apply font-macro font-black uppercase leading-[0.9] tracking-[-0.04em];
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+}
+
+.compartment {
+  @apply border border-ink/20 bg-base;
+}
+
+.compartment-dark {
+  @apply border border-base/20 bg-nav text-base;
+}
+
+.field {
+  @apply w-full border border-ink/30 bg-base px-3 py-2 text-sm text-ink focus:border-nav focus:outline-none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
