@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-style: none;
+    border-color: transparent;
+  }
+}
+
+@layer utilities {
+  .border { border-style: solid; }
+  .border-x { border-left-style: solid; border-right-style: solid; }
+  .border-y { border-top-style: solid; border-bottom-style: solid; }
+  .border-t { border-top-style: solid; }
+  .border-r { border-right-style: solid; }
+  .border-b { border-bottom-style: solid; }
+  .border-l { border-left-style: solid; }
+}
+
 :root {
   --section-y: clamp(3rem, 8vw, 5rem);
   --gutter: clamp(1rem, 4vw, 1.5rem);

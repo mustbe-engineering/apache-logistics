@@ -10,8 +10,8 @@ export function SectionTag({ children }: TagProps) {
 
 export function Shell({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="scroll-mt-[var(--nav-offset)] border-t border-ink/20 py-[var(--section-y)]">
-      <div className="mx-auto w-full max-w-7xl px-[var(--gutter)]">{children}</div>
+    <section id={id} className="scroll-mt-[var(--nav-offset)] py-[var(--section-y)]">
+      <div className="mx-auto w-full max-w-[1440px] px-[var(--gutter)]">{children}</div>
     </section>
   );
 }

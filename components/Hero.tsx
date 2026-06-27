@@ -1,26 +1,41 @@
-import Image from "next/image";
 import { HeroEnter } from "./gsap/HeroEnter";
+import { HeroOverlay } from "./HeroOverlay";
 import { SectionLink } from "./SectionLink";
 
 export function Hero() {
   return (
-    <section className="border-b border-ink/20 bg-hero text-base">
+    <section className="relative h-[100dvh] min-h-[max(36rem,100dvh)] overflow-hidden text-base">
       <HeroEnter>
-        <div className="mx-auto grid max-w-7xl md:grid-cols-12">
-          <div data-hero-copy className="flex flex-col justify-end px-[var(--gutter)] pb-10 pt-16 md:col-span-7 md:pb-14 md:pt-20">
-            <p className="mb-4 text-[0.65rem] uppercase tracking-[0.14em] text-base/90">
-              [ TRANSPORTE NOROESTE ]
-            </p>
-            <h1 className="macro-title max-w-xl">Conocemos el camino</h1>
-            <p className="mt-6 max-w-md text-sm leading-relaxed md:text-base">
-              Más de 10 años moviendo carga por el noroeste de México con la seguridad y el trato de una empresa familiar.
-            </p>
-            <SectionLink data-hero-cta href="#contacto" className="mt-8 inline-block w-fit border-2 border-base bg-base px-6 py-3 font-mono text-[0.75rem] uppercase tracking-[0.1em] text-ink">
-              Cotiza tu envío.
-            </SectionLink>
-          </div>
-          <div data-hero-media className="relative min-h-[280px] border-t border-base/30 md:col-span-5 md:min-h-[420px] md:border-l md:border-t-0">
-            <Image src="https://picsum.photos/seed/apache/800/600" alt="Camión de carga en ruta del noroeste" fill className="object-cover mix-blend-multiply opacity-90" priority />
+        <div className="relative h-full">
+          <video
+            data-hero-media
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 h-full w-full object-cover"
+            aria-hidden
+          >
+            <source src="/videos/apache-optimized.mp4" type="video/mp4" />
+          </video>
+          <HeroOverlay />
+          <div className="relative z-10 mx-auto flex h-full max-w-[1440px] items-end px-[var(--gutter)] pb-10 pt-16 md:items-center md:pb-14 md:pt-20">
+            <div data-hero-copy className="max-w-xl">
+              <p className="mb-4 text-[0.65rem] uppercase tracking-[0.14em] text-highlight">
+                [ TRANSPORTE NOROESTE ]
+              </p>
+              <h1 className="macro-title max-w-xl text-base">Conocemos el camino</h1>
+              <p className="mt-6 max-w-md text-sm leading-relaxed text-base/90 md:text-base">
+                Más de 10 años moviendo carga por el noroeste de México con la seguridad y el trato de una empresa familiar.
+              </p>
+              <SectionLink
+                data-hero-cta
+                href="#contacto"
+                className="mt-8 inline-block w-fit bg-hero px-6 py-3 font-mono text-[0.75rem] uppercase tracking-[0.1em] text-base"
+              >
+                Cotiza tu envío.
+              </SectionLink>
+            </div>
           </div>
         </div>
       </HeroEnter>

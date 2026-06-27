@@ -21,7 +21,7 @@ export function HeroEnter({ children }: HeroEnterProps) {
     };
   }, [reduce]);
 
-  return <div ref={ref}>{children}</div>;
+  return <div ref={ref} className="h-full">{children}</div>;
 }
 
 function runHeroTimeline(root: HTMLElement) {

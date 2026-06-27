@@ -1,17 +1,13 @@
 import { stats } from "@/lib/data";
 import { Stagger } from "./gsap/Stagger";
+import { StatCounter } from "./StatCounter";
 
 export function StatsBar() {
   return (
-    <section aria-label="Estadísticas" className="border-b border-ink/20 bg-ink text-base">
-      <Stagger className="mx-auto grid max-w-7xl grid-cols-1 divide-y divide-base/20 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+    <section aria-label="Estadísticas" className="bg-nav text-base">
+      <Stagger className="mx-auto grid max-w-[1440px] grid-cols-1 place-items-center sm:grid-cols-3">
         {stats.map((s) => (
-          <div key={s.label} data-stagger className="px-[var(--gutter)] py-10 text-center sm:py-12">
-            <data value={s.value} className="block font-macro text-5xl uppercase leading-none tracking-tight text-highlight md:text-6xl">
-              {s.value}
-            </data>
-            <p className="mt-3 text-[0.7rem] uppercase tracking-[0.14em]">{s.label}</p>
-          </div>
+          <StatCounter key={s.label} value={s.value} label={s.label} />
         ))}
       </Stagger>
     </section>
