@@ -19,6 +19,14 @@
     var(--nav-blue) 68%,
     var(--nav-blue-light) 100%
   );
+  --hero-red: #e11f26;
+  --hero-red-light: #e3222b;
+  --hero-red-hover-light: #e5262f;
+  --hero-red-hover-mid: #e32027;
+  --hero-red-dark: #de1b22;
+  --hero-red-darker: #dc191f;
+  --hero-red-deep: #da171d;
+  --hero-red-rgb: 225, 31, 38;
 }
 
 @layer base {
@@ -127,8 +135,8 @@ p {
   width: 0.375rem;
   height: 0.375rem;
   border-radius: 50%;
-  background: #e93b24;
-  box-shadow: 0 0 10px rgba(233, 59, 36, 0.55);
+  background: #e11f26;
+  box-shadow: 0 0 10px rgba(var(--hero-red-rgb), 0.55);
 }
 
 .hero-pills {
@@ -453,10 +461,15 @@ p {
   @apply relative isolate inline-flex items-center justify-center gap-2.5 overflow-hidden font-sans font-semibold tracking-[0.02em] text-base;
   border-radius: 0.375rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(180deg, #eb3e29 0%, #e93b24 52%, #e63720 100%);
+  background: linear-gradient(
+    180deg,
+    var(--hero-red-light) 0%,
+    var(--hero-red) 52%,
+    var(--hero-red-dark) 100%
+  );
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.11) inset,
-    0 2px 10px rgba(233, 59, 36, 0.26);
+    0 2px 10px rgba(var(--hero-red-rgb), 0.26);
   transition:
     transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.34s cubic-bezier(0.22, 1, 0.36, 1),
@@ -484,11 +497,16 @@ p {
 @media (hover: hover) {
   .btn-cotizar:hover {
     transform: translateY(-1px);
-    background: linear-gradient(180deg, #ed422d 0%, #ea3c26 52%, #e93b24 100%);
+    background: linear-gradient(
+      180deg,
+      var(--hero-red-hover-light) 0%,
+      var(--hero-red-hover-mid) 52%,
+      var(--hero-red) 100%
+    );
     border-color: rgba(255, 255, 255, 0.16);
     box-shadow:
       0 1px 0 rgba(255, 255, 255, 0.14) inset,
-      0 6px 18px rgba(233, 59, 36, 0.32);
+      0 6px 18px rgba(var(--hero-red-rgb), 0.32);
   }
 
   .btn-cotizar:hover::before {
@@ -499,10 +517,15 @@ p {
 .btn-cotizar:active {
   transform: translateY(0) scale(0.985);
   border-color: rgba(255, 255, 255, 0.08);
-  background: linear-gradient(180deg, #e93b24 0%, #e63720 52%, #e3341d 100%);
+  background: linear-gradient(
+    180deg,
+    var(--hero-red) 0%,
+    var(--hero-red-dark) 52%,
+    var(--hero-red-deep) 100%
+  );
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.08) inset,
-    0 2px 6px rgba(233, 59, 36, 0.22);
+    0 2px 6px rgba(var(--hero-red-rgb), 0.22);
   transition-duration: 0.1s;
 }
 
@@ -512,7 +535,7 @@ p {
 }
 
 .nav-shell--glass .btn-cotizar:focus-visible {
-  outline-color: #e93b24;
+  outline-color: var(--hero-red);
 }
 
 .btn-cotizar-nav {

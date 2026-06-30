@@ -18,7 +18,7 @@ export function Contact() {
           <Field label="Email" name="email" type="email" />
           <SelectField label="Servicio" options={serviceOptions} />
           <AreaField label="Mensaje" name="message" />
-          <button type="submit" className="w-full bg-hero px-4 py-3 font-sans text-[0.9375rem] font-semibold tracking-[0.02em] text-base md:w-auto">
+          <button type="submit" className="btn-cotizar w-full px-4 py-3 md:w-auto">
             Cotiza tu envío.
           </button>
         </form>

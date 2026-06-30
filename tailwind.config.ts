@@ -7,7 +7,7 @@ const config: Config = {
       colors: {
         base: "#FDFDFD",
         ink: "#050505",
-        hero: "#E93B24",
+        hero: "#E11F26",
         accent: "#B6753B",
         highlight: "#FBD70E",
         nav: "#164775",
