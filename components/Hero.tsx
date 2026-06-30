@@ -71,23 +71,14 @@ export function Hero() {
                 <span>Cotizar servicio</span>
                 <span className="btn-cotizar-icon" aria-hidden>
                   <svg viewBox="0 0 20 20" fill="none">
-                    <g className="btn-cotizar-icon-inner">
-                      <path
-                        className="btn-cotizar-icon-line"
-                        d="M2 10h8.5"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        className="btn-cotizar-icon-chevron"
-                        d="M10 5.5 14.5 10 10 14.5"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
+                    <path
+                      className="btn-cotizar-icon-arrow"
+                      d="M4 10h8.25M12.25 10l-3.25-3.25M12.25 10l-3.25 3.25"
+                      stroke="currentColor"
+                      strokeWidth="1.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                 </span>
               </SectionLink>
