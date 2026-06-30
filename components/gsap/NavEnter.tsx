@@ -1,25 +1,26 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { forwardRef, useLayoutEffect, useRef } from "react";
 import { gsap, initGsap } from "@/lib/gsapCore";
 import { useReducedMotion } from "./useReducedMotion";
 
-export function NavEnter({
-  children,
-  className,
-  ...rest
-}: {
+type NavEnterProps = {
   children: React.ReactNode;
   className?: string;
-} & React.ComponentPropsWithoutRef<"header">) {
-  const ref = useRef<HTMLElement>(null);
+} & React.ComponentPropsWithoutRef<"header">;
+
+export const NavEnter = forwardRef<HTMLElement, NavEnterProps>(function NavEnter(
+  { children, className, ...rest },
+  ref,
+) {
+  const localRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
 
   useLayoutEffect(() => {
-    if (reduce || !ref.current) return;
+    if (reduce || !localRef.current) return;
     initGsap();
 
-    const root = ref.current;
+    const root = localRef.current;
     const logo = root.querySelector("[data-nav-logo]");
     const separator = root.querySelector("[data-nav-separator]");
     const links = root.querySelector("[data-nav-links]");
@@ -57,9 +58,18 @@ export function NavEnter({
     };
   }, [reduce]);
 
+  const setRef = (node: HTMLElement | null) => {
+    localRef.current = node;
+    if (typeof ref === "function") {
+      ref(node);
+    } else if (ref) {
+      ref.current = node;
+    }
+  };
+
   return (
-    <header ref={ref} className={className} {...rest}>
+    <header ref={setRef} className={className} {...rest}>
       {children}
     </header>
   );
-}
+});

@@ -7,6 +7,18 @@
   --content-max: 90rem;
   --gutter: clamp(1.25rem, 0.75rem + 3vw, 3rem);
   --nav-offset: 4rem;
+  --nav-blue: #164775;
+  --nav-blue-light: #174b7a;
+  --nav-blue-dark: #164973;
+  --nav-blue-deep: #164a76;
+  --nav-gradient: linear-gradient(
+    122deg,
+    var(--nav-blue-deep) 0%,
+    var(--nav-blue) 38%,
+    var(--nav-blue-dark) 52%,
+    var(--nav-blue) 68%,
+    var(--nav-blue-light) 100%
+  );
 }
 
 @layer base {
@@ -164,21 +176,35 @@ p {
 }
 
 .nav-shell {
-  @apply bg-nav text-base;
+  background-color: var(--nav-blue);
+  background-image:
+    radial-gradient(
+      180% 250% at -12% -55%,
+      rgba(8, 31, 54, 0.18) 0%,
+      rgba(8, 31, 54, 0.07) 45%,
+      transparent 82%
+    ),
+    radial-gradient(
+      170% 230% at 112% 135%,
+      rgba(45, 98, 145, 0.1) 0%,
+      rgba(45, 98, 145, 0.03) 48%,
+      transparent 85%
+    ),
+    radial-gradient(140% 200% at 50% 130%, rgba(22, 71, 117, 0.06) 0%, transparent 75%),
+    var(--nav-gradient);
+  @apply text-base;
   transition: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     backdrop-filter 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     -webkit-backdrop-filter 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.5s cubic-bezier(0.22, 1, 0.36, 1),
     color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 1px 0 rgba(253, 253, 253, 0.08);
 }
 
-.nav-shell--glass {
-  background: rgba(253, 253, 253, 0.68);
+.nav-shell.nav-shell--glass {
+  background-color: rgba(253, 253, 253, 0.94);
+  background-image: none;
   backdrop-filter: blur(22px) saturate(180%);
   -webkit-backdrop-filter: blur(22px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.72);
   box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.04), 0 8px 32px rgba(22, 71, 117, 0.08);
   color: #164775;
 }
@@ -212,7 +238,10 @@ p {
 }
 
 .nav-mobile-panel {
-  @apply bg-nav;
+  background:
+    radial-gradient(120% 160% at 0% 0%, rgba(8, 31, 54, 0.1) 0%, transparent 70%),
+    linear-gradient(132deg, var(--nav-blue-deep) 0%, var(--nav-blue) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .nav-shell--glass .nav-link {
@@ -246,8 +275,8 @@ p {
 }
 
 @media (prefers-reduced-transparency: reduce) {
-  .nav-shell--glass {
-    background: rgba(253, 253, 253, 0.96);
+  .nav-shell.nav-shell--glass {
+    background-color: rgba(253, 253, 253, 0.96);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
