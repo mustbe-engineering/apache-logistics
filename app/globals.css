@@ -76,9 +76,9 @@ p {
 
 .hero-title {
   @apply font-display text-base;
-  font-size: clamp(2.875rem, 7.8vw, 5.125rem);
-  line-height: 0.96;
-  letter-spacing: 0.028em;
+  font-size: clamp(2.5rem, 4.8vw + 0.75rem, 4.375rem);
+  line-height: 0.98;
+  letter-spacing: 0.018em;
 }
 
 .hero-title-line {
@@ -86,10 +86,21 @@ p {
   white-space: nowrap;
 }
 
+.hero-lead {
+  font-size: clamp(1.0625rem, 0.35vw + 0.95rem, 1.1875rem);
+  line-height: 1.68;
+  letter-spacing: 0.01em;
+}
+
 @media (min-width: 768px) {
   .hero-title {
-    font-size: clamp(3.25rem, 6.2vw, 5.375rem);
-    letter-spacing: 0.032em;
+    font-size: clamp(2.875rem, 3.2vw + 1.25rem, 4.625rem);
+    letter-spacing: 0.02em;
+  }
+
+  .hero-lead {
+    font-size: clamp(1.0625rem, 0.2vw + 1rem, 1.25rem);
+    line-height: 1.72;
   }
 }
 

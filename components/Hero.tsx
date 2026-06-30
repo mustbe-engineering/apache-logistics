@@ -35,7 +35,7 @@ export function Hero() {
                 <span className="hero-title-line">Conocemos</span>
                 <span className="hero-title-line">el&nbsp;camino.</span>
               </h1>
-              <p className="mt-6 max-w-[28rem] text-[0.9375rem] leading-[1.65] text-base/90 md:mt-8 md:text-base md:leading-[1.7]">
+              <p className="hero-lead mt-[clamp(1.25rem,1.5vw+0.75rem,1.75rem)] max-w-[32rem] text-base/90">
                 Más de 10 años de experiencia, moviendo la carga por el noroeste de México con la
                 seguridad y el trato de una buena empresa familiar.
               </p>
