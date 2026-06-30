@@ -30,7 +30,12 @@ export function Nav() {
     >
       <div className="site-container flex h-[4.25rem] items-center md:h-[5rem] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center">
         <div className="flex items-center gap-4 md:gap-6 lg:col-start-1">
-          <Link href="/" className="inline-flex shrink-0 items-center" onClick={close}>
+          <Link
+            href="/"
+            data-nav-logo
+            className="inline-flex shrink-0 items-center"
+            onClick={close}
+          >
             <NavLogo
               lightText={!pastHero}
               className="nav-logo h-7 w-auto md:h-8 lg:h-9"
@@ -40,11 +45,13 @@ export function Nav() {
           <span
             role="separator"
             aria-orientation="vertical"
+            data-nav-separator
             className="nav-separator hidden h-5 w-px shrink-0 bg-base/35 transition-colors duration-500 md:block lg:hidden lg:h-6"
           />
         </div>
 
         <nav
+          data-nav-links
           className="hidden items-center gap-6 lg:col-start-2 lg:flex xl:gap-7"
           aria-label="Principal"
         >
@@ -55,7 +62,10 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-3 lg:col-start-3 lg:ml-0 lg:justify-self-end">
+        <div
+          data-nav-actions
+          className="ml-auto flex items-center gap-3 lg:col-start-3 lg:ml-0 lg:justify-self-end"
+        >
           <SectionLink href="#contacto" className="btn-cotizar btn-cotizar-nav shrink-0">
             <span>Cotizar</span>
           </SectionLink>

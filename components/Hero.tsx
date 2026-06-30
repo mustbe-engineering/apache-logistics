@@ -28,10 +28,12 @@ export function Hero() {
 
           <div
             aria-hidden
+            data-hero-scrim
             className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-nav/85 from-0% via-nav/45 via-[42%] to-nav/10 to-[72%]"
           />
           <div
             aria-hidden
+            data-hero-scrim
             className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/35 via-transparent to-nav/15"
           />
 
