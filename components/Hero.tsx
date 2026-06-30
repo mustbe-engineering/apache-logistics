@@ -3,6 +3,12 @@ import { SectionLink } from "./SectionLink";
 
 const HERO_VIDEO = "/videos/apache-optimized.mp4";
 
+const heroPills = [
+  "10+ años de operación",
+  "Monitoreo GPS 24/7",
+  "Cobertura regional",
+];
+
 export function Hero() {
   return (
     <section id="home" className="relative min-h-[calc(100dvh-4.25rem)] overflow-hidden text-base md:min-h-[calc(100dvh-5rem)]">
@@ -31,14 +37,30 @@ export function Hero() {
 
           <div className="site-container relative z-10 flex min-h-[calc(100dvh-4.25rem)] items-center py-12 md:min-h-[calc(100dvh-5rem)] md:py-16">
             <div data-hero-copy className="w-full max-w-[38rem]">
+              <p className="hero-eyebrow">
+                <span className="hero-eyebrow-dot" aria-hidden />
+                Logística en el noroeste
+              </p>
+
               <h1 className="hero-title">
                 <span className="hero-title-line">Conocemos</span>
                 <span className="hero-title-line">el&nbsp;camino.</span>
               </h1>
+
               <p className="hero-lead mt-[clamp(1.25rem,1.5vw+0.75rem,1.75rem)] max-w-[32rem] text-base/90">
                 Más de 10 años de experiencia, moviendo la carga por el noroeste de México con la
                 seguridad y el trato de una buena empresa familiar.
               </p>
+
+              <ul className="hero-pills" aria-label="Ventajas principales">
+                {heroPills.map((pill) => (
+                  <li key={pill} className="hero-pill">
+                    <span className="hero-pill-dot" aria-hidden />
+                    {pill}
+                  </li>
+                ))}
+              </ul>
+
               <SectionLink
                 data-hero-cta
                 href="#contacto"

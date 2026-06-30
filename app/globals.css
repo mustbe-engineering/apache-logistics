@@ -92,6 +92,65 @@ p {
   letter-spacing: 0.01em;
 }
 
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: clamp(0.875rem, 1.5vw, 1.125rem);
+  padding: 0.4375rem 0.875rem;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(253, 253, 253, 0.92);
+  background: rgba(253, 253, 253, 0.07);
+  border: 1px solid rgba(253, 253, 253, 0.14);
+  border-radius: 9999px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.hero-eyebrow-dot {
+  flex-shrink: 0;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: #e93b24;
+  box-shadow: 0 0 10px rgba(233, 59, 36, 0.55);
+}
+
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: clamp(1.25rem, 2vw, 1.75rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  padding: 0.4375rem 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: rgba(253, 253, 253, 0.84);
+  background: rgba(22, 71, 117, 0.42);
+  border: 1px solid rgba(253, 253, 253, 0.1);
+  border-radius: 0.375rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-pill-dot {
+  flex-shrink: 0;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background: #fbd70e;
+}
+
 @media (min-width: 768px) {
   .hero-title {
     font-size: clamp(2.875rem, 3.2vw + 1.25rem, 4.625rem);
