@@ -13,10 +13,11 @@ const config: Config = {
         nav: "#164775",
       },
       fontFamily: {
+        sans: ["var(--font-pretendard)", "Pretendard", "system-ui", "sans-serif"],
+        display: ["var(--font-stretch-pro)", "system-ui", "sans-serif"],
         macro: ["var(--font-archivo)", "sans-serif"],
-        mono: ["var(--font-jetbrains)", "monospace"],
       },
-      spacing: { section: "5rem", gutter: "1.5rem" },
+      spacing: { section: "5rem" },
     },
   },
   plugins: [],

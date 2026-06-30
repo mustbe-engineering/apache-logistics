@@ -1,39 +1,71 @@
 import { HeroEnter } from "./gsap/HeroEnter";
-import { HeroOverlay } from "./HeroOverlay";
 import { SectionLink } from "./SectionLink";
+
+const HERO_VIDEO = "/videos/apache-optimized.mp4";
 
 export function Hero() {
   return (
-    <section className="relative h-[100dvh] min-h-[max(36rem,100dvh)] overflow-hidden text-base">
+    <section id="home" className="relative min-h-[calc(100dvh-4.25rem)] overflow-hidden text-base md:min-h-[calc(100dvh-5rem)]">
       <HeroEnter>
-        <div className="relative h-full">
+        <div className="relative min-h-[calc(100dvh-4.25rem)] md:min-h-[calc(100dvh-5rem)]">
           <video
             data-hero-media
             autoPlay
             muted
             loop
             playsInline
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover object-[center_42%]"
             aria-hidden
           >
-            <source src="/videos/apache-optimized.mp4" type="video/mp4" />
+            <source src={HERO_VIDEO} type="video/mp4" />
           </video>
-          <HeroOverlay />
-          <div className="relative z-10 mx-auto flex h-full max-w-[1440px] items-end px-[var(--gutter)] pb-10 pt-16 md:items-center md:pb-14 md:pt-20">
-            <div data-hero-copy className="max-w-xl">
-              <p className="mb-4 text-[0.65rem] uppercase tracking-[0.14em] text-highlight">
-                [ TRANSPORTE NOROESTE ]
-              </p>
-              <h1 className="macro-title max-w-xl text-base">Conocemos el camino</h1>
-              <p className="mt-6 max-w-md text-sm leading-relaxed text-base/90 md:text-base">
-                Más de 10 años moviendo carga por el noroeste de México con la seguridad y el trato de una empresa familiar.
+
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-nav/85 from-0% via-nav/45 via-[42%] to-nav/10 to-[72%]"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/35 via-transparent to-nav/15"
+          />
+
+          <div className="site-container relative z-10 flex min-h-[calc(100dvh-4.25rem)] items-center py-12 md:min-h-[calc(100dvh-5rem)] md:py-16">
+            <div data-hero-copy className="w-full max-w-[38rem]">
+              <h1 className="hero-title">
+                <span className="hero-title-line">Conocemos</span>
+                <span className="hero-title-line">el&nbsp;camino.</span>
+              </h1>
+              <p className="mt-6 max-w-[28rem] text-[0.9375rem] leading-[1.65] text-base/90 md:mt-8 md:text-base md:leading-[1.7]">
+                Más de 10 años de experiencia, moviendo la carga por el noroeste de México con la
+                seguridad y el trato de una buena empresa familiar.
               </p>
               <SectionLink
                 data-hero-cta
                 href="#contacto"
-                className="mt-8 inline-block w-fit bg-hero px-6 py-3 font-mono text-[0.75rem] uppercase tracking-[0.1em] text-base"
+                className="btn-cotizar btn-cotizar-hero mt-8 md:mt-10"
               >
-                Cotiza tu envío.
+                <span>Cotizar servicio</span>
+                <span className="btn-cotizar-icon" aria-hidden>
+                  <svg viewBox="0 0 20 20" fill="none">
+                    <g className="btn-cotizar-icon-inner">
+                      <path
+                        className="btn-cotizar-icon-line"
+                        d="M2 10h8.5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        className="btn-cotizar-icon-chevron"
+                        d="M10 5.5 14.5 10 10 14.5"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </g>
+                  </svg>
+                </span>
               </SectionLink>
             </div>
           </div>

@@ -7,10 +7,11 @@ import { useReducedMotion } from "./useReducedMotion";
 export function NavEnter({
   children,
   className,
+  ...rest
 }: {
   children: React.ReactNode;
   className?: string;
-}) {
+} & React.ComponentPropsWithoutRef<"header">) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
 
@@ -24,7 +25,7 @@ export function NavEnter({
   }, [reduce]);
 
   return (
-    <header ref={ref} className={className}>
+    <header ref={ref} className={className} {...rest}>
       {children}
     </header>
   );

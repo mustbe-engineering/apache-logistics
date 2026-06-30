@@ -7,7 +7,7 @@ function LogoMark({ mark }: { mark: string }) {
   return (
     <svg viewBox="0 0 80 40" className="h-10 w-20" aria-hidden>
       <rect width="80" height="40" fill="none" stroke="currentColor" strokeWidth="1" />
-      <text x="40" y="26" textAnchor="middle" className="fill-current text-[14px] font-mono uppercase">
+      <text x="40" y="26" textAnchor="middle" className="fill-current text-[14px] font-sans uppercase">
         {mark}
       </text>
     </svg>

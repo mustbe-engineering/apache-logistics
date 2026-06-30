@@ -3,7 +3,7 @@ import { SectionLink } from "./SectionLink";
 export function Footer() {
   return (
     <footer className="border-t border-base/20 bg-nav text-base">
-      <div className="mx-auto grid max-w-[1440px] gap-8 px-[var(--gutter)] py-12 md:grid-cols-3">
+      <div className="site-container grid gap-8 py-12 md:grid-cols-3">
         <div>
           <p className="font-macro text-lg uppercase">Apache® Logistics</p>
           <p className="mt-3 text-sm leading-relaxed text-base/80">

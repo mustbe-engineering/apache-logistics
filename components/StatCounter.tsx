@@ -26,7 +26,7 @@ export function StatCounter({ value, label }: StatCounterProps) {
   }, [value, reduce, parsed]);
 
   return (
-    <div data-stagger className="flex flex-col items-center px-[var(--gutter)] py-8 text-center sm:py-10">
+    <div data-stagger className="flex flex-col items-center py-8 text-center sm:py-10">
       <data ref={ref} value={value} className="block font-macro text-3xl uppercase leading-none tracking-tight text-highlight md:text-4xl">
         {parsed ? `0${parsed.suffix}` : value}
       </data>
