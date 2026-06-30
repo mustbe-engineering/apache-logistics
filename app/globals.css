@@ -378,7 +378,7 @@ p {
 }
 
 .nav-link {
-  @apply relative inline-flex items-center whitespace-nowrap text-[0.8125rem] uppercase tracking-[0.14em];
+  @apply relative inline-flex items-center whitespace-nowrap text-[0.875rem] tracking-[0.02em] lg:text-[0.9375rem];
   color: rgba(253, 253, 253, 0.65);
   transition: color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -406,7 +406,7 @@ p {
 }
 
 .nav-link-mobile {
-  @apply block rounded-sm px-1 py-3 text-[0.8125rem] uppercase tracking-[0.14em];
+  @apply block rounded-sm px-1 py-3 text-[0.875rem] tracking-[0.02em];
   color: rgba(253, 253, 253, 0.72);
   transition: color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
