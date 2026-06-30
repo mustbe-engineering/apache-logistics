@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { List, X } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useState } from "react";
@@ -23,8 +24,15 @@ export function Nav() {
   return (
     <NavEnter className="sticky top-0 z-50 border-b border-base/20 bg-nav text-base">
       <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center px-[var(--gutter)] md:h-20">
-        <Link href="/" className="shrink-0 font-macro text-lg uppercase tracking-tight text-base">
-          Apache®
+        <Link href="/" className="inline-flex shrink-0 items-center">
+          <Image
+            src="/logo/white-logo.svg"
+            alt="Apache Logistics"
+            width={1198}
+            height={222}
+            className="h-[1.125rem] w-auto"
+            priority
+          />
         </Link>
         <span
           role="separator"

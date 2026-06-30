@@ -6,6 +6,7 @@ import { Fleet } from "@/components/Fleet";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Nav } from "@/components/Nav";
+import { SectionDivider } from "@/components/SectionDivider";
 import { Services } from "@/components/Services";
 import { StatsBar } from "@/components/StatsBar";
 
@@ -18,6 +19,7 @@ export default function Home() {
         <StatsBar />
         <About />
         <Services />
+        <SectionDivider />
         <Fleet />
         <Clients />
         <Blog />
