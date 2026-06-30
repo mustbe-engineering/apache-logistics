@@ -4,9 +4,12 @@ import { useEffect, useRef } from "react";
 import { gsap, initGsap } from "@/lib/gsapCore";
 import { useReducedMotion } from "./gsap/useReducedMotion";
 
-type StatCounterProps = { value: string; label: string };
+import { StatIcon } from "./stats/StatIcons";
+import type { StatIconId } from "@/lib/data";
 
-export function StatCounter({ value, label }: StatCounterProps) {
+type StatCounterProps = { value: string; label: string; icon: StatIconId };
+
+export function StatCounter({ value, label, icon }: StatCounterProps) {
   const ref = useRef<HTMLDataElement>(null);
   const reduce = useReducedMotion();
   const parsed = parseStat(value);
@@ -26,11 +29,16 @@ export function StatCounter({ value, label }: StatCounterProps) {
   }, [value, reduce, parsed]);
 
   return (
-    <div data-stagger className="flex flex-col items-center py-8 text-center sm:py-10">
-      <data ref={ref} value={value} className="block font-macro text-3xl uppercase leading-none tracking-tight text-highlight md:text-4xl">
-        {parsed ? `0${parsed.suffix}` : value}
-      </data>
-      <p className="mt-2 text-[0.6rem] uppercase tracking-[0.12em] text-base/85">{label}</p>
+    <div data-stagger className="stats-bar__item">
+      <div className="stats-bar__stack">
+        <div className="stats-bar__icon-wrap">
+          <StatIcon id={icon} className="stats-bar__icon" />
+        </div>
+        <data ref={ref} value={value} className="stats-bar__value">
+          {parsed ? `0${parsed.suffix}` : value}
+        </data>
+        <p className="stats-bar__label">{label}</p>
+      </div>
     </div>
   );
 }
@@ -46,7 +54,7 @@ function runCount(el: HTMLElement, target: number, suffix: string) {
   return gsap.to(obj, {
     n: target,
     duration: 1.4 + target / 900,
-    ease: "power2.out",
+    ease: "power3.out",
     scrollTrigger: { trigger: el, start: "top 88%", once: true },
     onUpdate: () => {
       el.textContent = `${Math.round(obj.n)}${suffix}`;

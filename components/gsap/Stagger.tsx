@@ -8,9 +8,19 @@ type StaggerProps = {
   children: React.ReactNode;
   className?: string;
   start?: string;
+  y?: number;
+  duration?: number;
+  stagger?: number;
 };
 
-export function Stagger({ children, className, start = "top 85%" }: StaggerProps) {
+export function Stagger({
+  children,
+  className,
+  start = "top 85%",
+  y = 22,
+  duration = 0.55,
+  stagger = 0.08,
+}: StaggerProps) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
 
@@ -19,12 +29,12 @@ export function Stagger({ children, className, start = "top 85%" }: StaggerProps
     initGsap();
     const items = ref.current.querySelectorAll("[data-stagger]");
     if (!items.length) return;
-    gsap.set(items, { y: 22, opacity: 0 });
+    gsap.set(items, { y, opacity: 0 });
     const tween = gsap.to(items, {
       y: 0,
       opacity: 1,
-      duration: 0.55,
-      stagger: 0.08,
+      duration,
+      stagger,
       ease: "power3.out",
       scrollTrigger: { trigger: ref.current, start, once: true },
     });
@@ -32,7 +42,7 @@ export function Stagger({ children, className, start = "top 85%" }: StaggerProps
       tween.scrollTrigger?.kill();
       tween.kill();
     };
-  }, [reduce, start]);
+  }, [reduce, start, y, duration, stagger]);
 
   return (
     <div ref={ref} className={className}>

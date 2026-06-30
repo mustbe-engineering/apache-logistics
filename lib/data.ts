@@ -1,7 +1,9 @@
-export const stats = [
-  { value: "1000+", label: "Viajes" },
-  { value: "30+", label: "Clientes" },
-  { value: "50+", label: "Comentarios" },
+export type StatIconId = "trips" | "clients" | "comments";
+
+export const stats: { value: string; label: string; icon: StatIconId }[] = [
+  { value: "1000+", label: "Viajes", icon: "trips" },
+  { value: "30+", label: "Clientes", icon: "clients" },
+  { value: "50+", label: "Comentarios", icon: "comments" },
 ];
 
 export const services = [
