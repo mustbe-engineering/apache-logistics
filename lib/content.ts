@@ -18,12 +18,12 @@ export const aboutBlocks = [
 ];
 
 export const clients = [
-  { name: "Minera del Norte", mark: "MN" },
-  { name: "AgroPacífico", mark: "AP" },
-  { name: "RefriMex", mark: "RM" },
-  { name: "SteelWorks", mark: "SW" },
-  { name: "Distribuidora GYA", mark: "DG" },
-  { name: "Cementos Pacífico", mark: "CP" },
+  { name: "Minera del Norte", mark: "MN", href: "https://google.com" },
+  { name: "AgroPacífico", mark: "AP", href: "https://google.com" },
+  { name: "RefriMex", mark: "RM", href: "https://google.com" },
+  { name: "SteelWorks", mark: "SW", href: "https://google.com" },
+  { name: "Distribuidora GYA", mark: "DG", href: "https://google.com" },
+  { name: "Cementos Pacífico", mark: "CP", href: "https://google.com" },
 ];
 
 export const quotes = [

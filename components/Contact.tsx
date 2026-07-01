@@ -1,19 +1,15 @@
 "use client";
 
-import { Reveal } from "./gsap/Reveal";
-import { Stagger } from "./gsap/Stagger";
-import { Shell } from "./ui";
+import { services } from "@/lib/data";
 
-const serviceOptions = ["LCL", "LTL", "Trasbordos", "Maniobras", "Almacenaje", "Última milla"];
+const serviceOptions = services.map((s) => s.name);
 
 export function Contact() {
   return (
-    <Shell id="contacto">
-      <Reveal>
-        <h2 className="macro-title mb-10 text-4xl md:text-5xl">Contacto</h2>
-      </Reveal>
-      <Stagger className="grid gap-8 lg:grid-cols-5">
-        <form data-stagger className="compartment space-y-4 p-6 lg:col-span-3" onSubmit={(e) => e.preventDefault()}>
+    <>
+      <h2 className="macro-title mb-10 pr-10 text-4xl md:text-5xl">Contacto</h2>
+      <div className="grid gap-8 lg:grid-cols-5">
+        <form className="compartment space-y-4 p-6 lg:col-span-3" onSubmit={(e) => e.preventDefault()}>
           <Field label="Nombre" name="name" type="text" />
           <Field label="Email" name="email" type="email" />
           <SelectField label="Servicio" options={serviceOptions} />
@@ -22,7 +18,7 @@ export function Contact() {
             Cotiza tu envío.
           </button>
         </form>
-        <address data-stagger className="compartment-dark not-italic lg:col-span-2">
+        <address className="compartment-dark not-italic lg:col-span-2">
           <div className="space-y-6 p-6 text-sm leading-relaxed">
             <Info label="Dirección" text="Blvd. Colosio 1240, Col. Pitic, Hermosillo, Sonora, CP 83100" />
             <Info label="Teléfono" href="tel:+526621234567" text="+52 662 123 4567" />
@@ -30,8 +26,8 @@ export function Contact() {
             <Info label="Horario" text="Lunes a viernes, 07:00 a 19:00" />
           </div>
         </address>
-      </Stagger>
-    </Shell>
+      </div>
+    </>
   );
 }
 

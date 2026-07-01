@@ -370,11 +370,11 @@ p {
 }
 
 .nav-shell.nav-shell--glass {
-  background-color: rgba(253, 253, 253, 0.94);
+  background-color: rgba(253, 253, 253, 0.72);
   background-image: none;
-  backdrop-filter: blur(22px) saturate(180%);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
-  box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.04), 0 8px 32px rgba(22, 71, 117, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.04), 0 8px 32px rgba(22, 71, 117, 0.06);
   color: #164775;
 }
 
@@ -400,9 +400,9 @@ p {
 }
 
 .nav-shell--glass .nav-mobile-panel {
-  background: rgba(253, 253, 253, 0.82);
-  backdrop-filter: blur(22px) saturate(180%);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  background: rgba(253, 253, 253, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-top-color: rgba(22, 71, 117, 0.08);
 }
 
@@ -695,4 +695,35 @@ p {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+@keyframes fleet-gps-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 0 0 rgba(251, 215, 14, 0.5);
+  }
+  50% {
+    opacity: 0.65;
+    box-shadow: 0 0 0 7px rgba(251, 215, 14, 0);
+  }
+}
+
+.fleet-gps {
+  animation: fleet-gps-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes fleet-detail-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fleet-detail {
+  animation: fleet-detail-in 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }

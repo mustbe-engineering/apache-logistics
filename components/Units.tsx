@@ -1,25 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { fleetMarkers } from "@/lib/fleetMarkers";
-import { FleetMap } from "./FleetMap";
+import { unitMarkers } from "@/lib/unitMarkers";
 import { Reveal } from "./gsap/Reveal";
+import { UnitsMap } from "./UnitsMap";
 
-export function Fleet() {
+export function Units() {
   const [active, setActive] = useState<number | null>(null);
-  const picked = active !== null ? fleetMarkers[active] : null;
+  const picked = active !== null ? unitMarkers[active] : null;
 
   return (
-    <section id="flota" className="scroll-mt-[var(--nav-offset)] bg-[#F7F6F3] py-[clamp(4rem,10vw,6rem)]">
+    <section id="unidades" className="scroll-mt-[var(--nav-offset)] bg-[#F7F6F3] py-[clamp(4rem,10vw,6rem)]">
       <div className="site-container">
         <div className="relative min-h-[min(92dvh,calc(52rem+240px))]">
           <div className="pointer-events-none relative z-10 w-full">
             <Reveal className="max-w-md">
               <p className="mb-4 inline-block rounded-lg bg-[#E1F3FE] px-2.5 py-1 text-[0.625rem] uppercase tracking-[0.14em] text-nav">
-                [ TELEMETRÍA ]
+                [ UNIDADES ]
               </p>
               <h2 className="font-macro text-4xl uppercase tracking-tight text-nav md:text-5xl">
-                Flota y tecnología
+                Nuestras unidades
               </h2>
             </Reveal>
             <div className="mt-5 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start lg:gap-x-12">
@@ -39,8 +39,8 @@ export function Fleet() {
             </div>
           </div>
           <div className="mt-12 flex translate-y-[70px] justify-center lg:absolute lg:inset-0 lg:mt-0 lg:items-center">
-            <div className="w-full max-w-[90rem]">
-              <FleetMap active={active} onSelect={setActive} />
+            <div className="w-full max-w-[90rem] lg:pointer-events-auto">
+              <UnitsMap active={active} onSelect={setActive} />
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { HeroEnter } from "./gsap/HeroEnter";
-import { SectionLink } from "./SectionLink";
+import { QuoteOpenButton } from "./QuoteOpenButton";
 
 const HERO_VIDEO = "/videos/apache-optimized.mp4";
 
@@ -63,9 +63,8 @@ export function Hero() {
                 ))}
               </ul>
 
-              <SectionLink
+              <QuoteOpenButton
                 data-hero-cta
-                href="#contacto"
                 className="btn-cotizar btn-cotizar-hero mt-8 md:mt-10"
               >
                 <span>Cotizar servicio</span>
@@ -81,7 +80,7 @@ export function Hero() {
                     />
                   </svg>
                 </span>
-              </SectionLink>
+              </QuoteOpenButton>
             </div>
           </div>
         </div>

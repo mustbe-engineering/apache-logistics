@@ -6,6 +6,7 @@ import { useState } from "react";
 import { NavEnter } from "./gsap/NavEnter";
 import { NavLogo } from "./NavLogo";
 import { usePastHero } from "./nav/usePastHero";
+import { QuoteOpenButton } from "./QuoteOpenButton";
 import { SectionLink } from "./SectionLink";
 
 const links = [
@@ -14,8 +15,8 @@ const links = [
   { href: "#servicios", label: "Servicios" },
   { href: "#flota", label: "Flota" },
   { href: "#rutas", label: "Rutas" },
+  { href: "#unidades", label: "Unidades" },
   { href: "#clientes", label: "Clientes" },
-  { href: "#contacto", label: "Contacto" },
 ];
 
 export function Nav() {
@@ -66,9 +67,9 @@ export function Nav() {
           data-nav-actions
           className="ml-auto flex items-center gap-3 lg:col-start-3 lg:ml-0 lg:justify-self-end"
         >
-          <SectionLink href="#contacto" className="btn-cotizar btn-cotizar-nav shrink-0">
+          <QuoteOpenButton className="btn-cotizar btn-cotizar-nav shrink-0" onClick={close}>
             <span>Cotizar</span>
-          </SectionLink>
+          </QuoteOpenButton>
           <button
             type="button"
             className="nav-menu-btn inline-flex h-10 w-10 items-center justify-center transition-colors duration-500 lg:hidden"

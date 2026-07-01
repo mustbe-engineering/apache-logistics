@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo_Black } from "next/font/google";
 import localFont from "next/font/local";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 const archivo = Archivo_Black({
@@ -53,7 +54,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={`${archivo.variable} ${stretchPro.variable} ${pretendard.variable}`}>
-      <body className="grain min-h-[100dvh]">{children}</body>
+      <body className="grain min-h-[100dvh]">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

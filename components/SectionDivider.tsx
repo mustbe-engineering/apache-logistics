@@ -1,18 +1,42 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { useReducedMotion } from "@/components/gsap/useReducedMotion";
+import { gsap, initGsap } from "@/lib/gsapCore";
 
 export function SectionDivider() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const bg = bgRef.current;
+    if (reduce || !section || !bg) return;
+    initGsap();
+    const tween = gsap.fromTo(bg, { yPercent: -12 }, {
+      yPercent: 12,
+      ease: "none",
+      scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: true },
+    });
+    return () => { tween.scrollTrigger?.kill(); tween.kill(); };
+  }, [reduce]);
+
   return (
-    <section id="rutas" aria-hidden className="scroll-mt-[var(--nav-offset)] py-[var(--section-y)]">
-      <div className="site-container flex justify-center">
-        <div className="relative aspect-[21/9] w-full max-w-3xl border border-ink/20">
-          <Image
-            src="https://picsum.photos/seed/apache-separator/1200/514"
-            alt=""
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 48rem"
-          />
-        </div>
+    <section
+      ref={sectionRef}
+      aria-hidden
+      className="relative min-h-[min(100dvh,56rem)] overflow-hidden"
+    >
+      <div ref={bgRef} className="absolute inset-0 scale-110">
+        <Image
+          src="/images/crossing-paths.jpg"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+        />
       </div>
     </section>
   );
