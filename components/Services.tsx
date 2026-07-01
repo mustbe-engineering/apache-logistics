@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Reveal } from "./gsap/Reveal";
 import { ServicesAccordion } from "./ServicesAccordion";
+import { ServicesParallaxImage } from "./ServicesParallaxImage";
 
 const description =
   "Conoce nuestros servicios de excelencia disponibles en toda la región operativa, desde servicios con rutas establecidas hasta necesidades específicas para tu logística.";
@@ -27,15 +27,7 @@ export function Services() {
           <div className="flex min-h-0 flex-col border border-white/10 bg-white/[0.05] lg:col-span-1">
             <ServicesAccordion />
           </div>
-          <div className="relative min-h-[12rem] overflow-hidden border border-white/10 lg:col-span-2 lg:min-h-0 lg:h-full">
-            <Image
-              src="/images/truck-zoom-logo.jpg"
-              alt="Unidad Apache Logistics con logo corporativo"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 66vw"
-            />
-          </div>
+          <ServicesParallaxImage />
         </div>
       </div>
     </section>
