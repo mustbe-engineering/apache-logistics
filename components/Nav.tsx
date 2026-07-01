@@ -34,7 +34,7 @@ export function Nav() {
           <Link
             href="/"
             data-nav-logo
-            className="inline-flex shrink-0 items-center"
+            className="nav-logo-link inline-flex shrink-0 items-center"
             onClick={close}
           >
             <NavLogo
@@ -47,7 +47,7 @@ export function Nav() {
             role="separator"
             aria-orientation="vertical"
             data-nav-separator
-            className="nav-separator hidden h-5 w-px shrink-0 bg-base/35 transition-colors duration-500 md:block lg:hidden lg:h-6"
+            className="nav-separator hidden md:block lg:hidden"
           />
         </div>
 
@@ -72,7 +72,7 @@ export function Nav() {
           </QuoteOpenButton>
           <button
             type="button"
-            className="nav-menu-btn inline-flex h-10 w-10 items-center justify-center transition-colors duration-500 lg:hidden"
+            className="nav-menu-btn lg:hidden"
             onClick={() => setOpen(!open)}
             aria-expanded={open}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -83,7 +83,7 @@ export function Nav() {
       </div>
 
       {open && (
-        <div className="nav-mobile-panel border-t border-base/10 px-[var(--gutter)] py-5 transition-[background-color,border-color] duration-500 lg:hidden">
+        <div className="nav-mobile-panel px-[var(--gutter)] py-4 lg:hidden">
           <nav className="flex flex-col gap-1" aria-label="Móvil">
             {links.map((l) => (
               <SectionLink
