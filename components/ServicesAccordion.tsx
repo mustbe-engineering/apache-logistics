@@ -53,7 +53,7 @@ export function ServicesAccordion() {
             tone={TONES[i] ?? TONES[0]}
             index={i}
             active={open === i}
-            Icon={serviceIcons[s.icon]}
+            iconSrc={serviceIcons[s.icon]}
             onSelect={() => setOpen(i)}
           />
         </div>

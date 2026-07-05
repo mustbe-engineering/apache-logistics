@@ -1,6 +1,7 @@
 "use client";
 
-import { Minus, Plus, type Icon } from "@phosphor-icons/react";
+import { Minus, Plus } from "@phosphor-icons/react";
+import { ServiceIcon } from "./ServiceIcon";
 
 type RowProps = {
   name: string;
@@ -10,11 +11,11 @@ type RowProps = {
   tone: string;
   index: number;
   active: boolean;
-  Icon: Icon;
+  iconSrc: string;
   onSelect: () => void;
 };
 
-export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, index, active, Icon, onSelect }: RowProps) {
+export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, index, active, iconSrc, onSelect }: RowProps) {
   return (
     <div
       className="flex h-full min-h-0 flex-col transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
@@ -27,7 +28,7 @@ export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, index
         className="group flex h-16 shrink-0 items-center gap-4 px-5 text-left md:px-7"
       >
         <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/[0.08] ring-1 ring-white/12">
-          <Icon size={20} weight="light" className="text-white/90" />
+          <ServiceIcon src={iconSrc} className="h-5 w-5 text-white/90" />
         </span>
         <span className="font-macro flex-1 text-lg uppercase tracking-tight text-white/90 md:text-xl">{name}</span>
         <span className="font-sans text-[0.65rem] tracking-[0.18em] text-white/38">{String(index + 1).padStart(2, "0")}</span>

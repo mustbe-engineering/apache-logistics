@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main>
+      <main className="pt-[var(--nav-offset)]">
         <Hero />
         <StatsBar />
         <About />

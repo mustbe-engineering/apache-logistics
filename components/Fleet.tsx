@@ -15,9 +15,6 @@ export function Fleet() {
         <div className="relative min-h-[min(92dvh,calc(52rem+240px))]">
           <div className="pointer-events-none relative z-10 w-full">
             <Reveal className="max-w-md">
-              <p className="mb-4 inline-block rounded-lg bg-[#E1F3FE] px-2.5 py-1 text-[0.625rem] uppercase tracking-[0.14em] text-nav">
-                [ TELEMETRÍA ]
-              </p>
               <h2 className="font-macro text-4xl uppercase tracking-tight text-nav md:text-5xl">
                 Flota y tecnología
               </h2>

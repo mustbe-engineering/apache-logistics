@@ -27,9 +27,9 @@ export function Nav() {
   return (
     <NavEnter
       data-nav-shell
-      className={`nav-shell sticky top-0 z-50${pastHero ? " nav-shell--glass" : ""}`}
+      className={`nav-shell${pastHero ? " nav-shell--glass" : ""}`}
     >
-      <div className="site-container flex h-[4.25rem] items-center md:h-[5rem] lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+      <div className="nav-bar site-container flex items-center lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center">
         <div className="flex items-center gap-4 md:gap-6 lg:col-start-1">
           <Link
             href="/"
@@ -39,7 +39,7 @@ export function Nav() {
           >
             <NavLogo
               lightText={!pastHero}
-              className="nav-logo h-7 w-auto md:h-8 lg:h-9"
+              className="nav-logo h-[1.4rem] w-auto md:h-[1.6rem] lg:h-[1.8rem]"
             />
           </Link>
 

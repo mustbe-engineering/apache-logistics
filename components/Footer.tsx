@@ -16,9 +16,9 @@ export function Footer() {
   return (
     <footer className="border-t border-nav/10 bg-base text-nav">
       <div className="site-container grid gap-10 py-12 lg:grid-cols-[minmax(0,1.35fr)_1fr_1fr] lg:gap-12">
-        <div className="max-w-xs md:max-w-sm">
+        <div  className="max-w-xs md:max-w-sm">
           <Image
-            src="/logo/apache-logo.svg"
+            src="/logo/logo.svg"
             alt="Apache Logistics"
             width={2548}
             height={563}
@@ -26,7 +26,7 @@ export function Footer() {
           />
         </div>
         <div>
-          <p className={labelClass}>C O N T A C T O</p>
+          <p className={labelClass}>CONTACTO</p>
           <div className="mt-4 flex gap-3 text-sm leading-relaxed text-nav">
             <MapPin size={20} weight="bold" className="mt-0.5 shrink-0" aria-hidden />
             <p>
@@ -39,7 +39,7 @@ export function Footer() {
             <Phone size={20} weight="bold" className="shrink-0" aria-hidden />
             +52 646 150 9120
           </a>
-          <p className={`${labelClass} mt-8`}>R E D E S</p>
+          <p className={`${labelClass} mt-8`}>REDES</p>
           <FooterSocialLinks />
         </div>
         <div className="flex flex-col text-sm text-nav">

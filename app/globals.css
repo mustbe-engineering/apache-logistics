@@ -6,7 +6,9 @@
   --section-y: clamp(3rem, 8vw, 5rem);
   --content-max: 90rem;
   --gutter: clamp(1.25rem, 0.75rem + 3vw, 3rem);
-  --nav-offset: 4rem;
+  --nav-height: 5.1rem;
+  --nav-height-glass: 4.25rem;
+  --nav-offset: var(--nav-height);
   --nav-blue: #164775;
   --nav-blue-light: #174b7a;
   --nav-blue-dark: #164973;
@@ -62,7 +64,8 @@ html {
 
 @media (min-width: 768px) {
   :root {
-    --nav-offset: 5rem;
+    --nav-height: 6rem;
+    --nav-height-glass: 5rem;
   }
 }
 
@@ -93,6 +96,27 @@ p {
 
 .field {
   @apply w-full border border-ink/30 bg-base px-3 py-2 font-sans text-sm text-ink focus:border-nav focus:outline-none;
+}
+
+@keyframes about-carousel-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.about-carousel-item {
+  animation: about-carousel-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-carousel-item {
+    animation: none;
+  }
 }
 
 .hero-title {
@@ -347,7 +371,10 @@ p {
 
 .nav-shell {
   isolation: isolate;
-  position: relative;
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
   background-color: var(--nav-blue);
   background-image:
     linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, transparent 38%),
@@ -374,6 +401,11 @@ p {
     color 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.nav-bar {
+  height: var(--nav-height);
+  transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .nav-shell.nav-shell--glass {
   background-color: rgba(253, 253, 253, 0.72);
   background-image: none;
@@ -381,6 +413,10 @@ p {
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.04), 0 8px 32px rgba(22, 71, 117, 0.06);
   color: #164775;
+}
+
+.nav-shell--glass .nav-bar {
+  height: var(--nav-height-glass);
 }
 
 .nav-logo-link {

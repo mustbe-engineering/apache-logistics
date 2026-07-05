@@ -11,9 +11,9 @@ const heroPills = [
 
 export function Hero() {
   return (
-    <section id="home" className="relative min-h-[calc(100dvh-4.25rem)] overflow-hidden text-base md:min-h-[calc(100dvh-5rem)]">
+    <section id="home" className="relative min-h-[calc(100dvh-var(--nav-offset))] overflow-hidden text-base">
       <HeroEnter>
-        <div className="relative min-h-[calc(100dvh-4.25rem)] md:min-h-[calc(100dvh-5rem)]">
+        <div className="relative min-h-[calc(100dvh-var(--nav-offset))]">
           <video
             data-hero-media
             autoPlay
@@ -39,10 +39,6 @@ export function Hero() {
 
           <div className="site-container relative z-10 flex min-h-[calc(100dvh-4.25rem)] items-center py-12 md:min-h-[calc(100dvh-5rem)] md:py-16">
             <div data-hero-copy className="w-full max-w-[38rem]">
-              <p className="hero-eyebrow">
-                <span className="hero-eyebrow-dot" aria-hidden />
-                Logística en el noroeste
-              </p>
 
               <h1 className="hero-title">
                 <span className="hero-title-line">Conocemos</span>
@@ -53,15 +49,6 @@ export function Hero() {
                 Más de 10 años de experiencia, moviendo la carga por el noroeste de México con la
                 seguridad y el trato de una buena empresa familiar.
               </p>
-
-              <ul className="hero-pills" aria-label="Ventajas principales">
-                {heroPills.map((pill) => (
-                  <li key={pill} className="hero-pill">
-                    <span className="hero-pill-dot" aria-hidden />
-                    {pill}
-                  </li>
-                ))}
-              </ul>
 
               <QuoteOpenButton
                 data-hero-cta
