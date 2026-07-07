@@ -10,7 +10,7 @@ export function About() {
       className="group relative min-h-[max(22rem,62dvh)] overflow-hidden scroll-mt-[var(--nav-offset)] py-[var(--section-y)] text-nav min-[1021px]:min-h-[max(32rem,90dvh)]"
     >
       <Image
-        src="/images/about-us-bk.png"
+        src="/images/about-us-bk.jpg"
         alt=""
         fill
         className="-z-20 object-cover"

@@ -1,13 +1,14 @@
 "use client";
 
 import { MapPin, Phone } from "@phosphor-icons/react";
-import Image from "next/image";
 import { useState } from "react";
 import { privacyContent, termsContent } from "@/lib/legalContent";
 import { FooterSocialLinks } from "./FooterSocial";
 import { LegalModal } from "./LegalModal";
+import { NavLogo } from "./NavLogo";
 
 const labelClass = "text-[0.65rem] tracking-[0.28em] text-nav";
+const logoClass = "nav-logo h-[1.4rem] w-auto md:h-[1.6rem] lg:h-[1.8rem]";
 
 export function Footer() {
   const [legal, setLegal] = useState<"terms" | "privacy" | null>(null);
@@ -15,15 +16,9 @@ export function Footer() {
 
   return (
     <footer className="border-t border-nav/10 bg-base text-nav">
-      <div className="site-container grid gap-10 py-12 lg:grid-cols-[minmax(0,1.35fr)_1fr_1fr] lg:gap-12">
-        <div  className="max-w-xs md:max-w-sm">
-          <Image
-            src="/logo/logo.svg"
-            alt="Apache Logistics"
-            width={2548}
-            height={563}
-            className="h-auto w-full"
-          />
+      <div className="site-container grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+        <div>
+          <NavLogo lightText={false} className={logoClass} />
         </div>
         <div>
           <p className={labelClass}>CONTACTO</p>
@@ -52,6 +47,7 @@ export function Footer() {
           <p className="mt-auto pt-8 text-nav/70">© 2026 Apache Logistics</p>
           <p className="mt-2 text-nav/70">Permiso SCT vigente · Monitoreo GPS activo</p>
         </div>
+        <div aria-hidden className="hidden lg:block" />
       </div>
       <LegalModal open={legal === "terms"} title="Términos y condiciones" content={termsContent} onClose={close} />
       <LegalModal open={legal === "privacy"} title="Aviso de privacidad" content={privacyContent} onClose={close} />

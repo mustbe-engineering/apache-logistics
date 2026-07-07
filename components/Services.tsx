@@ -29,9 +29,9 @@ export function Services() {
           </div>
         </div>
         <div className="hidden min-[1021px]:block">
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <h2 className="macro-title mb-6 text-4xl md:text-5xl">Servicios</h2>
-            <p className="text-[1rem] leading-[1.65] text-base/90">{desktopDesc}</p>
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <h2 className="macro-title mb-4 text-4xl md:text-5xl">Servicios</h2>
+            <p className="text-sm leading-[1.65] text-base/90 md:text-[0.9375rem]">{desktopDesc}</p>
           </Reveal>
           <ServicesGrid />
         </div>

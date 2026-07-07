@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { Reveal } from "./gsap/Reveal";
+import { RoutesAnimatedLines } from "./routes/RoutesAnimatedLines";
 import { Shell } from "./ui";
 
 const description =
@@ -8,18 +8,18 @@ const description =
 export function Routes() {
   return (
     <Shell id="rutas">
-      <Reveal>
-        <h2 className="macro-title mb-8 text-4xl text-nav md:text-5xl">Nuestras Rutas (aqui va el mapa)</h2>
-        <p className="max-w-3xl text-sm leading-[1.6] text-nav md:text-[1rem]">{description}</p>
+      <Reveal className="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-x-12">
+        <h2 className="macro-title text-4xl text-nav md:text-5xl">Nuestras Rutas</h2>
+        <p className="text-sm leading-[1.6] text-nav md:text-[1rem]">{description}</p>
       </Reveal>
-      <div className="relative mt-10 aspect-[2080/1161] w-full overflow-hidden border border-ink/10">
-        <Image
-          src="/images/back-trucks.jpg"
-          alt="Flota Apache en ruta por el noroeste de México"
-          fill
-          className="object-cover"
-          sizes="(max-width: 90rem) 100vw, 1440px"
+      <div className="relative mt-10 aspect-[1451.45/596.8] w-[calc(50vw+50%)]">
+        <img
+          src="/images/map/map.svg"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 h-full w-full object-contain object-left-bottom"
         />
+        <RoutesAnimatedLines className="absolute inset-0 z-10 h-full w-full object-contain object-left-bottom" />
       </div>
     </Shell>
   );

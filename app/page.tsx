@@ -20,7 +20,6 @@ export default function Home() {
         <StatsBar />
         <About />
         <Services />
-        <SectionDivider />
         <Fleet />
         <Routes />
         <Units />

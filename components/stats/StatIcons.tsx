@@ -2,9 +2,9 @@ import Image from "next/image";
 import type { StatIconId } from "@/lib/data";
 
 const statIconSrc: Record<StatIconId, string> = {
-  trips: "/images/stats/viajes.png",
-  clients: "/images/stats/clientes.png",
-  comments: "/images/stats/comentarios.png",
+  trips: "/images/stats/viajes.svg",
+  clients: "/images/stats/clientes.svg",
+  comments: "/images/stats/comments.svg",
 };
 
 type StatIconProps = {

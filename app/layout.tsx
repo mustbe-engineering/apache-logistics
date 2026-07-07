@@ -47,6 +47,11 @@ export const metadata: Metadata = {
   title: "Apache Logistics | Transporte de carga en el noroeste",
   description:
     "Transporte de carga especializado en el noroeste de México con monitoreo avanzado.",
+  icons: {
+    icon: "/logo/icon.ico",
+    shortcut: "/logo/icon.ico",
+    apple: "/logo/icon.ico",
+  },
 };
 
 export default function RootLayout({

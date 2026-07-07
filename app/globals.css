@@ -119,6 +119,24 @@ p {
   }
 }
 
+.routes-map__line {
+  fill: none;
+  stroke: #f6a309;
+  stroke-width: 4.74px;
+  stroke-miterlimit: 7.45;
+}
+
+.routes-map__dot {
+  fill: #f6a309;
+}
+
+.routes-map__label {
+  fill: #ebebeb;
+  font-family: var(--font-stretch-pro), system-ui, sans-serif;
+  font-size: 17.38px;
+  letter-spacing: 0.1em;
+}
+
 .hero-title {
   @apply font-display text-base;
   font-size: clamp(2.5rem, 4.8vw + 0.75rem, 4.375rem);
