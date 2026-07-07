@@ -10,14 +10,12 @@ export function Units() {
   const picked = active !== null ? unitMarkers[active] : null;
 
   return (
-    <section id="unidades" className="scroll-mt-[var(--nav-offset)] bg-[#F7F6F3] py-[clamp(4rem,10vw,6rem)]">
+    <section id="unidades" className="scroll-mt-[var(--nav-offset)] bg-base py-[clamp(4rem,10vw,6rem)]">
       <div className="site-container">
         <div className="relative min-h-[min(92dvh,calc(52rem+240px))]">
           <div className="pointer-events-none relative z-10 w-full">
             <Reveal className="max-w-md">
-              <h2 className="font-macro text-4xl uppercase tracking-tight text-nav md:text-5xl">
-                Nuestras unidades
-              </h2>
+              <h2 className="macro-title text-4xl text-nav md:text-5xl">Nuestras unidades</h2>
             </Reveal>
             <div className="mt-5 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start lg:gap-x-12">
               <p className="max-w-md text-sm leading-[1.6] text-nav md:text-[1rem]">

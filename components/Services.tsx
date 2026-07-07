@@ -24,7 +24,7 @@ export function Services() {
             <h2 className="macro-title mb-4 text-4xl md:text-5xl">Servicios</h2>
             <p className="max-w-3xl text-sm leading-[1.6] text-base/90">{mobileDesc}</p>
           </Reveal>
-          <div className="mt-6 min-h-[min(60dvh,28rem)] border border-white/10 bg-white/[0.05]">
+          <div className="mt-6 h-[20.5rem] border border-white/10 bg-white/[0.05] sm:h-[22rem]">
             <ServicesAccordion />
           </div>
         </div>

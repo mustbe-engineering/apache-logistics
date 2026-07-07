@@ -8,9 +8,9 @@ const description =
 export function Routes() {
   return (
     <Shell id="rutas">
-      <Reveal className="grid gap-6 lg:grid-cols-2 lg:items-start lg:gap-x-12">
+      <Reveal className="max-w-2xl">
         <h2 className="macro-title text-4xl text-nav md:text-5xl">Nuestras Rutas</h2>
-        <p className="text-sm leading-[1.6] text-nav md:text-[1rem]">{description}</p>
+        <p className="mt-4 text-sm leading-[1.6] text-nav md:text-[1rem]">{description}</p>
       </Reveal>
       <div className="relative mt-10 aspect-[1451.45/596.8] w-[calc(50vw+50%)]">
         <img

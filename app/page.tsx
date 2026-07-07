@@ -20,9 +20,9 @@ export default function Home() {
         <StatsBar />
         <About />
         <Services />
+        <SectionDivider />
         <Fleet />
         <Routes />
-        <Units />
         <div className="relative">
           <Clients />
           <FloatingTruck />

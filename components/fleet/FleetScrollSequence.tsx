@@ -11,9 +11,13 @@ export function FleetScrollSequence() {
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
+    let disposed = false;
     let cleanup = () => {};
-    createFleetScrollSequence(section).then((fn) => { cleanup = fn; });
-    return () => cleanup();
+    void createFleetScrollSequence(section).then((fn) => {
+      if (disposed) { fn(); return; }
+      cleanup = fn;
+    });
+    return () => { disposed = true; cleanup(); };
   }, []);
 
   return (

@@ -7,9 +7,15 @@ import { gsap, initGsap } from "@/lib/gsapCore";
 import { useReducedMotion } from "./gsap/useReducedMotion";
 import { ServiceAccordionRow } from "./ServiceAccordionRow";
 
-const HEADER = 64;
+const HEADER_MOBILE = 48;
+const HEADER_TABLET = 52;
 const TONES = ["#164775", "#185078", "#1a5282", "#1c5686", "#1e5a8a", "#205e8e"];
 const EASE = "power3.inOut";
+
+function getHeader() {
+  if (typeof window === "undefined") return HEADER_MOBILE;
+  return window.innerWidth < 640 ? HEADER_MOBILE : HEADER_TABLET;
+}
 
 export function ServicesAccordion() {
   const [open, setOpen] = useState(0);
@@ -21,10 +27,11 @@ export function ServicesAccordion() {
     (index: number) => {
       const box = boxRef.current;
       if (!box) return;
-      const expanded = Math.max(box.offsetHeight - HEADER * (services.length - 1), HEADER);
+      const header = getHeader();
+      const expanded = Math.max(box.offsetHeight - header * (services.length - 1), header);
       rowRefs.current.forEach((row, i) => {
         if (!row) return;
-        gsap.to(row, { height: i === index ? expanded : HEADER, duration: reduce ? 0 : 0.78, ease: EASE });
+        gsap.to(row, { height: i === index ? expanded : header, duration: reduce ? 0 : 0.78, ease: EASE });
       });
     },
     [reduce],
@@ -51,7 +58,6 @@ export function ServicesAccordion() {
             desc={s.desc}
             benefits={s.benefits}
             tone={TONES[i] ?? TONES[0]}
-            index={i}
             active={open === i}
             iconSrc={serviceIcons[s.icon]}
             onSelect={() => setOpen(i)}

@@ -1,6 +1,5 @@
 "use client";
 
-import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { clients } from "@/lib/content";
@@ -21,22 +20,13 @@ export function ClientsCarousel() {
 
   useEffect(() => {
     if (reduce) return;
-    const id = setInterval(() => setIndex((v) => (v + 1) % clients.length), 5000);
+    const id = setInterval(() => setIndex((v) => (v + 1) % clients.length), 3000);
     return () => clearInterval(id);
   }, [reduce]);
 
-  const prev = () => setIndex((v) => (v - 1 + clients.length) % clients.length);
-  const next = () => setIndex((v) => (v + 1) % clients.length);
-
   return (
     <div className="relative mt-[3.9rem] min-h-[12.48rem] border-t border-base/20 pt-[3.9rem]">
-      <button type="button" onClick={prev} aria-label="Anterior" className="absolute left-0 top-1/2 z-10 -translate-y-1/2 text-highlight">
-        <CaretLeft size={32} weight="bold" />
-      </button>
-      <button type="button" onClick={next} aria-label="Siguiente" className="absolute right-0 top-1/2 z-10 -translate-y-1/2 text-highlight">
-        <CaretRight size={32} weight="bold" />
-      </button>
-      <div className="mx-10 flex flex-col items-center md:mx-14">
+      <div className="flex flex-col items-center">
         <Link href={client.href} target="_blank" rel="noopener noreferrer" aria-label={client.name} className="transition-opacity hover:opacity-85">
           <LogoMark mark={client.mark} />
         </Link>

@@ -3,12 +3,6 @@ import { QuoteOpenButton } from "./QuoteOpenButton";
 
 const HERO_VIDEO = "/videos/apache-optimized.mp4";
 
-const heroPills = [
-  "10+ años de operación",
-  "Monitoreo GPS 24/7",
-  "Cobertura regional",
-];
-
 export function Hero() {
   return (
     <section id="home" className="relative min-h-[calc(100dvh-var(--nav-offset))] overflow-hidden text-base">

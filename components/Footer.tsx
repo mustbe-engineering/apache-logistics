@@ -3,6 +3,7 @@
 import { MapPin, Phone } from "@phosphor-icons/react";
 import { useState } from "react";
 import { privacyContent, termsContent } from "@/lib/legalContent";
+import { siteContact } from "@/lib/siteContact";
 import { FooterSocialLinks } from "./FooterSocial";
 import { LegalModal } from "./LegalModal";
 import { NavLogo } from "./NavLogo";
@@ -25,14 +26,14 @@ export function Footer() {
           <div className="mt-4 flex gap-3 text-sm leading-relaxed text-nav">
             <MapPin size={20} weight="bold" className="mt-0.5 shrink-0" aria-hidden />
             <p>
-              Callejon C #126. Col. El Naranjo
+              {siteContact.street}
               <br />
-              C.P 22785. Ensenada BC
+              {siteContact.city}
             </p>
           </div>
-          <a href="tel:+526461509120" className="mt-4 flex items-center gap-3 text-sm text-nav hover:opacity-75">
+          <a href={siteContact.phoneHref} className="mt-4 flex items-center gap-3 text-sm text-nav hover:opacity-75">
             <Phone size={20} weight="bold" className="shrink-0" aria-hidden />
-            +52 646 150 9120
+            {siteContact.phone}
           </a>
           <p className={`${labelClass} mt-8`}>REDES</p>
           <FooterSocialLinks />

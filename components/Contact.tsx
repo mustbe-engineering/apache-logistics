@@ -1,6 +1,7 @@
 "use client";
 
 import { services } from "@/lib/data";
+import { siteAddressText, siteContact } from "@/lib/siteContact";
 
 const serviceOptions = services.map((s) => s.name);
 
@@ -20,10 +21,10 @@ export function Contact() {
         </form>
         <address className="compartment-dark not-italic lg:col-span-2">
           <div className="space-y-6 p-6 text-sm leading-relaxed">
-            <Info label="Dirección" text="Blvd. Colosio 1240, Col. Pitic, Hermosillo, Sonora, CP 83100" />
-            <Info label="Teléfono" href="tel:+526621234567" text="+52 662 123 4567" />
-            <Info label="Email" href="mailto:operaciones@apachelogistics.mx" text="operaciones@apachelogistics.mx" />
-            <Info label="Horario" text="Lunes a viernes, 07:00 a 19:00" />
+            <Info label="Dirección" text={siteAddressText} />
+            <Info label="Teléfono" href={siteContact.phoneHref} text={siteContact.phone} />
+            <Info label="Email" href={`mailto:${siteContact.email}`} text={siteContact.email} />
+            <Info label="Horario" text={siteContact.hours} />
           </div>
         </address>
       </div>

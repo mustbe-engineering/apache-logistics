@@ -74,6 +74,7 @@ export async function createFleetScrollSequence(section: HTMLElement) {
     trigger: section, start: "top top", end: "bottom bottom", scrub: 1.15,
     onUpdate: (self) => updateFromScroll(dom, self.progress * TOTAL_TRAVEL_PX, runtime, actions),
   });
+  ScrollTrigger.refresh();
   fleetFrames.slice(1).forEach((src, index) => {
     loadFrameImage(src).then((image) => {
       if (!image) return;

@@ -16,10 +16,10 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.scroll-sequence img,
-.scroll-sequence canvas {
-  display: block;
-  max-width: 100%;
+*,
+.scroll-sequence *::before,
+.scroll-sequence *::after {
+  box-sizing: border-box;
 }
 
 .scroll-sequence {
