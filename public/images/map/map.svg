@@ -14,6 +14,10 @@
        id="style1">
       .cls-1 {
         fill: #155180;
+        stroke: #5b70b1;
+        stroke-width: 4px;
+        paint-order: stroke fill;
+        stroke-miterlimit: 10;
       }
 
       .cls-2 {
@@ -27,11 +31,13 @@
         stroke-width: 4.74px;
       }
 
-      .cls-5, .cls-6 {
-        fill: #ebebeb;
+      .cls-5 {
+        fill: none;
+        stroke: none;
       }
 
       .cls-6 {
+        fill: #ebebeb;
         font-family: StretchProRegular, 'Stretch Pro';
         font-size: 17.38px;
         letter-spacing: .1em;
@@ -43,6 +49,10 @@
 
       .cls-8 {
         fill: #f6a309;
+        stroke: #5b70b1;
+        stroke-width: 4px;
+        paint-order: stroke fill;
+        stroke-miterlimit: 10;
       }
 
       .cls-4 {

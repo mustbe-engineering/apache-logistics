@@ -9,88 +9,113 @@ const ERASE = 1;
 const GAP = 0.175;
 const FADE = 0.25;
 
-function pathsInGroup(paths: SVGPathElement[], group: number) {
-  return paths.filter((p) => Number(p.dataset.routeGroup) === group);
+function masksInGroup(masks: SVGPathElement[], group: number) {
+  return masks.filter((p) => Number(p.dataset.routeGroup) === group);
 }
 
-function pathLen(path: SVGPathElement) {
-  return Number(path.dataset.routeLen);
+function maskLen(mask: SVGPathElement) {
+  return Number(mask.dataset.routeLen);
+}
+
+function hideMask(mask: SVGPathElement) {
+  const len = maskLen(mask);
+  gsap.set(mask, { strokeDasharray: `${len} ${len}`, strokeDashoffset: len });
 }
 
 function addDrawStep(
   tl: gsap.core.Timeline,
-  groupPaths: SVGPathElement[],
-  dot: SVGCircleElement,
+  group: SVGPathElement[],
+  dot: SVGGElement,
   label: SVGTextElement,
   at: string | number,
 ) {
-  tl.to(groupPaths, { strokeDashoffset: 0, duration: DRAW, stagger: 0.1, ease: "power2.inOut" }, at);
+  tl.to(group, { strokeDashoffset: 0, duration: DRAW, stagger: 0.1, ease: "power2.inOut" }, at);
   tl.to([dot, label], { opacity: 1, duration: FADE, ease: "power2.out" }, "<0.4");
 }
 
 function addEraseStep(
   tl: gsap.core.Timeline,
-  groupPaths: SVGPathElement[],
-  dot: SVGCircleElement,
+  group: SVGPathElement[],
+  dot: SVGGElement,
   label: SVGTextElement,
   at: string | number,
 ) {
   tl.to([dot, label], { opacity: 0, duration: FADE, ease: "power2.in" }, at);
-  tl.to(groupPaths, {
-    strokeDashoffset: (_i, el) => pathLen(el as SVGPathElement),
+  tl.to(group, {
+    strokeDashoffset: (_i, el) => maskLen(el as SVGPathElement),
     duration: ERASE, stagger: 0.1, ease: "power2.inOut",
   }, "<");
 }
 
-function buildRouteTimeline(
-  paths: SVGPathElement[],
-  dots: SVGCircleElement[],
-  labels: SVGTextElement[],
-) {
+function buildTimeline(masks: SVGPathElement[], dots: SVGGElement[], labels: SVGTextElement[]) {
   const tl = gsap.timeline({ repeat: -1, paused: true });
-  gsap.set([dots[0], labels[0]], { opacity: 1 });
-  gsap.set(dots.slice(1), { opacity: 0 });
-  gsap.set(labels.slice(1), { opacity: 0 });
   routeGroups.forEach((group, i) => {
-    const groupPaths = pathsInGroup(paths, i);
-    addDrawStep(tl, groupPaths, dots[group.dot], labels[group.label], i === 0 ? 0 : `+=${GAP}`);
+    addDrawStep(tl, masksInGroup(masks, i), dots[group.dot], labels[group.label], i === 0 ? 0 : `+=${GAP}`);
   });
   routeGroups.slice().reverse().forEach((group, i) => {
-    const groupPaths = pathsInGroup(paths, routeGroups.length - 1 - i);
-    addEraseStep(tl, groupPaths, dots[group.dot], labels[group.label], `+=${GAP}`);
+    addEraseStep(tl, masksInGroup(masks, routeGroups.length - 1 - i), dots[group.dot], labels[group.label], `+=${GAP}`);
   });
   return tl;
 }
 
-export function useRouteLinesAnim(reduce: boolean) {
+function animLabels(labels: SVGTextElement[]) {
+  return labels.filter((l) => !l.hasAttribute("data-route-label-static"));
+}
+
+function animDots(dots: SVGGElement[]) {
+  return dots.filter((d) => !d.hasAttribute("data-route-dot-static"));
+}
+
+function resetScene(masks: SVGPathElement[], dots: SVGGElement[], labels: SVGTextElement[]) {
+  masks.forEach(hideMask);
+  gsap.set(animDots(dots), { opacity: 0 });
+  gsap.set(dots.filter((d) => d.hasAttribute("data-route-dot-static")), { opacity: 1 });
+  gsap.set(animLabels(labels), { opacity: 0 });
+  gsap.set(labels.filter((l) => l.hasAttribute("data-route-label-static")), { opacity: 1 });
+}
+
+function startIfVisible(el: Element, tl: gsap.core.Timeline, masks: SVGPathElement[], dots: SVGGElement[], labels: SVGTextElement[]) {
+  if (!ScrollTrigger.isInViewport(el, 0.15)) return;
+  resetScene(masks, dots, labels);
+  tl.restart();
+}
+
+export function useRouteLinesAnim(reduce: boolean, ready: boolean) {
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
+    if (!ready) return;
     const svg = svgRef.current;
     if (!svg) return;
     initGsap();
-    const paths = Array.from(svg.querySelectorAll<SVGPathElement>("[data-route-line]"));
-    const dots = Array.from(svg.querySelectorAll<SVGCircleElement>("[data-route-dot]"));
+    const masks = Array.from(svg.querySelectorAll<SVGPathElement>("[data-route-mask]"));
+    const dots = Array.from(svg.querySelectorAll<SVGGElement>("[data-route-dot]"));
     const labels = Array.from(svg.querySelectorAll<SVGTextElement>("[data-route-label]"));
-    paths.forEach((path) => {
-      const len = path.getTotalLength();
-      path.dataset.routeLen = String(len);
-      gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+    masks.forEach((mask) => {
+      mask.dataset.routeLen = String(mask.getTotalLength());
+      hideMask(mask);
     });
+    resetScene(masks, dots, labels);
+    svg.setAttribute("data-routes-ready", "");
     if (reduce) {
-      paths.forEach((p) => gsap.set(p, { strokeDashoffset: 0 }));
+      masks.forEach((m) => gsap.set(m, { strokeDashoffset: 0 }));
       gsap.set(dots, { opacity: 1 });
       gsap.set(labels, { opacity: 1 });
-      return;
+      return () => svg.removeAttribute("data-routes-ready");
     }
-    const tl = buildRouteTimeline(paths, dots, labels);
+    const tl = buildTimeline(masks, dots, labels);
+    const triggerEl = svg.closest("section") ?? svg;
+    const play = () => { resetScene(masks, dots, labels); tl.restart(); };
     const trigger = ScrollTrigger.create({
-      trigger: svg, start: "top 78%",
-      onEnter: () => tl.play(), onEnterBack: () => tl.play(),
-      onLeave: () => tl.pause(), onLeaveBack: () => tl.pause(),
+      trigger: triggerEl, start: "top 78%",
+      onEnter: play, onEnterBack: play,
+      onLeave: () => tl.pause(),
+      onLeaveBack: () => { tl.pause(); resetScene(masks, dots, labels); },
     });
-    return () => { tl.kill(); trigger.kill(); };
-  }, [reduce]);
+    ScrollTrigger.refresh();
+    startIfVisible(triggerEl, tl, masks, dots, labels);
+    return () => { tl.kill(); trigger.kill(); svg.removeAttribute("data-routes-ready"); };
+  }, [reduce, ready]);
 
   return svgRef;
 }

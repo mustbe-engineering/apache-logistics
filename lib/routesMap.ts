@@ -13,14 +13,14 @@ export const routeGroups = [
 ] as const;
 
 export const routeDots = [
-  { cx: 102.77, cy: 62.95 },
+  { cx: 102.77, cy: 62.95, always: true },
   { cx: 497.97, cy: 267.95 },
   { cx: 784.73, cy: 344.46 },
   { cx: 307.46, cy: 449.46 },
 ] as const;
 
 export const routeLabels = [
-  { x: 82.95, y: 88.98, text: "BC" },
+  { x: 82.95, y: 88.98, text: "BC", always: true },
   { x: 436.81, y: 294.83, text: "SONORA" },
   { x: 708.39, y: 372.17, text: "CHIUAHUA" },
   { x: 287.41, y: 473.66, text: "BCS" },
