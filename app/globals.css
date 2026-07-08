@@ -98,23 +98,71 @@ p {
   @apply w-full border border-ink/30 bg-base px-3 py-2 font-sans text-sm text-ink focus:border-nav focus:outline-none;
 }
 
-@keyframes about-carousel-in {
+@keyframes about-carousel-in-left {
   from {
     opacity: 0;
-    transform: translateY(0.5rem);
+    transform: translateX(1.5rem);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
-.about-carousel-item {
-  animation: about-carousel-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+@keyframes about-carousel-out-left {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+  }
+}
+
+@keyframes about-carousel-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes about-carousel-out-right {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(1.5rem);
+  }
+}
+
+.about-carousel-in-left {
+  animation: about-carousel-in-left 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.about-carousel-out-left {
+  animation: about-carousel-out-left 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.about-carousel-in-right {
+  animation: about-carousel-in-right 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.about-carousel-out-right {
+  animation: about-carousel-out-right 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .about-carousel-item {
+  .about-carousel-in-left,
+  .about-carousel-in-right,
+  .about-carousel-out-left,
+  .about-carousel-out-right {
     animation: none;
   }
 
