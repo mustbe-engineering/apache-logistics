@@ -16,28 +16,18 @@ const stretchPro = localFont({
   src: "./fonts/StretchPro.otf",
   variable: "--font-stretch-pro",
   display: "swap",
+  preload: false,
 });
 
 const pretendard = localFont({
   src: [
-    {
-      path: "../node_modules/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../node_modules/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../node_modules/pretendard/dist/web/static/woff2/Pretendard-SemiBold.woff2",
-      weight: "600",
-      style: "normal",
-    },
+    { path: "./fonts/pretendard/Pretendard-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/pretendard/Pretendard-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/pretendard/Pretendard-600.woff2", weight: "600", style: "normal" },
   ],
   variable: "--font-pretendard",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

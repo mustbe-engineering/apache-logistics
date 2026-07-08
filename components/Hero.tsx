@@ -1,24 +1,13 @@
 import { HeroEnter } from "./gsap/HeroEnter";
+import { HeroVideo } from "./HeroVideo";
 import { QuoteOpenButton } from "./QuoteOpenButton";
-
-const HERO_VIDEO = "/videos/apache-optimized.mp4";
 
 export function Hero() {
   return (
     <section id="home" className="relative min-h-[calc(100dvh-var(--nav-offset))] overflow-hidden text-base">
       <HeroEnter>
         <div className="relative min-h-[calc(100dvh-var(--nav-offset))]">
-          <video
-            data-hero-media
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 h-full w-full object-cover object-[center_42%]"
-            aria-hidden
-          >
-            <source src={HERO_VIDEO} type="video/mp4" />
-          </video>
+          <HeroVideo />
 
           <div
             aria-hidden

@@ -10,6 +10,7 @@ import { drawFrameToCanvas } from "./drawFrame";
 import { measureTruckFrame, getViewportTier } from "./truckFrame";
 import { TRUCK_FRAME } from "./constants";
 import { initGsap, ScrollTrigger } from "@/lib/gsapCore";
+import { scheduleScrollRefresh } from "@/lib/scheduleScrollRefresh";
 import type { FleetScrollActions, FleetScrollRuntime, TruckFrameConfig } from "./types";
 
 function prefersReducedMotion() {
@@ -34,9 +35,9 @@ export async function createFleetScrollSequence(section: HTMLElement) {
     setFrame: (f: TruckFrameConfig) => { runtime.activeTruckFrame = f; },
   };
   const resizeCanvas = () => {
-    measureTruckFrame(dom, runtime.mobileOutroActive, runtime.mobileTruckSlot, actions.setFrame, actions.setSlot);
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const { width, height } = dom.sticky.getBoundingClientRect();
+    measureTruckFrame(dom, runtime.mobileOutroActive, runtime.mobileTruckSlot, actions.setFrame, actions.setSlot);
     dom.canvas.width = Math.round(width * dpr);
     dom.canvas.height = Math.round(height * dpr);
     dom.canvas.style.width = `${width}px`;
@@ -74,16 +75,15 @@ export async function createFleetScrollSequence(section: HTMLElement) {
     trigger: section, start: "top top", end: "bottom bottom", scrub: 1.15,
     onUpdate: (self) => updateFromScroll(dom, self.progress * TOTAL_TRAVEL_PX, runtime, actions),
   });
-  ScrollTrigger.refresh();
+  scheduleScrollRefresh();
   fleetFrames.slice(1).forEach((src, index) => {
     loadFrameImage(src).then((image) => {
       if (!image) return;
       runtime.images[index + 1] = image;
       runtime.loaded.add(index + 1);
-      ScrollTrigger.refresh();
     });
   });
-  const onResize = () => { setSectionHeight(); resizeCanvas(); ScrollTrigger.refresh(); };
+  const onResize = () => { setSectionHeight(); resizeCanvas(); scheduleScrollRefresh(); };
   window.addEventListener("resize", onResize);
   return () => { trigger.kill(); window.removeEventListener("resize", onResize); cleanupDrag(); };
 }

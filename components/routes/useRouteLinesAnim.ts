@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { routeGroups } from "@/lib/routesMap";
 import { gsap, initGsap, ScrollTrigger } from "@/lib/gsapCore";
+import { scheduleScrollRefresh } from "@/lib/scheduleScrollRefresh";
 
 const DRAW = 1;
 const ERASE = 1;
@@ -112,7 +113,7 @@ export function useRouteLinesAnim(reduce: boolean, ready: boolean) {
       onLeave: () => tl.pause(),
       onLeaveBack: () => { tl.pause(); resetScene(masks, dots, labels); },
     });
-    ScrollTrigger.refresh();
+    scheduleScrollRefresh();
     startIfVisible(triggerEl, tl, masks, dots, labels);
     return () => { tl.kill(); trigger.kill(); svg.removeAttribute("data-routes-ready"); };
   }, [reduce, ready]);

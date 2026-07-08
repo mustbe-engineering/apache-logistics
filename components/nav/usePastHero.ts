@@ -3,9 +3,7 @@
 import { useSyncExternalStore } from "react";
 
 function getNavHeight() {
-  return (
-    document.querySelector<HTMLElement>("[data-nav-shell]")?.offsetHeight ?? 80
-  );
+  return document.querySelector<HTMLElement>("[data-nav-shell]")?.offsetHeight ?? 80;
 }
 
 function getPastHero() {
@@ -15,12 +13,18 @@ function getPastHero() {
 }
 
 function subscribe(onStoreChange: () => void) {
-  const onChange = () => onStoreChange();
-
+  let frame = 0;
+  const onChange = () => {
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      onStoreChange();
+    });
+  };
   window.addEventListener("scroll", onChange, { passive: true });
   window.addEventListener("resize", onChange);
-
   return () => {
+    if (frame) cancelAnimationFrame(frame);
     window.removeEventListener("scroll", onChange);
     window.removeEventListener("resize", onChange);
   };

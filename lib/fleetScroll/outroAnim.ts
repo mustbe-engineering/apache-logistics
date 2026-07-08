@@ -6,6 +6,7 @@ import { measureTruckFrame } from "./truckFrame";
 import type { FleetScrollActions, FleetScrollDom, FleetScrollRuntime } from "./types";
 
 export function hideOutro(dom: FleetScrollDom, runtime: FleetScrollRuntime, actions: FleetScrollActions) {
+  if (!runtime.mobileOutroActive) return;
   actions.setOutroActive(false);
   dom.outroLayer.style.visibility = "hidden";
   dom.outroLayer.setAttribute("aria-hidden", "true");
@@ -24,12 +25,15 @@ export function setOutroAnimation(
     hideOutro(dom, runtime, actions);
     return;
   }
+  const entering = !runtime.mobileOutroActive;
   const raw = (frameProgress - OUTRO_START_PROGRESS) / (1 - OUTRO_START_PROGRESS);
   const eased = easeOutQuart(Math.min(1, Math.max(0, raw)));
   actions.setOutroActive(true);
-  dom.outroLayer.style.visibility = "visible";
-  dom.outroLayer.setAttribute("aria-hidden", "false");
-  measureTruckFrame(dom, true, runtime.mobileTruckSlot, actions.setFrame, actions.setSlot);
+  if (entering) {
+    dom.outroLayer.style.visibility = "visible";
+    dom.outroLayer.setAttribute("aria-hidden", "false");
+    measureTruckFrame(dom, true, runtime.mobileTruckSlot, actions.setFrame, actions.setSlot);
+  }
   if (runtime.frameIndex >= 0) {
     drawFrameToCanvas(dom, runtime.frameIndex, runtime.images, runtime.activeTruckFrame, runtime.mobileTruckSlot);
   }

@@ -19,7 +19,7 @@ export function Footer() {
     <footer className="border-t border-nav/10 bg-base text-nav">
       <div className="site-container grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
         <div>
-          <NavLogo lightText={false} className={logoClass} />
+          <NavLogo lightText={false} loading="lazy" className={logoClass} />
         </div>
         <div>
           <p className={labelClass}>CONTACTO</p>
