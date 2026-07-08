@@ -6,8 +6,8 @@
   --section-y: clamp(3rem, 8vw, 5rem);
   --content-max: 90rem;
   --gutter: clamp(1.25rem, 0.75rem + 3vw, 3rem);
-  --nav-height: 5.1rem;
-  --nav-height-glass: 4.25rem;
+  --nav-height: 6.1rem;
+  --nav-height-glass: 5.25rem;
   --nav-offset: var(--nav-height);
   --nav-blue: #164775;
   --nav-blue-light: #174b7a;
@@ -64,8 +64,8 @@ html {
 
 @media (min-width: 768px) {
   :root {
-    --nav-height: 6rem;
-    --nav-height-glass: 5rem;
+    --nav-height: 7rem;
+    --nav-height-glass: 7rem;
   }
 }
 

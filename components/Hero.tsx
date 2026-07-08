@@ -31,7 +31,7 @@ export function Hero() {
             className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/35 via-transparent to-nav/15"
           />
 
-          <div className="site-container relative z-10 flex min-h-[calc(100dvh-4.25rem)] items-center py-12 md:min-h-[calc(100dvh-5rem)] md:py-16">
+          <div className="site-container relative z-10 flex min-h-[calc(100dvh-var(--nav-height))] items-center py-12 md:py-16">
             <div data-hero-copy className="w-full max-w-[38rem]">
 
               <h1 className="hero-title">
