@@ -82,7 +82,7 @@ p {
 }
 
 .macro-title {
-  @apply font-macro font-black uppercase leading-[0.9] tracking-[-0.04em];
+  @apply font-display uppercase leading-[0.9] tracking-[-0.04em];
   font-size: clamp(2.5rem, 8vw, 5.5rem);
 }
 

@@ -31,7 +31,7 @@ export function LegalModal({ open, title, content, onClose }: LegalModalProps) {
         <button type="button" onClick={onClose} className="absolute right-4 top-4 text-nav/60 hover:text-nav" aria-label="Cerrar">
           <X size={24} weight="bold" />
         </button>
-        <h2 className="font-macro pr-10 text-2xl uppercase tracking-tight text-nav md:text-3xl">{title}</h2>
+        <h2 className="font-display pr-10 text-2xl uppercase tracking-tight text-nav md:text-3xl">{title}</h2>
         <p className="mt-6 whitespace-pre-line text-sm leading-[1.7] text-nav/85 md:text-[0.9375rem]">{content}</p>
       </div>
     </div>

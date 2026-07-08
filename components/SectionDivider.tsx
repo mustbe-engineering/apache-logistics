@@ -31,7 +31,7 @@ export function SectionDivider() {
     >
       <div ref={bgRef} className="absolute inset-0 scale-110">
         <Image
-          src="/images/crossing-paths.jpg"
+          src="/images/assets/crossing-paths.jpg"
           alt=""
           fill
           className="object-cover object-center"

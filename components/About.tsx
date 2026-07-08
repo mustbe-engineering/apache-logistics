@@ -10,7 +10,7 @@ export function About() {
       className="group relative min-h-[max(22rem,62dvh)] overflow-hidden scroll-mt-[var(--nav-offset)] py-[var(--section-y)] text-nav min-[1021px]:min-h-[max(32rem,90dvh)]"
     >
       <Image
-        src="/images/about-us-bk.jpg"
+        src="/images/assets/about-us-bk.jpg"
         alt=""
         fill
         className="-z-20 object-cover"
@@ -24,7 +24,7 @@ export function About() {
         <div className="mx-auto flex w-full max-w-[90rem] justify-end min-[1021px]:justify-start">
           <Reveal className="inline-block self-end">
             <Image
-              src="/images/worker.png"
+              src="/images/assets/worker.png"
               alt="Operaciones logísticas Apache"
               width={1037}
               height={1345}

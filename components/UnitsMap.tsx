@@ -12,7 +12,7 @@ export function UnitsMap({ active, onSelect }: UnitsMapProps) {
   return (
     <div className="relative mx-auto aspect-[1344/752] w-full max-w-[90rem]">
       <Image
-        src="/images/trucks-transparent-bk.png"
+        src="/images/assets/trucks-transparent-bk.png"
         alt="Unidades de la flota Apache Logistics"
         fill
         className="pointer-events-none object-contain"

@@ -12,7 +12,7 @@
   --feature-surface: rgba(255, 255, 255, 0.42);
   --feature-border: rgba(24, 56, 104, 0.08);
   --section-veil-top: #ced8de;
-  --feature-title-font: var(--font-pretendard), Pretendard, system-ui, sans-serif;
+  --feature-title-font: var(--font-pretendard), Pretendard, sans-serif;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -156,7 +156,7 @@
 
 .scroll-sequence__outro-line {
   display: block;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-pretendard), Pretendard, sans-serif;
   font-size: clamp(0.875rem, 1.65vw, 1.05rem);
   font-weight: 400;
   line-height: 1.45;
@@ -271,7 +271,7 @@
 
 .scroll-sequence__feature-line--title {
   font-family: var(--feature-title-font);
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(0.8rem, 1.05vw, 0.95rem);
   line-height: 1.2;
   letter-spacing: -0.012em;
@@ -280,7 +280,7 @@
 }
 
 .scroll-sequence__feature-line--desc {
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--font-pretendard), Pretendard, sans-serif;
   font-weight: 400;
   font-size: clamp(0.66rem, 0.95vw, 0.78rem);
   line-height: 1.4;
@@ -763,7 +763,7 @@
     position: absolute;
     top: 0.8rem;
     right: 0.8rem;
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: var(--font-pretendard), Pretendard, sans-serif;
     font-size: 0.72rem;
     font-weight: 500;
     letter-spacing: 0.06em;
@@ -830,7 +830,7 @@
 }
 
 .scroll-sequence__loader-text {
-  font-family: system-ui, sans-serif;
+  font-family: var(--font-pretendard), Pretendard, sans-serif;
   font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;

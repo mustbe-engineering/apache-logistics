@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Archivo_Black } from "next/font/google";
 import localFont from "next/font/local";
 import { JsonLd } from "@/components/JsonLd";
 import { Providers } from "@/components/Providers";
@@ -12,12 +11,6 @@ import {
   siteUrl,
 } from "@/lib/site";
 import "./globals.css";
-
-const archivo = Archivo_Black({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-archivo",
-});
 
 const stretchPro = localFont({
   src: "./fonts/StretchPro.otf",
@@ -40,11 +33,6 @@ const pretendard = localFont({
     {
       path: "../node_modules/pretendard/dist/web/static/woff2/Pretendard-SemiBold.woff2",
       weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../node_modules/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2",
-      weight: "700",
       style: "normal",
     },
   ],
@@ -84,7 +72,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={`${archivo.variable} ${stretchPro.variable} ${pretendard.variable}`}>
+    <html lang="es" className={`${stretchPro.variable} ${pretendard.variable}`}>
       <body className="grain min-h-[100dvh]">
         <JsonLd />
         <Providers>{children}</Providers>

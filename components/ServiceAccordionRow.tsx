@@ -29,7 +29,7 @@ export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, activ
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.08] ring-1 ring-white/12 sm:h-10 sm:w-10">
           <ServiceIcon src={iconSrc} className="h-4 w-4 text-white/90 sm:h-5 sm:w-5" />
         </span>
-        <span className="font-macro flex-1 text-base uppercase tracking-tight text-white/90 sm:text-lg">{name}</span>
+        <span className="font-display flex-1 text-base uppercase tracking-tight text-white/90 sm:text-lg">{name}</span>
         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/[0.06] sm:h-8 sm:w-8">
           {active ? <Minus size={14} weight="light" className="text-white/70" /> : (
             <Plus size={14} weight="light" className="text-white/50 transition-transform duration-500 group-hover:rotate-90" />

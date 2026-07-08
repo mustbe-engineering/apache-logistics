@@ -9,7 +9,7 @@ export const siteDescription =
 export const siteTitle =
   "Apache Logistics | Transporte de carga en el noroeste";
 
-export const ogImage = "/images/truck-picture-white-background.jpg";
+export const ogImage = "/images/assets/truck-picture-white-background.jpg";
 
 export const ogImageAlt =
   "Camión de carga Apache Logistics con logotipo de la marca";

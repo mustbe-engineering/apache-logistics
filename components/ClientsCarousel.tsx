@@ -8,7 +8,7 @@ import { useReducedMotion } from "./gsap/useReducedMotion";
 function LogoMark({ mark }: { mark: string }) {
   return (
     <div className="flex h-[9.36rem] w-[15.6rem] items-center justify-center border border-base/25 bg-base/10">
-      <span className="font-macro text-3xl uppercase tracking-tight text-base">{mark}</span>
+      <span className="font-display text-3xl uppercase tracking-tight text-base">{mark}</span>
     </div>
   );
 }

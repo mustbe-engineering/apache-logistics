@@ -56,7 +56,7 @@ export function ServicesParallaxImage() {
     >
       <div ref={layerRef} className="absolute inset-0 scale-[1.12] will-change-transform">
         <Image
-          src="/images/truck-zoom-logo.jpg"
+          src="/images/assets/truck-zoom-logo.jpg"
           alt="Unidad Apache Logistics con logo corporativo"
           fill
           className="object-cover"

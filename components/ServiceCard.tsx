@@ -15,7 +15,7 @@ export function ServiceCard({ index, name, desc, icon }: Props) {
       <span className="absolute right-4 top-4 text-[12px] tracking-wide text-base/45">{label}</span>
       <div className="flex h-full flex-col items-center justify-center gap-2.5 transition-opacity duration-300 group-hover:pointer-events-none group-hover:opacity-0">
         <ServiceIcon src={src} className="h-[3.3rem] w-[3.3rem] text-base" />
-        <p className="text-center font-macro text-sm uppercase tracking-tight text-base">{name}</p>
+        <p className="text-center font-display text-sm uppercase tracking-tight text-base">{name}</p>
       </div>
       <div className="absolute inset-0 flex flex-col p-4 opacity-0 transition-opacity duration-300 delay-75 group-hover:opacity-100">
         <p className="line-clamp-4 flex-1 text-xs leading-relaxed text-nav">{desc}</p>

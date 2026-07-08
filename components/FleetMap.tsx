@@ -12,7 +12,7 @@ export function FleetMap({ active, onSelect }: FleetMapProps) {
   return (
     <div className="relative mx-auto aspect-[2080/1161] w-full max-w-[90rem]">
       <Image
-        src="/images/cenital-trucks.jpg"
+        src="/images/assets/cenital-trucks.jpg"
         alt="Vista cenital de la flota Apache"
         fill
         className="pointer-events-none object-cover"
