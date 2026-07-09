@@ -9,7 +9,7 @@ export function FloatingTruck() {
           alt=""
           width={1344}
           height={752}
-          className="h-auto w-[382px] min-[1361px]:w-[472px]"
+          className="h-auto w-[382px] max-[530px]:w-[191px] min-[1361px]:w-[472px]"
           aria-hidden
         />
       </div>

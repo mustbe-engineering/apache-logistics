@@ -267,15 +267,15 @@ p {
       0deg,
       transparent,
       transparent 29px,
-      rgb(224 224 224 / 0.2) 29px,
-      rgb(224 224 224 / 0.2) 30px
+      rgb(224 224 224 / 0.25) 29px,
+      rgb(224 224 224 / 0.25) 30px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 29px,
-      rgb(224 224 224 / 0.2) 29px,
-      rgb(224 224 224 / 0.2) 30px
+      rgb(224 224 224 / 0.25) 29px,
+      rgb(224 224 224 / 0.25) 30px
     );
   background-size: 30px 30px;
 }

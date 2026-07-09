@@ -17,7 +17,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-nav/10 bg-base text-nav">
-      <div className="site-container grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
+      <div className="site-container grid grid-cols-1 justify-items-start gap-10 py-12 min-[1021px]:grid-cols-4 min-[1021px]:gap-12">
         <div>
           <NavLogo lightText={false} loading="lazy" className={logoClass} />
         </div>
@@ -48,7 +48,7 @@ export function Footer() {
           <p className="mt-auto pt-8 text-nav/70">© 2026 Apache Logistics</p>
           <p className="mt-2 text-nav/70">Permiso SCT vigente · Monitoreo GPS activo</p>
         </div>
-        <div aria-hidden className="hidden lg:block" />
+        <div aria-hidden className="hidden min-[1021px]:block" />
       </div>
       <LegalModal open={legal === "terms"} title="Términos y condiciones" content={termsContent} onClose={close} />
       <LegalModal open={legal === "privacy"} title="Aviso de privacidad" content={privacyContent} onClose={close} />
