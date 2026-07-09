@@ -53,7 +53,7 @@ export function AboutCarousel({ items }: { items: Item[] }) {
   const inClass = anim ? `about-carousel-in-${dir}` : "";
 
   return (
-    <div className="relative mt-10 border-t border-nav/20 pt-8">
+    <div className="relative mt-10 border-t border-nav/20 pt-8 max-[1020px]:mb-9">
       <button type="button" onClick={() => go((index - 1 + items.length) % items.length, "right")} aria-label="Anterior" className="absolute left-0 top-1/2 z-10 -translate-y-1/2 text-highlight">
         <CaretLeft size={32} weight="bold" />
       </button>

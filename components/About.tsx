@@ -7,7 +7,7 @@ export function About() {
   return (
     <section
       id="nosotros"
-      className="group relative min-h-[max(22rem,62dvh)] overflow-hidden scroll-mt-[var(--nav-offset)] py-[var(--section-y)] text-nav min-[1021px]:min-h-[max(32rem,90dvh)]"
+      className="group relative max-[1020px]:min-h-[max(22rem,calc(62dvh+60px))] overflow-hidden scroll-mt-[var(--nav-offset)] py-[var(--section-y)] text-nav min-[1021px]:min-h-[max(32rem,90dvh)]"
     >
       <Image
         src="/images/assets/about-us-bk.jpg"
