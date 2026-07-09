@@ -26,14 +26,15 @@ export function About() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0">
         <div className="mx-auto flex w-full max-w-[90rem] justify-end min-[1021px]:justify-start">
           <Reveal className="inline-block self-end">
-            <Image
-              src="/images/assets/worker.webp"
+            <img
+              src="/images/assets/worker-600.webp"
+              srcSet="/images/assets/worker-300.webp 300w, /images/assets/worker-600.webp 600w, /images/assets/worker-760.webp 760w"
+              sizes="(max-width: 1020px) 300px, 760px"
               alt="Operaciones logísticas Apache"
               width={760}
               height={986}
-              sizes="(max-width: 430px) 70vw, (max-width: 1020px) 300px, 760px"
-              quality={68}
               loading="lazy"
+              decoding="async"
               className="block h-auto w-[min(70vw,300px)] object-contain object-bottom !max-w-none min-[1021px]:w-[min(52vw,760px)]"
             />
           </Reveal>

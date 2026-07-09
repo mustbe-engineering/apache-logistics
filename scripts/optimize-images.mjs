@@ -10,7 +10,7 @@ async function toWebp(input, output, width, quality) {
     .webp({ quality, effort: 6 })
     .toBuffer();
   await writeFile(output, buf);
-  console.log(`${path.basename(output)}: ${(buf.length / 1024).toFixed(1)} KB (max ${width}px)`);
+  console.log(`${path.basename(output)}: ${(buf.length / 1024).toFixed(1)} KB`);
 }
 
 await toWebp(
@@ -19,9 +19,12 @@ await toWebp(
   1280,
   72,
 );
-await toWebp(
-  path.join(assets, "worker.png"),
-  path.join(assets, "worker.webp"),
-  760,
-  74,
-);
+
+const workerSrc = path.join(assets, "worker.png");
+for (const { width, quality, name } of [
+  { width: 300, quality: 70, name: "worker-300.webp" },
+  { width: 600, quality: 72, name: "worker-600.webp" },
+  { width: 760, quality: 74, name: "worker-760.webp" },
+]) {
+  await toWebp(workerSrc, path.join(assets, name), width, quality);
+}

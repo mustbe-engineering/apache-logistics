@@ -9,21 +9,16 @@ export function Hero() {
     <section id="home" className="relative min-h-[calc(100dvh-var(--nav-offset))] overflow-hidden text-base">
       <HeroEnter>
         <div className="relative min-h-[calc(100dvh-var(--nav-offset))]">
-          <picture className="absolute inset-0 block">
-            <source
-              media="(max-width: 828px)"
-              srcSet="/images/assets/hero-poster-828.webp"
-              type="image/webp"
-            />
-            <img
-              src="/images/assets/hero-poster-1080.webp"
-              alt=""
-              fetchPriority="high"
-              decoding="async"
-              className={posterClass}
-              aria-hidden
-            />
-          </picture>
+          <img
+            src="/images/assets/hero-poster-1080.webp"
+            srcSet="/images/assets/hero-poster-480.webp 480w, /images/assets/hero-poster-640.webp 640w, /images/assets/hero-poster-828.webp 828w, /images/assets/hero-poster-1080.webp 1080w"
+            sizes="100vw"
+            alt=""
+            fetchPriority="high"
+            decoding="async"
+            className={`absolute inset-0 block ${posterClass}`}
+            aria-hidden
+          />
           <HeroVideo />
 
           <div
