@@ -11,9 +11,11 @@ const DURATION = 400;
 
 function Slide({ item, anim }: { item: Item; anim: string }) {
   return (
-    <article className={`about-carousel-item mx-10 text-left md:mx-14 ${anim}`}>
-      <p className="text-[0.7rem] uppercase tracking-[0.12em] text-highlight">{item.term}</p>
-      <p className="mt-4 text-sm leading-relaxed !text-[#164775] md:text-base">{item.text}</p>
+    <article className={`about-carousel-item text-left ${anim}`}>
+      <h3 className="font-display text-sm capitalize tracking-[0.02em] text-nav md:text-[1rem]">
+        {item.term}
+      </h3>
+      <p className="mt-4 text-sm leading-relaxed text-nav md:text-[1rem]">{item.text}</p>
     </article>
   );
 }
@@ -55,16 +57,28 @@ export function AboutCarousel({ items }: { items: Item[] }) {
   const inClass = anim ? `about-carousel-in-${dir}` : "";
 
   return (
-    <div ref={ref} className="relative mt-10 border-t border-nav/20 pt-8 max-[1020px]:mb-9">
-      <button type="button" onClick={() => go((index - 1 + items.length) % items.length, "right")} aria-label="Anterior" className="absolute left-0 top-1/2 z-10 -translate-y-1/2 text-highlight">
-        <CaretLeft size={32} weight="bold" />
-      </button>
-      <button type="button" onClick={() => go((index + 1) % items.length, "left")} aria-label="Siguiente" className="absolute right-0 top-1/2 z-10 -translate-y-1/2 text-highlight">
-        <CaretRight size={32} weight="bold" />
-      </button>
-      <div className="relative overflow-hidden">
-        {prevIndex !== null && <Slide item={items[prevIndex]} anim={outClass} />}
-        <Slide item={items[index]} anim={inClass} />
+    <div ref={ref} className="mt-10 border-t border-nav/20 pt-8 max-[1020px]:mb-9">
+      <div className="grid grid-cols-[auto_1fr_auto] items-start gap-x-3 md:gap-x-4">
+        <button
+          type="button"
+          onClick={() => go((index - 1 + items.length) % items.length, "right")}
+          aria-label="Anterior"
+          className="shrink-0 pt-0.5 text-highlight"
+        >
+          <CaretLeft size={32} weight="bold" />
+        </button>
+        <div className="relative min-h-[8.75rem] overflow-hidden md:min-h-[7.75rem]">
+          {prevIndex !== null && <Slide item={items[prevIndex]} anim={outClass} />}
+          <Slide item={items[index]} anim={inClass} />
+        </div>
+        <button
+          type="button"
+          onClick={() => go((index + 1) % items.length, "left")}
+          aria-label="Siguiente"
+          className="shrink-0 pt-0.5 text-highlight"
+        >
+          <CaretRight size={32} weight="bold" />
+        </button>
       </div>
     </div>
   );

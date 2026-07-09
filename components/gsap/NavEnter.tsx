@@ -16,7 +16,7 @@ function runNavEnter(root: HTMLElement, gsap: GsapCore["gsap"]) {
   const logo = root.querySelector("[data-nav-logo]");
   const separator = root.querySelector("[data-nav-separator]");
   const links = root.querySelector("[data-nav-links]");
-  const linkItems = links ? Array.from(links.children) : [];
+  const linkItems = links ? Array.from(links.querySelectorAll<HTMLElement>(":scope > a")) : [];
   const actions = root.querySelector("[data-nav-actions]");
   gsap.set(root, { opacity: 0, y: -18 });
   if (logo) gsap.set(logo, { opacity: 0, y: -10 });

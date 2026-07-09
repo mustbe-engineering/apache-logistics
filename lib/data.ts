@@ -3,7 +3,7 @@ export type StatIconId = "trips" | "clients" | "deliver";
 export const stats: { value: string; label: string; icon: StatIconId }[] = [
   { value: "1000+", label: "Viajes", icon: "trips" },
   { value: "30+", label: "Clientes", icon: "clients" },
-  { value: "50+", label: "Entregas on time", icon: "deliver" },
+  { value: "50+", label: "Entregas a tiempo", icon: "deliver" },
 ];
 
 export type ServiceIconId =

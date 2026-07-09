@@ -21,6 +21,6 @@ export const routeDots = [
 export const routeLabels = [
   { x: 82.95, y: 88.98, text: "BC", always: true },
   { x: 436.81, y: 294.83, text: "SONORA", always: true },
-  { x: 708.39, y: 372.17, text: "CHIUAHUA", always: true },
+  { x: 708.39, y: 372.17, text: "CHIHUAHUA", always: true },
   { x: 287.41, y: 473.66, text: "BCS", always: true },
 ] as const;

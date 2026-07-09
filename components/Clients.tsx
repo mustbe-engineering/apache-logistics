@@ -23,14 +23,17 @@ export function Clients() {
             <span className="block">Nuestros</span>
             <span className="block">clientes</span>
           </h2>
-          <p className="max-w-xl text-sm leading-[1.6] text-base/90 md:text-left md:text-[1rem]">
-            Las empresas que deciden adquirir nuestro servicio son el pilar de nuestra empresa y la
-            razón de nuestras metas. Trabajamos cada día para ofrecerles el mejor servicio, con{" "}
-            <strong className="font-semibold">compromiso</strong>,{" "}
-            <strong className="font-semibold">calidad</strong> y{" "}
-            <strong className="font-semibold">dedicación</strong>, porque su satisfacción es nuestra
-            mayor prioridad.
-          </p>
+          <div className="max-w-xl md:text-left">
+            <p className="text-sm leading-[1.2] text-base/90 md:text-[1rem]">
+              Las empresas que deciden adquirir nuestro servicio son el pilar de nuestra empresa y la
+              razón de nuestras metas. Trabajamos cada día para ofrecerles el mejor servicio, con{" "}
+              <strong className="font-semibold">compromiso</strong>,{" "}
+              <strong className="font-semibold">calidad</strong> y{" "}
+              <strong className="font-semibold">dedicación</strong>, porque su satisfacción es nuestra
+              mayor prioridad.
+            </p>
+            <hr className="mt-6 border-0 border-t border-base/20" />
+          </div>
         </Reveal>
         <ClientsCarousel />
       </div>
