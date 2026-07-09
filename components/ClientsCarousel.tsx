@@ -1,23 +1,24 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { clients } from "@/lib/content";
 import { useReducedMotion } from "./gsap/useReducedMotion";
 
 type Client = (typeof clients)[number];
-const DURATION = 380;
+const STEP_MS = 3000;
+const items = [...clients, ...clients];
 
-function ClientLogo({ client, anim }: { client: Client; anim: string }) {
+function ClientSlide({ client }: { client: Client }) {
   return (
-    <div className={`flex h-[18.25rem] w-full max-w-[30.42rem] items-center justify-center px-4 ${anim}`}>
+    <div className="clients-marquee__slide">
       <Image
         src={client.logo}
         alt={client.name}
         width={client.width}
         height={client.height}
-        sizes="(max-width: 640px) 80vw, 30.42rem"
-        className="h-auto max-h-full w-auto max-w-full object-contain"
+        sizes="9rem"
+        className="clients-marquee__logo"
       />
     </div>
   );
@@ -25,37 +26,66 @@ function ClientLogo({ client, anim }: { client: Client; anim: string }) {
 
 export function ClientsCarousel() {
   const [index, setIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState<number | null>(null);
+  const [paused, setPaused] = useState(false);
+  const indexRef = useRef(0);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const resettingRef = useRef(false);
   const reduce = useReducedMotion();
-  const anim = !reduce && prevIndex !== null;
+  indexRef.current = index;
 
-  useEffect(() => {
-    if (prevIndex === null) return;
-    const id = setTimeout(() => setPrevIndex(null), DURATION);
-    return () => clearTimeout(id);
-  }, [prevIndex, index]);
+  const queueStep = () => {
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setIndex((v) => v + 1), STEP_MS);
+  };
 
   useEffect(() => {
     if (reduce) return;
-    const id = setInterval(() => {
-      setIndex((v) => {
-        setPrevIndex(v);
-        return (v + 1) % clients.length;
-      });
-    }, 3000);
-    return () => clearInterval(id);
+    queueStep();
+    return () => clearTimeout(timerRef.current);
   }, [reduce]);
 
-  return (
-    <div className="relative mt-[3.9rem] min-h-[24.34rem] border-t border-base/20 pt-[5.85rem]">
-      <div className="relative overflow-hidden">
-        {prevIndex !== null && (
-          <div className="absolute inset-x-0 top-0 flex justify-center clients-carousel-out">
-            <ClientLogo client={clients[prevIndex]} anim="" />
+  const onEnd = (e: React.TransitionEvent) => {
+    if (e.target !== e.currentTarget || e.propertyName !== "transform") return;
+    if (resettingRef.current) return;
+    if (indexRef.current === clients.length) {
+      resettingRef.current = true;
+      setPaused(true);
+      setIndex(0);
+      requestAnimationFrame(() => {
+        setPaused(false);
+        resettingRef.current = false;
+        queueStep();
+      });
+      return;
+    }
+    queueStep();
+  };
+
+  if (reduce) {
+    return (
+      <div className="clients-marquee">
+        <div className="clients-marquee__viewport clients-marquee__viewport--static">
+          <div className="clients-marquee__track clients-marquee__track--static">
+            {clients.map((client) => (
+              <ClientSlide key={client.logo} client={client} />
+            ))}
           </div>
-        )}
-        <div className="flex justify-center">
-          <ClientLogo client={clients[index]} anim={anim ? "clients-carousel-in" : ""} />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="clients-marquee">
+      <div className="clients-marquee__viewport">
+        <div
+          className={`clients-marquee__track${paused ? " clients-marquee__track--paused" : ""}`}
+          style={{ transform: `translateX(calc(-1 * ${index} * var(--clients-slide-w)))` }}
+          onTransitionEnd={onEnd}
+        >
+          {items.map((client, i) => (
+            <ClientSlide key={`${client.logo}-${i}`} client={client} />
+          ))}
         </div>
       </div>
     </div>

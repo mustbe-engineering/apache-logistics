@@ -10,13 +10,13 @@ import { QuoteOpenButton } from "./QuoteOpenButton";
 import { SectionLink } from "./SectionLink";
 
 const links = [
-  { href: "#home", label: "Inicio" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#flota", label: "Flota" },
-  { href: "#rutas", label: "Rutas" },
-  { href: "#unidades", label: "Unidades" },
-  { href: "#clientes", label: "Clientes" },
+  { href: "#home", label: "INICIO" },
+  { href: "#nosotros", label: "NOSOTROS" },
+  { href: "#servicios", label: "SERVICIOS" },
+  { href: "#flota", label: "FLOTA" },
+  { href: "#rutas", label: "RUTAS" },
+  { href: "#unidades", label: "UNIDADES" },
+  { href: "#clientes", label: "CLIENTES" },
 ];
 
 export function Nav() {
@@ -30,7 +30,7 @@ export function Nav() {
       className={`nav-shell${pastHero ? " nav-shell--glass" : ""}`}
     >
       <div className="nav-bar site-container flex items-center lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center">
-        <div className="flex items-center gap-4 md:gap-6 lg:col-start-1">
+        <div className="flex min-w-0 items-center gap-4 md:gap-6 lg:col-start-1 lg:w-full lg:gap-0">
           <Link
             href="/"
             data-nav-logo
@@ -44,11 +44,12 @@ export function Nav() {
           </Link>
 
           <span
-            role="separator"
-            aria-orientation="vertical"
+            role="presentation"
             data-nav-separator
-            className="nav-separator hidden md:block lg:hidden"
-          />
+            className="nav-separator-wrap hidden md:flex lg:flex-1 lg:justify-center"
+          >
+            <span role="separator" aria-orientation="vertical" className="nav-separator" />
+          </span>
         </div>
 
         <nav
@@ -68,7 +69,7 @@ export function Nav() {
           className="ml-auto flex items-center gap-3 lg:col-start-3 lg:ml-0 lg:justify-self-end"
         >
           <QuoteOpenButton className="btn-cotizar btn-cotizar-nav shrink-0" onClick={close}>
-            <span>Cotizar</span>
+            <span>COTIZAR</span>
           </QuoteOpenButton>
           <button
             type="button"
