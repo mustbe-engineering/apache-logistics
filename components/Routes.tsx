@@ -3,8 +3,8 @@ import { RoutesAnimatedLines } from "./routes/RoutesAnimatedLines";
 
 export function Routes() {
   return (
-    <section id="rutas" className="scroll-mt-[var(--nav-offset)] pb-0 pt-[var(--section-y)]">
-      <div className="site-container">
+    <section id="rutas" className="routes-section scroll-mt-[var(--nav-offset)] pb-0 pt-[var(--section-y)]">
+      <div className="site-container relative z-10">
         <Reveal className="flex w-full flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-10">
           <h2 className="shrink-0 font-display text-4xl font-normal leading-[1.6] text-nav md:text-5xl">
             <span className="block">Nuestras</span>
@@ -21,7 +21,7 @@ export function Routes() {
           </p>
         </Reveal>
       </div>
-      <div className="mx-auto mt-10 w-full max-w-[var(--content-max)] px-[var(--gutter)]">
+      <div className="relative z-10 mx-auto mt-10 w-full max-w-[var(--content-max)] px-[var(--gutter)]">
         <div className="relative aspect-[1451.45/596.8] w-full">
           <img
             src="/images/map/map.svg"

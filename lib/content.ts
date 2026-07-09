@@ -5,7 +5,7 @@ export const aboutBlocks = [
   },
   {
     term: "Misión",
-    text: "Mover carga con puntualidad, trazabilidad y trato directo en cada envío.",
+    text: "Mover con seguridad y eficiencia la carga terrestre por el noroeste de México. Cada envío que se nos confía lo tratamos como propio, lo entregamos completo y a tiempo.",
   },
   {
     term: "Visión",
@@ -18,12 +18,16 @@ export const aboutBlocks = [
 ];
 
 export const clients = [
-  { name: "Minera del Norte", mark: "MN", href: "https://google.com" },
-  { name: "AgroPacífico", mark: "AP", href: "https://google.com" },
-  { name: "RefriMex", mark: "RM", href: "https://google.com" },
-  { name: "SteelWorks", mark: "SW", href: "https://google.com" },
-  { name: "Distribuidora GYA", mark: "DG", href: "https://google.com" },
-  { name: "Cementos Pacífico", mark: "CP", href: "https://google.com" },
+  { name: "Hutchison Ports", logo: "/images/clients/1-HUTCHISONPORTS.png", width: 1473, height: 260, href: "https://google.com" },
+  { name: "K", logo: "/images/clients/2-K.png", width: 266, height: 266, href: "https://google.com" },
+  { name: "Kuehne + Nagel", logo: "/images/clients/3-KUEHNE+NAGEL.png", width: 1423, height: 287, href: "https://google.com" },
+  { name: "Dylo Logistics", logo: "/images/clients/4-DYLOLOGISTICS.png", width: 776, height: 332, href: "https://google.com" },
+  { name: "ECU Worldwide", logo: "/images/clients/5-ECUWORLDWIDE.png", width: 534, height: 261, href: "https://google.com" },
+  { name: "Connect", logo: "/images/clients/6-CONNECT_LOGO.png", width: 1412, height: 389, href: "https://google.com" },
+  { name: "Dynapro", logo: "/images/clients/7-DYNAPRO.png", width: 1600, height: 430, href: "https://google.com" },
+  { name: "DSV", logo: "/images/clients/8-DSV_LOGO.png", width: 558, height: 278, href: "https://google.com" },
+  { name: "LCL Ports", logo: "/images/clients/9-LCLPORTS_LOGO.png", width: 1600, height: 515, href: "https://google.com" },
+  { name: "Tradesal", logo: "/images/clients/10-TRADESAL_LOGO.png", width: 498, height: 150, href: "https://google.com" },
 ];
 
 export const quotes = [

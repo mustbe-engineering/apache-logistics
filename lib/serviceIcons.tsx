@@ -8,3 +8,13 @@ export const serviceIcons = {
   almacen: "/images/stats/almacenaje.svg",
   ultima: "/images/stats/milla.svg",
 } satisfies Record<ServiceIconId, string>;
+
+const serviceIconScale: Partial<Record<ServiceIconId, number>> = {
+  maniobras: 1.43,
+};
+
+export const serviceIconSlotRem = 3.3 * 1.43;
+
+export function serviceIconSize(rem: number, id: ServiceIconId) {
+  return rem * (serviceIconScale[id] ?? 1);
+}

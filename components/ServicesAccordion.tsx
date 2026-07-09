@@ -59,6 +59,7 @@ export function ServicesAccordion() {
             benefits={s.benefits}
             tone={TONES[i] ?? TONES[0]}
             active={open === i}
+            icon={s.icon}
             iconSrc={serviceIcons[s.icon]}
             onSelect={() => setOpen(i)}
           />

@@ -1,9 +1,9 @@
-export type StatIconId = "trips" | "clients" | "comments";
+export type StatIconId = "trips" | "clients" | "deliver";
 
 export const stats: { value: string; label: string; icon: StatIconId }[] = [
   { value: "1000+", label: "Viajes", icon: "trips" },
   { value: "30+", label: "Clientes", icon: "clients" },
-  { value: "50+", label: "Comentarios", icon: "comments" },
+  { value: "50+", label: "Entregas on time", icon: "deliver" },
 ];
 
 export type ServiceIconId =
@@ -25,7 +25,7 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    name: "LCL",
+    name: "Servicio LCL",
     title: "LCL - Consolidación de Carga Parcial",
     tagline: "Solución económica para envíos de menor volumen",
     desc: "Optimiza tus costos de envío sin sacrificar rapidez. Nuestro servicio de consolidación agrupa múltiples cargas parciales en un solo viaje, garantizando trazabilidad lote por lote. Ideal para pequeñas y medianas empresas que requieren confiabilidad en transporte terrestre a escala regional.",
@@ -33,7 +33,7 @@ export const services: Service[] = [
     icon: "lcl",
   },
   {
-    name: "LTL",
+    name: "Servicio LTL",
     title: "LTL - Transporte Dedicado Puerta a Puerta",
     tagline: "Tu carga, tu vehículo, tu ruta",
     desc: "Cuando tu envío requiere exclusividad y rapidez. Nuestro servicio de carga completa dedicada asegura que tu mercancía viaje de forma aislada, sin manipulaciones innecesarias. Desde el punto de origen hasta el destino final, con asignación de unidad y conductor exclusivos.",
@@ -57,7 +57,7 @@ export const services: Service[] = [
     icon: "maniobras",
   },
   {
-    name: "Almacenaje",
+    name: "Almacenamiento",
     title: "Almacenaje - Custodia Temporal Documentada",
     tagline: "Tu mercancía bajo control total",
     desc: "Resguardo seguro con visibilidad completa. Ofrecemos espacios climatizados y monitoreados donde tu carga se mantiene protegida. Sistema de inventario digital en tiempo real te permite conocer el estado exacto de tus productos en todo momento.",
@@ -65,7 +65,7 @@ export const services: Service[] = [
     icon: "almacen",
   },
   {
-    name: "Última milla",
+    name: "Última Milla",
     title: "Última Milla - Entrega Final Flexible",
     tagline: "Llega a donde sea, cuando sea",
     desc: "Desde la ciudad hasta el campo más remoto. Completamos tu cadena logística con entregas especializadas en zonas metropolitanas y rurales. Rutas optimizadas, horarios flexibles y confirmación de entrega en tiempo real.",

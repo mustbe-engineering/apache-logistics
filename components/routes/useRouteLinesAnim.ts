@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { routeGroups } from "@/lib/routesMap";
 import { gsap, initGsap, ScrollTrigger } from "@/lib/gsapCore";
 import { scheduleScrollRefresh } from "@/lib/scheduleScrollRefresh";
@@ -18,49 +18,36 @@ function maskLen(mask: SVGPathElement) {
   return Number(mask.dataset.routeLen);
 }
 
+const MASK_STROKE = 12;
+
 function hideMask(mask: SVGPathElement) {
   const len = maskLen(mask);
-  gsap.set(mask, { strokeDasharray: `${len} ${len}`, strokeDashoffset: len });
+  const hide = len + MASK_STROKE;
+  gsap.set(mask, { strokeDasharray: `${len} ${hide}`, strokeDashoffset: hide, attr: { strokeLinecap: "butt" } });
 }
 
-function addDrawStep(
-  tl: gsap.core.Timeline,
-  group: SVGPathElement[],
-  dot: SVGGElement,
-  label: SVGTextElement,
-  at: string | number,
-) {
+function addDrawStep(tl: gsap.core.Timeline, group: SVGPathElement[], dot: SVGGElement, at: string | number) {
   tl.to(group, { strokeDashoffset: 0, duration: DRAW, stagger: 0.1, ease: "power2.inOut" }, at);
-  tl.to([dot, label], { opacity: 1, duration: FADE, ease: "power2.out" }, "<0.4");
+  tl.to(dot, { opacity: 1, duration: FADE, ease: "power2.out" }, "<0.4");
 }
 
-function addEraseStep(
-  tl: gsap.core.Timeline,
-  group: SVGPathElement[],
-  dot: SVGGElement,
-  label: SVGTextElement,
-  at: string | number,
-) {
-  tl.to([dot, label], { opacity: 0, duration: FADE, ease: "power2.in" }, at);
+function addEraseStep(tl: gsap.core.Timeline, group: SVGPathElement[], dot: SVGGElement, at: string | number) {
+  tl.to(dot, { opacity: 0, duration: FADE, ease: "power2.in" }, at);
   tl.to(group, {
-    strokeDashoffset: (_i, el) => maskLen(el as SVGPathElement),
+    strokeDashoffset: (_i, el) => maskLen(el as SVGPathElement) + MASK_STROKE,
     duration: ERASE, stagger: 0.1, ease: "power2.inOut",
   }, "<");
 }
 
-function buildTimeline(masks: SVGPathElement[], dots: SVGGElement[], labels: SVGTextElement[]) {
+function buildTimeline(masks: SVGPathElement[], dots: SVGGElement[]) {
   const tl = gsap.timeline({ repeat: -1, paused: true });
   routeGroups.forEach((group, i) => {
-    addDrawStep(tl, masksInGroup(masks, i), dots[group.dot], labels[group.label], i === 0 ? 0 : `+=${GAP}`);
+    addDrawStep(tl, masksInGroup(masks, i), dots[group.dot], i === 0 ? 0 : `+=${GAP}`);
   });
   routeGroups.slice().reverse().forEach((group, i) => {
-    addEraseStep(tl, masksInGroup(masks, routeGroups.length - 1 - i), dots[group.dot], labels[group.label], `+=${GAP}`);
+    addEraseStep(tl, masksInGroup(masks, routeGroups.length - 1 - i), dots[group.dot], `+=${GAP}`);
   });
   return tl;
-}
-
-function animLabels(labels: SVGTextElement[]) {
-  return labels.filter((l) => !l.hasAttribute("data-route-label-static"));
 }
 
 function animDots(dots: SVGGElement[]) {
@@ -71,20 +58,37 @@ function resetScene(masks: SVGPathElement[], dots: SVGGElement[], labels: SVGTex
   masks.forEach(hideMask);
   gsap.set(animDots(dots), { opacity: 0 });
   gsap.set(dots.filter((d) => d.hasAttribute("data-route-dot-static")), { opacity: 1 });
-  gsap.set(animLabels(labels), { opacity: 0 });
-  gsap.set(labels.filter((l) => l.hasAttribute("data-route-label-static")), { opacity: 1 });
+  gsap.set(labels, { opacity: 1 });
 }
 
-function startIfVisible(el: Element, tl: gsap.core.Timeline, masks: SVGPathElement[], dots: SVGGElement[], labels: SVGTextElement[]) {
-  if (!ScrollTrigger.isInViewport(el, 0.15)) return;
+function playScene(
+  svg: SVGSVGElement,
+  tl: gsap.core.Timeline,
+  masks: SVGPathElement[],
+  dots: SVGGElement[],
+  labels: SVGTextElement[],
+) {
   resetScene(masks, dots, labels);
+  svg.setAttribute("data-routes-ready", "");
   tl.restart();
+}
+
+function hideScene(
+  svg: SVGSVGElement,
+  tl: gsap.core.Timeline,
+  masks: SVGPathElement[],
+  dots: SVGGElement[],
+  labels: SVGTextElement[],
+) {
+  tl.pause();
+  resetScene(masks, dots, labels);
+  svg.removeAttribute("data-routes-ready");
 }
 
 export function useRouteLinesAnim(reduce: boolean, ready: boolean) {
   const svgRef = useRef<SVGSVGElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!ready) return;
     const svg = svgRef.current;
     if (!svg) return;
@@ -97,24 +101,23 @@ export function useRouteLinesAnim(reduce: boolean, ready: boolean) {
       hideMask(mask);
     });
     resetScene(masks, dots, labels);
-    svg.setAttribute("data-routes-ready", "");
     if (reduce) {
       masks.forEach((m) => gsap.set(m, { strokeDashoffset: 0 }));
       gsap.set(dots, { opacity: 1 });
-      gsap.set(labels, { opacity: 1 });
+      svg.setAttribute("data-routes-ready", "");
       return () => svg.removeAttribute("data-routes-ready");
     }
-    const tl = buildTimeline(masks, dots, labels);
+    const tl = buildTimeline(masks, dots);
     const triggerEl = svg.closest("section") ?? svg;
-    const play = () => { resetScene(masks, dots, labels); tl.restart(); };
+    const play = () => playScene(svg, tl, masks, dots, labels);
+    const hide = () => hideScene(svg, tl, masks, dots, labels);
     const trigger = ScrollTrigger.create({
       trigger: triggerEl, start: "top 78%",
       onEnter: play, onEnterBack: play,
-      onLeave: () => tl.pause(),
-      onLeaveBack: () => { tl.pause(); resetScene(masks, dots, labels); },
+      onLeave: hide, onLeaveBack: hide,
     });
     scheduleScrollRefresh();
-    startIfVisible(triggerEl, tl, masks, dots, labels);
+    if (ScrollTrigger.isInViewport(triggerEl, 0.15)) play();
     return () => { tl.kill(); trigger.kill(); svg.removeAttribute("data-routes-ready"); };
   }, [reduce, ready]);
 

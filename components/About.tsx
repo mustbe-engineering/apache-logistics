@@ -39,7 +39,19 @@ export function About() {
           <Reveal>
             <h2 className="font-display text-4xl font-normal leading-[1.6] text-nav md:text-5xl">Nosotros</h2>
             <p className="mx-auto mt-8 max-w-prose text-sm leading-relaxed !text-[#164775] md:text-base min-[1021px]:mx-0">
-              Apache Logistics nació en Hermosillo como operador familiar. Hoy conectamos plantas, puertos y centros de distribución con rutas trazables y personal directo.
+              Apache Logistics nació como un negocio familiar en la frontera Tijuana-San Diego, con
+              una meta simple: cuidar la carga de cada cliente como si fuera propia. Ese compromiso
+              nos llevó al puerto de <strong className="font-semibold">Ensenada</strong> y extendió
+              nuestra red por el noroeste de México:{" "}
+              <strong className="font-semibold">Baja California</strong>,{" "}
+              <strong className="font-semibold">Baja California Sur</strong>,{" "}
+              <strong className="font-semibold">Sonora</strong> y{" "}
+              <strong className="font-semibold">Chihuahua</strong>, con rutas seguras y unidades
+              confiables.
+              <br />
+              <br />
+              Estamos comprometidos con ser: una empresa que conoce el camino y sabe leer el
+              terreno.
             </p>
             <AboutCarousel items={aboutBlocks} />
           </Reveal>

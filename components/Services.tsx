@@ -1,3 +1,4 @@
+import { QuoteOpenButton } from "./QuoteOpenButton";
 import { Reveal } from "./gsap/Reveal";
 import { ServicesAccordion } from "./ServicesAccordion";
 import { ServicesGrid } from "./ServicesGrid";
@@ -30,6 +31,11 @@ export function Services() {
             <p className="text-sm leading-[1.65] text-base/90 md:text-[0.9375rem]">{desktopDesc}</p>
           </Reveal>
           <ServicesGrid />
+        </div>
+        <div className="mt-10 flex justify-center">
+          <QuoteOpenButton className="btn-cotizar btn-cotizar-flat px-6 py-3 md:px-8 md:py-3.5">
+            <span>Cotizar servicio → </span>
+          </QuoteOpenButton>
         </div>
       </div>
     </section>

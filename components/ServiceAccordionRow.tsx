@@ -1,5 +1,6 @@
 "use client";
 
+import type { ServiceIconId } from "@/lib/data";
 import { Minus, Plus } from "@phosphor-icons/react";
 import { ServiceIcon } from "./ServiceIcon";
 
@@ -10,11 +11,16 @@ type RowProps = {
   benefits: string;
   tone: string;
   active: boolean;
+  icon: ServiceIconId;
   iconSrc: string;
   onSelect: () => void;
 };
 
-export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, active, iconSrc, onSelect }: RowProps) {
+export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, active, icon, iconSrc, onSelect }: RowProps) {
+  const iconClass = icon === "maniobras"
+    ? "h-4 w-4 scale-[1.43] text-white/90 sm:h-5 sm:w-5"
+    : "h-4 w-4 text-white/90 sm:h-5 sm:w-5";
+
   return (
     <div
       className="flex h-full min-h-0 flex-col transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
@@ -27,9 +33,9 @@ export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, activ
         className="group flex h-12 shrink-0 items-center gap-3 px-4 text-left sm:h-[3.25rem] sm:gap-4 sm:px-5"
       >
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.08] ring-1 ring-white/12 sm:h-10 sm:w-10">
-          <ServiceIcon src={iconSrc} className="h-4 w-4 text-white/90 sm:h-5 sm:w-5" />
+          <ServiceIcon src={iconSrc} className={iconClass} />
         </span>
-        <span className="font-display flex-1 text-base uppercase tracking-tight text-white/90 sm:text-lg">{name}</span>
+        <span className="font-display flex-1 text-base tracking-tight text-white/90 sm:text-lg">{name}</span>
         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/[0.06] sm:h-8 sm:w-8">
           {active ? <Minus size={14} weight="light" className="text-white/70" /> : (
             <Plus size={14} weight="light" className="text-white/50 transition-transform duration-500 group-hover:rotate-90" />

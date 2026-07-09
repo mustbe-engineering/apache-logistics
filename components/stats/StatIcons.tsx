@@ -4,7 +4,7 @@ import type { StatIconId } from "@/lib/data";
 const statIconSrc: Record<StatIconId, string> = {
   trips: "/images/stats/viajes.svg",
   clients: "/images/stats/clientes.svg",
-  comments: "/images/stats/comments.svg",
+  deliver: "/images/stats/deliver.svg",
 };
 
 type StatIconProps = {

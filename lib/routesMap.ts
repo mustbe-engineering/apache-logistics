@@ -1,7 +1,6 @@
 export const routePaths = [
   { d: "m 101.93,62.95 c 0,0 1.91,0 5.53,0.16", group: 0 },
   { d: "m 118.34,63.81 c 53.85,4.41 229.9,31.35 372.5,195.76", group: 0 },
-  { d: "m 494.4,263.73 c 1.19,1.4 2.38,2.81 3.57,4.22", group: 0 },
   { d: "m 101.93,62.95 c 0,0 494.94,-210.58 682.8,281.51", group: 1 },
   { d: "M 89.7,98.92 C 66.61,178.54 43.49,367.85 307.46,449.46", group: 2 },
 ] as const;
@@ -21,7 +20,7 @@ export const routeDots = [
 
 export const routeLabels = [
   { x: 82.95, y: 88.98, text: "BC", always: true },
-  { x: 436.81, y: 294.83, text: "SONORA" },
-  { x: 708.39, y: 372.17, text: "CHIUAHUA" },
-  { x: 287.41, y: 473.66, text: "BCS" },
+  { x: 436.81, y: 294.83, text: "SONORA", always: true },
+  { x: 708.39, y: 372.17, text: "CHIUAHUA", always: true },
+  { x: 287.41, y: 473.66, text: "BCS", always: true },
 ] as const;

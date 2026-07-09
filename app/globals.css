@@ -158,11 +158,45 @@ p {
   animation: about-carousel-out-right 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+@keyframes clients-carousel-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(0.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes clients-carousel-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.985) translateY(-0.25rem);
+  }
+}
+
+.clients-carousel-in {
+  animation: clients-carousel-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.clients-carousel-out {
+  animation: clients-carousel-out 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .about-carousel-in-left,
   .about-carousel-in-right,
   .about-carousel-out-left,
-  .about-carousel-out-right {
+  .about-carousel-out-right,
+  .clients-carousel-in,
+  .clients-carousel-out {
     animation: none;
   }
 
@@ -172,12 +206,32 @@ p {
   }
 }
 
+.routes-section {
+  background-color: #fff;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 29px,
+      rgb(224 224 224 / 0.2) 29px,
+      rgb(224 224 224 / 0.2) 30px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 29px,
+      rgb(224 224 224 / 0.2) 29px,
+      rgb(224 224 224 / 0.2) 30px
+    );
+  background-size: 30px 30px;
+}
+
 .routes-map__line {
   fill: none;
   stroke: #f6a309;
   stroke-width: 2px;
   stroke-miterlimit: 7.45;
-  stroke-linecap: round;
+  stroke-linecap: butt;
   stroke-dasharray: 12 10;
   opacity: 0;
 }
@@ -190,6 +244,8 @@ svg[data-routes-ready] .routes-map__line {
   fill: none;
   stroke: white;
   stroke-width: 12;
+  stroke-linecap: butt;
+  stroke-dashoffset: 9999;
 }
 
 [data-route-dot] {
@@ -246,10 +302,6 @@ svg[data-routes-ready] .routes-map__line {
   font-family: var(--font-stretch-pro), system-ui, sans-serif;
   font-size: 17.38px;
   letter-spacing: 0.1em;
-  opacity: 0;
-}
-
-[data-route-label-static].routes-map__label {
   opacity: 1;
 }
 
@@ -800,6 +852,35 @@ svg[data-routes-ready] .routes-map__line {
   min-height: 2.375rem;
   padding: 0.625rem 1.375rem;
   font-size: 0.875rem;
+}
+
+.btn-cotizar-flat {
+  background: var(--hero-red);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.11) inset,
+    0 2px 10px rgba(var(--hero-red-rgb), 0.26);
+}
+
+.btn-cotizar-flat::before {
+  display: none;
+}
+
+@media (hover: hover) {
+  .btn-cotizar-flat:hover {
+    transform: translateY(-1px);
+    background: var(--hero-red-hover-mid);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.14) inset,
+      0 6px 18px rgba(var(--hero-red-rgb), 0.32);
+  }
+}
+
+.btn-cotizar-flat:active {
+  transform: translateY(0) scale(0.985);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 2px 6px rgba(var(--hero-red-rgb), 0.22);
 }
 
 @media (min-width: 768px) {

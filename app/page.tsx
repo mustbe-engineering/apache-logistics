@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Nav } from "@/components/Nav";
 import { Routes } from "@/components/Routes";
-import { SectionDivider } from "@/components/SectionDivider";
 import { Services } from "@/components/Services";
 import { StatsBar } from "@/components/StatsBar";
 
@@ -19,7 +18,6 @@ export default function Home() {
         <StatsBar />
         <About />
         <Services />
-        <SectionDivider />
         <FleetNearGate />
         <Routes />
         <div className="relative">

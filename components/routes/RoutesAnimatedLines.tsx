@@ -39,7 +39,7 @@ export function RoutesAnimatedLines({ className = "" }: Props) {
               fill="none"
               stroke="white"
               strokeWidth="12"
-              strokeLinecap="round"
+              strokeLinecap="butt"
             />
           </mask>
         ))}

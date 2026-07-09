@@ -8,7 +8,7 @@ const serviceOptions = services.map((s) => s.name);
 export function Contact() {
   return (
     <>
-      <h2 className="macro-title mb-10 pr-10 text-4xl md:text-5xl">Contacto</h2>
+      <h2 className="mb-10 pr-10 font-display text-4xl font-normal leading-[1.6] text-nav md:text-5xl">Contacto</h2>
       <div className="grid gap-8 lg:grid-cols-5">
         <form className="compartment space-y-4 p-6 lg:col-span-3" onSubmit={(e) => e.preventDefault()}>
           <Field label="Nombre" name="name" type="text" />
