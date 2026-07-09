@@ -299,10 +299,33 @@ p {
     transform: none;
     transition: none;
   }
+
+  [data-hero-animate] .hero-lead,
+  [data-hero-animate] [data-hero-cta],
+  [data-hero-animate] [data-hero-scrim],
+  [data-nav-animate] {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-[data-motion-pending] {
-  visibility: hidden;
+[data-nav-animate] {
+  opacity: 0;
+  transform: translateY(-18px);
+}
+
+[data-hero-animate] [data-hero-scrim] {
+  opacity: 0;
+}
+
+[data-hero-animate] .hero-lead {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+[data-hero-animate] [data-hero-cta] {
+  opacity: 0;
+  transform: translateY(12px);
 }
 
 .reveal {
