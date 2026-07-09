@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { cancelIdle, scheduleIdle } from "@/lib/scheduleIdle";
 import { useInViewport } from "@/lib/useInViewport";
 import { useReducedMotionState } from "./gsap/useReducedMotion";
 
@@ -19,8 +20,8 @@ export function ClientsVideo() {
       return;
     }
     const play = () => { void video.play().catch(() => {}); };
-    const id = requestIdleCallback(play, { timeout: 1500 });
-    return () => cancelIdleCallback(id);
+    const id = scheduleIdle(play, 1500);
+    return () => cancelIdle(id);
   }, [visible, reduce, ready]);
 
   return (

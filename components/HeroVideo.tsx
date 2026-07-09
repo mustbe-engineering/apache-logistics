@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { cancelIdle, scheduleIdle } from "@/lib/scheduleIdle";
 import { useReducedMotionState } from "./gsap/useReducedMotion";
 
 const HERO_VIDEO = "/videos/apache-optimized.mp4";
@@ -14,8 +15,8 @@ export function HeroVideo() {
     const video = videoRef.current;
     if (!video) return;
     const play = () => { void video.play().catch(() => {}); };
-    const id = requestIdleCallback(play, { timeout: 2000 });
-    return () => cancelIdleCallback(id);
+    const id = scheduleIdle(play, 2000);
+    return () => cancelIdle(id);
   }, [reduce, ready]);
 
   return (

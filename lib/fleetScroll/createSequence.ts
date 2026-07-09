@@ -10,6 +10,7 @@ import { drawFrameToCanvas } from "./drawFrame";
 import { measureTruckFrame, getViewportTier } from "./truckFrame";
 import { TRUCK_FRAME } from "./constants";
 import { loadGsap } from "@/lib/gsapCore";
+import { scheduleIdle } from "@/lib/scheduleIdle";
 import { scheduleScrollRefresh } from "@/lib/scheduleScrollRefresh";
 import type { FleetScrollActions, FleetScrollRuntime, TruckFrameConfig } from "./types";
 
@@ -85,10 +86,10 @@ export async function createFleetScrollSequence(section: HTMLElement) {
       runtime.images[index] = image;
       runtime.loaded.add(index);
     }))).finally(() => {
-      if (queue.length) requestIdleCallback(loadNext, { timeout: 1200 });
+      if (queue.length) scheduleIdle(loadNext, 1200);
     });
   };
-  requestIdleCallback(loadNext, { timeout: 800 });
+  scheduleIdle(loadNext, 800);
   const onResize = () => { setSectionHeight(); resizeCanvas(); scheduleScrollRefresh(); };
   window.addEventListener("resize", onResize);
   return () => { trigger.kill(); window.removeEventListener("resize", onResize); cleanupDrag(); };
