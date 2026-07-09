@@ -22,6 +22,6 @@ await toWebp(
 await toWebp(
   path.join(assets, "worker.png"),
   path.join(assets, "worker.webp"),
-  1200,
-  78,
+  760,
+  74,
 );

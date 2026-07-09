@@ -29,10 +29,10 @@ export function About() {
             <Image
               src="/images/assets/worker.webp"
               alt="Operaciones logísticas Apache"
-              width={1037}
-              height={1345}
-              sizes="(max-width: 1020px) 300px, 760px"
-              quality={75}
+              width={760}
+              height={986}
+              sizes="(max-width: 430px) 70vw, (max-width: 1020px) 300px, 760px"
+              quality={68}
               loading="lazy"
               className="block h-auto w-[min(70vw,300px)] object-contain object-bottom !max-w-none min-[1021px]:w-[min(52vw,760px)]"
             />

@@ -12,6 +12,7 @@ export function NavLogo({ lightText = false, className, loading = "eager" }: Nav
       width={2549}
       height={563}
       decoding="async"
+      fetchPriority="low"
       loading={loading}
       className={className}
     />

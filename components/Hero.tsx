@@ -1,23 +1,29 @@
-import Image from "next/image";
 import { HeroEnter } from "./gsap/HeroEnter";
 import { HeroVideo } from "./HeroVideo";
 import { QuoteOpenButton } from "./QuoteOpenButton";
+
+const posterClass = "h-full w-full object-cover object-[center_42%]";
 
 export function Hero() {
   return (
     <section id="home" className="relative min-h-[calc(100dvh-var(--nav-offset))] overflow-hidden text-base">
       <HeroEnter>
         <div className="relative min-h-[calc(100dvh-var(--nav-offset))]">
-          <Image
-            src="/images/assets/hero-poster.webp"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            quality={72}
-            className="absolute inset-0 object-cover object-[center_42%]"
-            aria-hidden
-          />
+          <picture className="absolute inset-0 block">
+            <source
+              media="(max-width: 828px)"
+              srcSet="/images/assets/hero-poster-828.webp"
+              type="image/webp"
+            />
+            <img
+              src="/images/assets/hero-poster-1080.webp"
+              alt=""
+              fetchPriority="high"
+              decoding="async"
+              className={posterClass}
+              aria-hidden
+            />
+          </picture>
           <HeroVideo />
 
           <div
@@ -33,17 +39,14 @@ export function Hero() {
 
           <div className="site-container relative z-10 flex min-h-[calc(100dvh-var(--nav-height))] items-center py-12 md:py-16">
             <div data-hero-copy className="w-full max-w-[38rem]">
-
               <h1 className="hero-title">
                 <span className="hero-title-line">Conocemos</span>
                 <span className="hero-title-line">el&nbsp;camino.</span>
               </h1>
-
               <p className="hero-lead mt-[clamp(1.25rem,1.5vw+0.75rem,1.75rem)] max-w-[32rem] text-base/90">
                 Más de 10 años de experiencia, moviendo la carga por el noroeste de México con la
                 seguridad y el trato de una buena empresa familiar.
               </p>
-
               <QuoteOpenButton
                 data-hero-cta
                 className="btn-cotizar btn-cotizar-hero mt-8 md:mt-10"
