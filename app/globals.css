@@ -397,8 +397,8 @@ p {
 .routes-map {
   position: relative;
   left: -20px;
-  /* Scale so CHIHUAHUA sits at the content-max / shell right edge; map may overflow past 1440 */
-  width: calc(100% * var(--routes-map-vb-w) / var(--routes-chihuahua-right));
+  /* Scale so CHIHUAHUA sits near the content edge; map may overflow past 1440 */
+  width: calc(100% * var(--routes-map-vb-w) / var(--routes-chihuahua-right) * 0.8);
   max-width: none;
   aspect-ratio: var(--routes-map-vb-w) / var(--routes-map-vb-h);
 }
