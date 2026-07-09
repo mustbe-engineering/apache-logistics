@@ -1,4 +1,4 @@
-import { gsap } from "@/lib/gsapCore";
+import { getGsap } from "@/lib/gsapCore";
 import { OUTRO_FEATURE_STAGGER, OUTRO_START_PROGRESS } from "./constants";
 import { easeOutQuart } from "./easing";
 import { drawFrameToCanvas } from "./drawFrame";
@@ -6,6 +6,7 @@ import { measureTruckFrame } from "./truckFrame";
 import type { FleetScrollActions, FleetScrollDom, FleetScrollRuntime } from "./types";
 
 export function hideOutro(dom: FleetScrollDom, runtime: FleetScrollRuntime, actions: FleetScrollActions) {
+  const { gsap } = getGsap();
   if (!runtime.mobileOutroActive) return;
   actions.setOutroActive(false);
   dom.outroLayer.style.visibility = "hidden";
@@ -21,6 +22,7 @@ export function hideOutro(dom: FleetScrollDom, runtime: FleetScrollRuntime, acti
 export function setOutroAnimation(
   dom: FleetScrollDom, frameProgress: number, runtime: FleetScrollRuntime, actions: FleetScrollActions,
 ) {
+  const { gsap } = getGsap();
   if (frameProgress < OUTRO_START_PROGRESS) {
     hideOutro(dom, runtime, actions);
     return;

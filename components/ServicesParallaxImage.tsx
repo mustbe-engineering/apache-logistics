@@ -3,37 +3,23 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "@/components/gsap/useReducedMotion";
-import { gsap } from "@/lib/gsapCore";
 
 const MOVE = { x: 28, y: 18 };
 
-function parallaxMove(
-  frame: HTMLDivElement,
-  e: MouseEvent,
-  xTo: gsap.QuickToFunc,
-  yTo: gsap.QuickToFunc,
-) {
-  const r = frame.getBoundingClientRect();
-  const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
-  const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
-  xTo(nx * MOVE.x);
-  yTo(ny * MOVE.y);
-}
-
 function bindParallax(frame: HTMLDivElement, layer: HTMLDivElement) {
-  const xTo = gsap.quickTo(layer, "x", { duration: 0.75, ease: "power3.out" });
-  const yTo = gsap.quickTo(layer, "y", { duration: 0.75, ease: "power3.out" });
-  const reset = () => {
-    xTo(0);
-    yTo(0);
+  const move = (e: MouseEvent) => {
+    const r = frame.getBoundingClientRect();
+    const nx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+    const ny = ((e.clientY - r.top) / r.height - 0.5) * 2;
+    layer.style.transform = `translate(${nx * MOVE.x}px, ${ny * MOVE.y}px)`;
   };
-  const move = (e: MouseEvent) => parallaxMove(frame, e, xTo, yTo);
+  const reset = () => { layer.style.transform = "translate(0px, 0px)"; };
   frame.addEventListener("mousemove", move);
   frame.addEventListener("mouseleave", reset);
   return () => {
     frame.removeEventListener("mousemove", move);
     frame.removeEventListener("mouseleave", reset);
-    gsap.set(layer, { x: 0, y: 0 });
+    reset();
   };
 }
 
@@ -46,6 +32,7 @@ export function ServicesParallaxImage() {
     const frame = frameRef.current;
     const layer = layerRef.current;
     if (!frame || !layer || reduce) return;
+    layer.style.transition = "transform 0.75s cubic-bezier(0.22, 1, 0.36, 1)";
     return bindParallax(frame, layer);
   }, [reduce]);
 

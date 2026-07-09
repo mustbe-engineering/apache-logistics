@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, initGsap } from "@/lib/gsapCore";
 import { useReducedMotion } from "./gsap/useReducedMotion";
-
 import { StatIcon } from "./stats/StatIcons";
 import type { StatIconId } from "@/lib/data";
 
@@ -20,11 +18,20 @@ export function StatCounter({ value, label, icon }: StatCounterProps) {
       ref.current.textContent = value;
       return;
     }
-    initGsap();
-    const tween = runCount(ref.current, parsed.target, parsed.suffix);
+    const el = ref.current;
+    let stop = () => {};
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
+        stop = runCount(el, parsed.target, parsed.suffix);
+        observer.disconnect();
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0 },
+    );
+    observer.observe(el);
     return () => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
+      observer.disconnect();
+      stop();
     };
   }, [value, reduce, parsed]);
 
@@ -50,14 +57,15 @@ function parseStat(value: string) {
 }
 
 function runCount(el: HTMLElement, target: number, suffix: string) {
-  const obj = { n: 0 };
-  return gsap.to(obj, {
-    n: target,
-    duration: 1.4 + target / 900,
-    ease: "power3.out",
-    scrollTrigger: { trigger: el, start: "top 88%", once: true },
-    onUpdate: () => {
-      el.textContent = `${Math.round(obj.n)}${suffix}`;
-    },
-  });
+  const start = performance.now();
+  const duration = (1.4 + target / 900) * 1000;
+  let raf = 0;
+  const tick = (now: number) => {
+    const t = Math.min(1, (now - start) / duration);
+    const eased = 1 - (1 - t) ** 3;
+    el.textContent = `${Math.round(target * eased)}${suffix}`;
+    if (t < 1) raf = requestAnimationFrame(tick);
+  };
+  raf = requestAnimationFrame(tick);
+  return () => cancelAnimationFrame(raf);
 }

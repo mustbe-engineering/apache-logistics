@@ -1,4 +1,4 @@
-import { ScrollTrigger } from "@/lib/gsapCore";
+import { loadGsap } from "@/lib/gsapCore";
 
 let pending = false;
 
@@ -7,6 +7,6 @@ export function scheduleScrollRefresh() {
   pending = true;
   requestAnimationFrame(() => {
     pending = false;
-    ScrollTrigger.refresh();
+    void loadGsap().then(({ ScrollTrigger }) => ScrollTrigger.refresh());
   });
 }

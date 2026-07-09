@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useReducedMotion } from "@/components/gsap/useReducedMotion";
-import { gsap, initGsap } from "@/lib/gsapCore";
+import { loadGsap } from "@/lib/gsapCore";
 
 export function SectionDivider() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -14,13 +14,21 @@ export function SectionDivider() {
     const section = sectionRef.current;
     const bg = bgRef.current;
     if (reduce || !section || !bg) return;
-    initGsap();
-    const tween = gsap.fromTo(bg, { yPercent: -12 }, {
-      yPercent: 12,
-      ease: "none",
-      scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: true },
+    let tween: { kill: () => void; scrollTrigger?: { kill: () => void } } | undefined;
+    let cancelled = false;
+    void loadGsap().then(({ gsap }) => {
+      if (cancelled) return;
+      tween = gsap.fromTo(bg, { yPercent: -12 }, {
+        yPercent: 12,
+        ease: "none",
+        scrollTrigger: { trigger: section, start: "top bottom", end: "bottom top", scrub: true },
+      });
     });
-    return () => { tween.scrollTrigger?.kill(); tween.kill(); };
+    return () => {
+      cancelled = true;
+      tween?.scrollTrigger?.kill();
+      tween?.kill();
+    };
   }, [reduce]);
 
   return (

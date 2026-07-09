@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, initGsap } from "@/lib/gsapCore";
 import { useReducedMotion } from "./useReducedMotion";
 
 type RevealProps = {
@@ -16,24 +15,25 @@ export function Reveal({ children, className, y = 24 }: RevealProps) {
 
   useEffect(() => {
     if (reduce || !ref.current) return;
-    initGsap();
     const el = ref.current;
-    gsap.set(el, { y, opacity: 0 });
-    const tween = gsap.to(el, {
-      y: 0,
-      opacity: 1,
-      duration: 0.65,
-      ease: "power3.out",
-      scrollTrigger: { trigger: el, start: "top 88%", once: true },
-    });
-    return () => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
+    const show = () => {
+      el.classList.add("is-visible");
+      observer.disconnect();
     };
-  }, [reduce, y]);
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry?.isIntersecting) show(); },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [reduce]);
 
   return (
-    <div ref={ref} className={className}>
+    <div
+      ref={ref}
+      className={`reveal ${className ?? ""}`}
+      style={{ "--reveal-y": `${y}px` } as React.CSSProperties}
+    >
       {children}
     </div>
   );

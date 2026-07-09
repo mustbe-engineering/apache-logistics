@@ -1,13 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, initGsap } from "@/lib/gsapCore";
 import { useReducedMotion } from "./useReducedMotion";
 
 type StaggerProps = {
   children: React.ReactNode;
   className?: string;
-  start?: string;
   y?: number;
   duration?: number;
   stagger?: number;
@@ -16,7 +14,6 @@ type StaggerProps = {
 export function Stagger({
   children,
   className,
-  start = "top 85%",
   y = 22,
   duration = 0.55,
   stagger = 0.08,
@@ -26,26 +23,34 @@ export function Stagger({
 
   useEffect(() => {
     if (reduce || !ref.current) return;
-    initGsap();
-    const items = ref.current.querySelectorAll("[data-stagger]");
-    if (!items.length) return;
-    gsap.set(items, { y, opacity: 0 });
-    const tween = gsap.to(items, {
-      y: 0,
-      opacity: 1,
-      duration,
-      stagger,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ref.current, start, once: true },
-    });
-    return () => {
-      tween.scrollTrigger?.kill();
-      tween.kill();
+    const root = ref.current;
+    const show = () => {
+      root.querySelectorAll<HTMLElement>("[data-stagger]").forEach((item, i) => {
+        item.style.setProperty("--i", String(i));
+      });
+      root.classList.add("is-visible");
+      observer.disconnect();
     };
-  }, [reduce, start, y, duration, stagger]);
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry?.isIntersecting) show(); },
+      { rootMargin: "0px 0px -14% 0px", threshold: 0 },
+    );
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, [reduce]);
 
   return (
-    <div ref={ref} className={className}>
+    <div
+      ref={ref}
+      className={`stagger ${className ?? ""}`}
+      style={
+        {
+          "--stagger-y": `${y}px`,
+          "--stagger-dur": `${duration}s`,
+          "--stagger-gap": `${stagger}s`,
+        } as React.CSSProperties
+      }
+    >
       {children}
     </div>
   );

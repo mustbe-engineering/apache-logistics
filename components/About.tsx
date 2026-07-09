@@ -10,9 +10,12 @@ export function About() {
       className="group relative max-[1020px]:min-h-[max(22rem,calc(62dvh+60px))] overflow-hidden scroll-mt-[var(--nav-offset)] py-[var(--section-y)] text-nav min-[1021px]:min-h-[max(32rem,90dvh)]"
     >
       <Image
-        src="/images/assets/about-us-bk.jpg"
+        src="/images/assets/about-us-bk.webp"
         alt=""
         fill
+        sizes="(max-width: 1020px) 100vw, 1280px"
+        quality={70}
+        loading="lazy"
         className="-z-20 object-cover"
         aria-hidden
       />
@@ -24,11 +27,13 @@ export function About() {
         <div className="mx-auto flex w-full max-w-[90rem] justify-end min-[1021px]:justify-start">
           <Reveal className="inline-block self-end">
             <Image
-              src="/images/assets/worker.png"
+              src="/images/assets/worker.webp"
               alt="Operaciones logísticas Apache"
               width={1037}
               height={1345}
               sizes="(max-width: 1020px) 300px, 760px"
+              quality={75}
+              loading="lazy"
               className="block h-auto w-[min(70vw,300px)] object-contain object-bottom !max-w-none min-[1021px]:w-[min(52vw,760px)]"
             />
           </Reveal>

@@ -9,7 +9,7 @@ import { updateFromScroll } from "./scrollUpdate";
 import { drawFrameToCanvas } from "./drawFrame";
 import { measureTruckFrame, getViewportTier } from "./truckFrame";
 import { TRUCK_FRAME } from "./constants";
-import { initGsap, ScrollTrigger } from "@/lib/gsapCore";
+import { loadGsap } from "@/lib/gsapCore";
 import { scheduleScrollRefresh } from "@/lib/scheduleScrollRefresh";
 import type { FleetScrollActions, FleetScrollRuntime, TruckFrameConfig } from "./types";
 
@@ -24,7 +24,7 @@ function encodePath(path: string) {
 export async function createFleetScrollSequence(section: HTMLElement) {
   const dom = getFleetScrollDom(section);
   if (!dom) return () => {};
-  initGsap();
+  const { ScrollTrigger } = await loadGsap();
   const runtime: FleetScrollRuntime = {
     frameIndex: -1, images: [], loaded: new Set(), activeTruckFrame: { ...TRUCK_FRAME.desktop },
     mobileTruckSlot: null, mobileOutroActive: false,
@@ -76,13 +76,19 @@ export async function createFleetScrollSequence(section: HTMLElement) {
     onUpdate: (self) => updateFromScroll(dom, self.progress * TOTAL_TRAVEL_PX, runtime, actions),
   });
   scheduleScrollRefresh();
-  fleetFrames.slice(1).forEach((src, index) => {
-    loadFrameImage(src).then((image) => {
+  const queue = fleetFrames.slice(1).map((src, index) => ({ src, index: index + 1 }));
+  const loadNext = () => {
+    const batch = queue.splice(0, 3);
+    if (!batch.length) return;
+    void Promise.all(batch.map(({ src, index }) => loadFrameImage(src).then((image) => {
       if (!image) return;
-      runtime.images[index + 1] = image;
-      runtime.loaded.add(index + 1);
+      runtime.images[index] = image;
+      runtime.loaded.add(index);
+    }))).finally(() => {
+      if (queue.length) requestIdleCallback(loadNext, { timeout: 1200 });
     });
-  });
+  };
+  requestIdleCallback(loadNext, { timeout: 800 });
   const onResize = () => { setSectionHeight(); resizeCanvas(); scheduleScrollRefresh(); };
   window.addEventListener("resize", onResize);
   return () => { trigger.kill(); window.removeEventListener("resize", onResize); cleanupDrag(); };

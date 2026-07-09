@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react";
 import { useReducedMotionState } from "./gsap/useReducedMotion";
 
 const HERO_VIDEO = "/videos/apache-optimized.mp4";
-const HERO_POSTER = "/images/assets/hero-poster.webp";
 
 export function HeroVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -23,7 +22,6 @@ export function HeroVideo() {
     <video
       ref={videoRef}
       data-hero-media
-      poster={HERO_POSTER}
       preload="metadata"
       muted
       loop

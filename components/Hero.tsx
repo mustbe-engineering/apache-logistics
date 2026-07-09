@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HeroEnter } from "./gsap/HeroEnter";
 import { HeroVideo } from "./HeroVideo";
 import { QuoteOpenButton } from "./QuoteOpenButton";
@@ -7,6 +8,16 @@ export function Hero() {
     <section id="home" className="relative min-h-[calc(100dvh-var(--nav-offset))] overflow-hidden text-base">
       <HeroEnter>
         <div className="relative min-h-[calc(100dvh-var(--nav-offset))]">
+          <Image
+            src="/images/assets/hero-poster.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            quality={72}
+            className="absolute inset-0 object-cover object-[center_42%]"
+            aria-hidden
+          />
           <HeroVideo />
 
           <div

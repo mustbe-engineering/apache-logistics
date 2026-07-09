@@ -3,14 +3,13 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { services } from "@/lib/data";
 import { serviceIcons } from "@/lib/serviceIcons";
-import { gsap, initGsap } from "@/lib/gsapCore";
 import { useReducedMotion } from "./gsap/useReducedMotion";
 import { ServiceAccordionRow } from "./ServiceAccordionRow";
 
 const HEADER_MOBILE = 48;
 const HEADER_TABLET = 52;
 const TONES = ["#164775", "#185078", "#1a5282", "#1c5686", "#1e5a8a", "#205e8e"];
-const EASE = "power3.inOut";
+const HEIGHT_EASE = "height 0.78s cubic-bezier(0.22, 1, 0.36, 1)";
 
 function getHeader() {
   if (typeof window === "undefined") return HEADER_MOBILE;
@@ -31,14 +30,14 @@ export function ServicesAccordion() {
       const expanded = Math.max(box.offsetHeight - header * (services.length - 1), header);
       rowRefs.current.forEach((row, i) => {
         if (!row) return;
-        gsap.to(row, { height: i === index ? expanded : header, duration: reduce ? 0 : 0.78, ease: EASE });
+        row.style.transition = reduce ? "none" : HEIGHT_EASE;
+        row.style.height = `${i === index ? expanded : header}px`;
       });
     },
     [reduce],
   );
 
   useLayoutEffect(() => {
-    initGsap();
     layout(open);
     const onResize = () => layout(open);
     window.addEventListener("resize", onResize);

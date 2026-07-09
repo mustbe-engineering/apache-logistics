@@ -11,10 +11,10 @@ const frame = path.join(tmpdir(), "apache-hero-frame.jpg");
 
 execFileSync("ffmpeg", [
   "-y", "-ss", "2", "-i", input, "-frames:v", "1", "-update", "1",
-  "-vf", "scale=1280:-2", "-q:v", "2", frame,
+  "-vf", "scale=1080:-2", "-q:v", "2", frame,
 ], { stdio: "inherit" });
 
-const webp = await sharp(await readFile(frame)).webp({ quality: 82 }).toBuffer();
+const webp = await sharp(await readFile(frame)).webp({ quality: 76 }).toBuffer();
 await writeFile(output, webp);
 await unlink(frame).catch(() => {});
 console.log(`Wrote ${output} (${(webp.length / 1024).toFixed(1)} KB)`);

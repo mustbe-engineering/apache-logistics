@@ -1,5 +1,5 @@
 import { Reveal } from "./gsap/Reveal";
-import { RoutesAnimatedLines } from "./routes/RoutesAnimatedLines";
+import { RoutesLinesGate } from "./routes/RoutesLinesGate";
 
 export function Routes() {
   return (
@@ -31,7 +31,7 @@ export function Routes() {
             decoding="async"
             className="absolute inset-0 h-full w-full object-contain object-left-bottom"
           />
-          <RoutesAnimatedLines className="absolute inset-0 z-10 h-full w-full object-contain object-left-bottom" />
+          <RoutesLinesGate />
         </div>
       </div>
     </section>

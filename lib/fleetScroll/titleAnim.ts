@@ -1,4 +1,4 @@
-import { gsap } from "@/lib/gsapCore";
+import { getGsap } from "@/lib/gsapCore";
 import { REVEAL_MASK_FEATHER, TITLE_LINE_COUNT, TITLE_LINE_STAGGER } from "./constants";
 import { easeOutQuart, organicEase } from "./easing";
 import type { FleetScrollDom } from "./types";
@@ -14,6 +14,7 @@ function lineReveal(global: number, lineIndex: number) {
 }
 
 function applyReveal(line: HTMLElement, progress: number) {
+  const { gsap } = getGsap();
   const eased = organicEase(progress);
   if (eased <= 0) {
     gsap.set(line, { opacity: 0, clipPath: "inset(0 100% 0 0)", WebkitMaskImage: "none", maskImage: "none" });
@@ -29,6 +30,7 @@ function applyReveal(line: HTMLElement, progress: number) {
 }
 
 export function setRevealState(dom: FleetScrollDom, revealProgress: number) {
+  const { gsap } = getGsap();
   dom.title.style.visibility = "visible";
   dom.titleLineWraps.forEach((wrap, index) => {
     gsap.set(wrap, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" });
@@ -37,6 +39,7 @@ export function setRevealState(dom: FleetScrollDom, revealProgress: number) {
 }
 
 export function setTitleFade(dom: FleetScrollDom, fadeProgress: number) {
+  const { gsap } = getGsap();
   dom.title.style.visibility = "visible";
   const raw = Math.min(1, Math.max(0, fadeProgress));
   dom.titleLineWraps.forEach((wrap, index) => {
@@ -49,6 +52,7 @@ export function setTitleFade(dom: FleetScrollDom, fadeProgress: number) {
 }
 
 export function hideTitle(dom: FleetScrollDom) {
+  const { gsap } = getGsap();
   dom.title.style.visibility = "hidden";
   gsap.set(dom.titleLineWraps, { opacity: 0, y: -36, scale: 0.94, filter: "blur(12px)" });
 }

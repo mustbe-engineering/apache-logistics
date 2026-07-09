@@ -1,14 +1,32 @@
 "use client";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import type { gsap as Gsap } from "gsap";
+import type { ScrollTrigger as ScrollTriggerPlugin } from "gsap/ScrollTrigger";
 
-let ready = false;
+export type GsapCore = {
+  gsap: typeof Gsap;
+  ScrollTrigger: typeof ScrollTriggerPlugin;
+};
 
-export function initGsap() {
-  if (ready || typeof window === "undefined") return;
-  gsap.registerPlugin(ScrollTrigger);
-  ready = true;
+let core: GsapCore | null = null;
+let loading: Promise<GsapCore> | null = null;
+
+export function loadGsap(): Promise<GsapCore> {
+  if (core) return Promise.resolve(core);
+  if (!loading) {
+    loading = Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ gsap }, { ScrollTrigger }]) => {
+        gsap.registerPlugin(ScrollTrigger);
+        ScrollTrigger.config({ limitCallbacks: true, ignoreMobileResize: true });
+        core = { gsap, ScrollTrigger };
+        return core;
+      },
+    );
+  }
+  return loading;
 }
 
-export { gsap, ScrollTrigger };
+export function getGsap(): GsapCore {
+  if (!core) throw new Error("GSAP not loaded");
+  return core;
+}
