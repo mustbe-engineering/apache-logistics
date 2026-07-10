@@ -1,7 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.54 78.76">
-  <defs>
-    <style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="57.264687"
+   height="52.725758"
+   viewBox="0 0 15.151281 13.950356"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1"><style
+       id="style1">
+      .cls-1 {
+        stroke-width: 2.79px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-2 {
+        stroke-width: 2.89px;
+      }
+    </style><style
+       id="style1-2">
+      .cls-1 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 3.23px;
+      }
+    </style><style
+       id="style1-9">
       .cls-1 {
         fill: #fff;
       }
@@ -13,14 +48,26 @@
         stroke-linejoin: round;
         stroke-width: 3.83px;
       }
-    </style>
-  </defs>
-  <g id="TEXTO">
-    <g>
-      <circle class="cls-1" cx="25.68" cy="34.3" r="4.22"/>
-      <circle class="cls-1" cx="42.84" cy="34.3" r="4.22"/>
-      <circle class="cls-1" cx="60.01" cy="34.3" r="4.22"/>
-      <path class="cls-2" d="M12.57,1.91C6.69,1.91,1.91,6.69,1.91,12.57v42.81c0,5.87,4.78,10.65,10.65,10.65h20.71l9.48,10.81,9.48-10.81h20.74c5.87,0,10.65-4.78,10.65-10.65V12.57c0-5.87-4.78-10.65-10.65-10.65H12.57Z"/>
-    </g>
-  </g>
-</svg>
+    </style></defs><g
+     id="layer1"
+     transform="translate(-0.9994658,-1.5017051)"><g
+       id="g3"
+       transform="matrix(0.17712511,0,0,0.17712511,1.0003514,1.5025908)"><circle
+         class="cls-1"
+         cx="25.68"
+         cy="34.299999"
+         r="4.2199998"
+         id="circle1" /><circle
+         class="cls-1"
+         cx="42.84"
+         cy="34.299999"
+         r="4.2199998"
+         id="circle2" /><circle
+         class="cls-1"
+         cx="60.009998"
+         cy="34.299999"
+         r="4.2199998"
+         id="circle3" /><path
+         class="cls-2"
+         d="M 12.57,1.91 C 6.69,1.91 1.91,6.69 1.91,12.57 v 42.81 c 0,5.87 4.78,10.65 10.65,10.65 h 20.71 l 9.48,10.81 9.48,-10.81 h 20.74 c 5.87,0 10.65,-4.78 10.65,-10.65 V 12.57 C 83.62,6.7 78.84,1.92 72.97,1.92 h -60.4 z"
+         id="path3" /></g></g></svg>

@@ -9,12 +9,14 @@ export const serviceIcons = {
   ultima: "/images/stats/milla.svg",
 } satisfies Record<ServiceIconId, string>;
 
-const serviceIconScale: Partial<Record<ServiceIconId, number>> = {
-  maniobras: 1.43,
+/** width / height from each SVG viewBox — used to keep equal height, natural width */
+export const serviceIconAspect: Record<ServiceIconId, number> = {
+  lcl: 15.32 / 14.97,
+  ltl: 14.72 / 14.77,
+  trasbordo: 15.53 / 15.05,
+  maniobras: 277.98 / 152.38,
+  almacen: 14.79 / 14.18,
+  ultima: 15.67 / 15.68,
 };
 
-export const serviceIconSlotRem = 3.3 * 1.43;
-
-export function serviceIconSize(rem: number, id: ServiceIconId) {
-  return rem * (serviceIconScale[id] ?? 1);
-}
+export const serviceIconSlotRem = 3.96;

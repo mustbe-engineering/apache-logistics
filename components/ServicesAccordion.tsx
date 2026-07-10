@@ -2,7 +2,7 @@
 
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { services } from "@/lib/data";
-import { serviceIcons } from "@/lib/serviceIcons";
+import { serviceIconAspect, serviceIcons } from "@/lib/serviceIcons";
 import { useReducedMotion } from "./gsap/useReducedMotion";
 import { ServiceAccordionRow } from "./ServiceAccordionRow";
 
@@ -58,8 +58,8 @@ export function ServicesAccordion() {
             benefits={s.benefits}
             tone={TONES[i] ?? TONES[0]}
             active={open === i}
-            icon={s.icon}
             iconSrc={serviceIcons[s.icon]}
+            aspect={serviceIconAspect[s.icon]}
             onSelect={() => setOpen(i)}
           />
         </div>

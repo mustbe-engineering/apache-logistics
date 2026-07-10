@@ -641,7 +641,7 @@ svg[data-routes-ready] .routes-map__line {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(3.5rem, 8vw, 4.75rem);
+  width: clamp(4.5rem, 11vw, 6.5rem);
   height: clamp(3.5rem, 8vw, 4.75rem);
   margin-bottom: clamp(1rem, 2.2vw, 1.625rem);
 }
@@ -664,6 +664,8 @@ svg[data-routes-ready] .routes-map__line {
   display: block;
   width: auto;
   height: clamp(2.125rem, 5vw, 3.125rem);
+  max-width: none;
+  object-fit: contain;
   opacity: 0.96;
   mix-blend-mode: lighten;
   filter: drop-shadow(0 3px 14px rgba(0, 0, 0, 0.14));

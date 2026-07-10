@@ -1,6 +1,5 @@
 "use client";
 
-import type { ServiceIconId } from "@/lib/data";
 import { Minus, Plus } from "@phosphor-icons/react";
 import { ServiceIcon } from "./ServiceIcon";
 
@@ -11,16 +10,14 @@ type RowProps = {
   benefits: string;
   tone: string;
   active: boolean;
-  icon: ServiceIconId;
   iconSrc: string;
+  aspect?: number;
   onSelect: () => void;
 };
 
-export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, active, icon, iconSrc, onSelect }: RowProps) {
-  const iconClass = icon === "maniobras"
-    ? "h-4 w-4 scale-[1.43] text-white/90 sm:h-5 sm:w-5"
-    : "h-4 w-4 text-white/90 sm:h-5 sm:w-5";
-
+export function ServiceAccordionRow({
+  name, tagline, desc, benefits, tone, active, iconSrc, aspect = 1, onSelect,
+}: RowProps) {
   return (
     <div
       className="flex h-full min-h-0 flex-col transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
@@ -32,8 +29,8 @@ export function ServiceAccordionRow({ name, tagline, desc, benefits, tone, activ
         onClick={onSelect}
         className="group flex h-12 shrink-0 items-center gap-3 px-4 text-left sm:h-[3.25rem] sm:gap-4 sm:px-5"
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/[0.08] ring-1 ring-white/12 sm:h-10 sm:w-10">
-          <ServiceIcon src={iconSrc} className={iconClass} />
+        <span className="flex h-8 w-10 items-center justify-center rounded-full bg-white/[0.08] ring-1 ring-white/12 sm:h-10 sm:w-12">
+          <ServiceIcon src={iconSrc} sizeRem={1.25} aspect={aspect} className="text-white/90" />
         </span>
         <span className="font-display flex-1 text-base tracking-tight text-white/90 sm:text-lg">{name}</span>
         <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/[0.06] sm:h-8 sm:w-8">

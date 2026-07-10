@@ -3,10 +3,14 @@ type Props = {
   alt?: string;
   className?: string;
   sizeRem?: number;
+  /** Intrinsic SVG aspect ratio width/height. Defaults to 1 (square). */
+  aspect?: number;
 };
 
-export function ServiceIcon({ src, alt = "", className = "", sizeRem }: Props) {
-  const size = sizeRem ? { width: `${sizeRem}rem`, height: `${sizeRem}rem` } : undefined;
+export function ServiceIcon({ src, alt = "", className = "", sizeRem, aspect = 1 }: Props) {
+  const size = sizeRem
+    ? { height: `${sizeRem}rem`, width: `${sizeRem * aspect}rem` }
+    : undefined;
 
   return (
     <span
