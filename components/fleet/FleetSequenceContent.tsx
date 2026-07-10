@@ -15,8 +15,8 @@ export function FleetSequenceContent() {
       <canvas className="scroll-sequence__canvas" aria-hidden="true" />
       <img className="scroll-sequence__fallback" alt="" hidden />
       <div className="scroll-sequence__title">
-        <TitleLine text="Cada unidad," />
-        <TitleLine text="una promesa cumplida." />
+        <TitleLine text="Unidades listas" />
+        <TitleLine text="para cualquier ruta." />
       </div>
       <div className="scroll-sequence__outro-layer" aria-hidden="true">
         <div className="scroll-sequence__outro">

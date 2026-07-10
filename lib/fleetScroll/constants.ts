@@ -1,5 +1,7 @@
+import { FRAME_COUNT } from "@/lib/fleetFrames";
+
 export const TRUCK_START_FRAME = 9;
-export const FRAME_PLAY_COUNT = 149 - TRUCK_START_FRAME;
+export const FRAME_PLAY_COUNT = FRAME_COUNT - TRUCK_START_FRAME;
 export const FRAME_TRAVEL_PX = (FRAME_PLAY_COUNT - 1) * 18;
 export const TITLE_REVEAL_PX = 960;
 export const TITLE_HOLD_PX = 72;
@@ -16,7 +18,7 @@ export const OUTRO_FEATURE_STAGGER = 0.07;
 export const SCENE_BG = "#e8e8e8";
 
 export const TRUCK_FRAME = {
-  desktop: { focusX: 0.568, focusY: 0.575, scaleBoost: 0.99, viewOffsetY: -0.052, fitMode: "cover" as const },
-  tablet: { focusX: 0.5, focusY: 0.6, scaleBoost: 1.1, viewOffsetY: -0.055, fitMode: "cover" as const },
-  mobile: { focusX: 0.5, focusY: 0.58, scaleBoost: 1.05, viewOffsetY: -0.038, fitMode: "cover" as const },
+  desktop: { focusX: 0.49, focusY: 0.53, scaleBoost: 1, viewOffsetY: -0.04, fitMode: "cover" as const },
+  tablet: { focusX: 0.49, focusY: 0.56, scaleBoost: 1.05, viewOffsetY: -0.045, fitMode: "cover" as const },
+  mobile: { focusX: 0.49, focusY: 0.57, scaleBoost: 1.05, viewOffsetY: -0.03, fitMode: "cover" as const },
 };
