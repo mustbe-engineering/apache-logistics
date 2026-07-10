@@ -18,21 +18,23 @@ export function Clients() {
         className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/35 via-transparent to-nav/15"
       />
       <div className="site-container relative z-10">
-        <Reveal className="flex w-full flex-col gap-4 md:flex-row md:items-start md:justify-between md:gap-10">
-          <h2 className="shrink-0 font-display text-4xl font-normal leading-[1.6] md:text-5xl">
-            <span className="block">Nuestros</span>
-            <span className="block">clientes</span>
-          </h2>
-          <div className="max-w-xl md:text-left">
-            <p className="text-sm leading-[1.2] text-base/90 md:text-[1rem]">
-              Las empresas que deciden adquirir nuestro servicio son el pilar de nuestra empresa y la
-              razón de nuestras metas. Trabajamos cada día para ofrecerles el mejor servicio, con{" "}
-              <strong className="font-semibold">compromiso</strong>,{" "}
-              <strong className="font-semibold">calidad</strong> y{" "}
-              <strong className="font-semibold">dedicación</strong>, porque su satisfacción es nuestra
-              mayor prioridad.
-            </p>
-            <hr className="mt-6 border-0 border-t border-base/20" />
+        <Reveal className="flex w-full justify-center">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-10">
+            <h2 className="shrink-0 font-display text-4xl font-normal leading-[1.6] md:text-5xl">
+              <span className="block">Nuestros</span>
+              <span className="block">clientes</span>
+            </h2>
+            <div className="max-w-xl md:text-left">
+              <p className="text-sm leading-[1.2] text-base/90 md:text-[1rem]">
+                Las empresas que deciden adquirir nuestro servicio son el pilar de nuestra empresa y la
+                razón de nuestras metas. Trabajamos cada día para ofrecerles el mejor servicio, con{" "}
+                <strong className="font-semibold">compromiso</strong>,{" "}
+                <strong className="font-semibold">calidad</strong> y{" "}
+                <strong className="font-semibold">dedicación</strong>, porque su satisfacción es nuestra
+                mayor prioridad.
+              </p>
+              <hr className="mt-6 border-0 border-t border-base/20" />
+            </div>
           </div>
         </Reveal>
         <ClientsCarousel />

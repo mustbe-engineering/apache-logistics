@@ -23,8 +23,8 @@ export function Nav() {
       data-nav-shell
       className={`nav-shell${pastHero ? " nav-shell--glass" : ""}`}
     >
-      <div className="nav-bar site-container relative flex items-center lg:grid lg:grid-cols-[1fr_auto] lg:items-center">
-        <div className="flex min-w-0 items-center gap-4 md:gap-6 lg:min-w-0 lg:gap-0">
+      <div className="nav-bar site-container relative flex items-center lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-center">
+        <div className="flex min-w-0 items-center gap-4 md:gap-6 lg:w-full lg:min-w-0 lg:gap-0">
           <Link
             href="/"
             data-nav-logo
@@ -39,43 +39,41 @@ export function Nav() {
           <span
             role="presentation"
             data-nav-separator
-            className="nav-separator-wrap hidden md:flex lg:min-w-0 lg:flex-1 lg:justify-center"
+            className="nav-separator-wrap hidden min-w-0 md:flex lg:flex-1 lg:justify-center"
           >
             <span role="separator" aria-orientation="vertical" className="nav-separator" />
           </span>
         </div>
 
-        <div className="nav-cluster ml-auto flex items-center gap-3 lg:ml-0">
-          <nav
-            data-nav-links
-            className="hidden items-center lg:flex"
-            aria-label="Principal"
-          >
-            {NAV_LINKS.map((l) => (
-              <SectionLink
-                key={l.href}
-                href={l.href}
-                className={`nav-link${activeSection === l.href.slice(1) ? " nav-link--active" : ""}`}
-              >
-                <span className="nav-link-text">{l.label}</span>
-              </SectionLink>
-            ))}
-          </nav>
-
-          <div data-nav-actions className="flex items-center gap-3 lg:gap-0">
-            <QuoteOpenButton className="btn-cotizar btn-cotizar-nav shrink-0" onClick={close}>
-              <span>COTIZAR</span>
-            </QuoteOpenButton>
-            <button
-              type="button"
-              className="nav-menu-btn lg:hidden"
-              onClick={() => setOpen(!open)}
-              aria-expanded={open}
-              aria-label={open ? "Cerrar menú" : "Abrir menú"}
+        <nav
+          data-nav-links
+          className="hidden items-center lg:flex lg:justify-self-center"
+          aria-label="Principal"
+        >
+          {NAV_LINKS.map((l) => (
+            <SectionLink
+              key={l.href}
+              href={l.href}
+              className={`nav-link${activeSection === l.href.slice(1) ? " nav-link--active" : ""}`}
             >
-              {open ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
-            </button>
-          </div>
+              <span className="nav-link-text">{l.label}</span>
+            </SectionLink>
+          ))}
+        </nav>
+
+        <div data-nav-actions className="ml-auto flex items-center gap-3 lg:ml-0 lg:justify-self-end">
+          <QuoteOpenButton className="btn-cotizar btn-cotizar-nav shrink-0" onClick={close}>
+            <span>COTIZAR</span>
+          </QuoteOpenButton>
+          <button
+            type="button"
+            className="nav-menu-btn lg:hidden"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          >
+            {open ? <X size={22} weight="bold" /> : <List size={22} weight="bold" />}
+          </button>
         </div>
         <NavActiveLine activeId={activeSection} pastHero={pastHero} />
       </div>
