@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { siteContact } from "@/lib/siteContact";
 
 type IconProps = { className?: string };
 
@@ -27,9 +28,9 @@ export function InstagramIcon({ className }: IconProps) {
 }
 
 export const footerSocials = [
-  { label: "WhatsApp", href: "https://google.com", Icon: WhatsappIcon },
-  { label: "Facebook", href: "https://google.com", Icon: FacebookIcon },
-  { label: "Instagram", href: "https://google.com", Icon: InstagramIcon },
+  { label: "WhatsApp", href: siteContact.whatsappHref, Icon: WhatsappIcon },
+  { label: "Facebook", href: "https://www.facebook.com/apachelogisticsbc", Icon: FacebookIcon },
+  { label: "Instagram", href: "https://www.instagram.com/apachebc.logistics/", Icon: InstagramIcon },
 ] as const;
 
 export function FooterSocialLinks() {

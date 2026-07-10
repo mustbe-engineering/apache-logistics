@@ -26,7 +26,14 @@ export function Footer() {
           <div className="mt-4 flex gap-3 text-sm leading-relaxed text-nav">
             <MapPin size={20} weight="bold" className="mt-0.5 shrink-0" aria-hidden />
             <p>
-              {siteContact.street}
+              <a
+                href={siteContact.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-75"
+              >
+                {siteContact.street}
+              </a>
               <br />
               {siteContact.city}
             </p>
