@@ -73,7 +73,7 @@ export async function createFleetScrollSequence(section: HTMLElement) {
   resizeCanvas();
   section.classList.add("is-ready");
   const trigger = ScrollTrigger.create({
-    trigger: section, start: "top top", end: "bottom bottom", scrub: 1.15,
+    trigger: section, start: "top top", end: "bottom bottom", scrub: 1.4,
     onUpdate: (self) => updateFromScroll(dom, self.progress * TOTAL_TRAVEL_PX, runtime, actions),
   });
   scheduleScrollRefresh();

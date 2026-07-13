@@ -1,4 +1,5 @@
 import { fleetFeatures } from "@/lib/fleetFeatures";
+import { FleetVehicleCarousel } from "./FleetVehicleCarousel";
 
 const icons = [
   <svg key="gps" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 21s6-5.2 6-10a6 6 0 1 0-12 0c0 4.8 6 10 6 10Z" /><circle cx="12" cy="11" r="2.2" /></svg>,
@@ -17,7 +18,13 @@ export function FleetFeatures() {
             key={feature.title}
             className={`scroll-sequence__feature${feature.center ? " scroll-sequence__feature--center" : ""}`}
           >
-            <span className="scroll-sequence__feature-index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+            <span className="scroll-sequence__feature-tab" aria-hidden="true">
+              <span className="scroll-sequence__feature-tab-icon">{icons[i]}</span>
+              <span className="scroll-sequence__feature-tab-copy">
+                <span className="scroll-sequence__feature-tab-title">{feature.title}</span>
+                <span className="scroll-sequence__feature-tab-desc">{feature.desc}</span>
+              </span>
+            </span>
             <div className="scroll-sequence__feature-icon" aria-hidden="true">{icons[i]}</div>
             <div className="scroll-sequence__feature-marker" aria-hidden="true">
               <span className="scroll-sequence__feature-dot" />
@@ -30,6 +37,7 @@ export function FleetFeatures() {
           </li>
         ))}
       </ul>
+      <FleetVehicleCarousel />
     </div>
   );
 }

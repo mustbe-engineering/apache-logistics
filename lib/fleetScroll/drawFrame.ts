@@ -39,7 +39,19 @@ export function drawFrameToCanvas(
   dom.ctx.fillStyle = SCENE_BG;
   dom.ctx.fillRect(0, 0, width, height);
   dom.ctx.drawImage(image, rect.offsetX, rect.offsetY, rect.drawWidth, rect.drawHeight);
+  syncFleetDrawRect(dom, rect);
   const imageBottom = rect.offsetY + rect.drawHeight;
   if (getViewportTier(width) === "desktop") paintDesktopBottomFade(dom.ctx, width, height, imageBottom);
   else patchBottomGap(dom.ctx, image, width, height, rect.offsetX, rect.offsetY, rect.drawWidth, rect.drawHeight);
+}
+
+function syncFleetDrawRect(
+  dom: FleetScrollDom,
+  rect: { offsetX: number; offsetY: number; drawWidth: number; drawHeight: number },
+) {
+  const root = dom.sticky;
+  root.style.setProperty("--fleet-draw-x", `${rect.offsetX}px`);
+  root.style.setProperty("--fleet-draw-y", `${rect.offsetY}px`);
+  root.style.setProperty("--fleet-draw-w", `${rect.drawWidth}px`);
+  root.style.setProperty("--fleet-draw-h", `${rect.drawHeight}px`);
 }

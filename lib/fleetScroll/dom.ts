@@ -19,6 +19,8 @@ export function getFleetScrollDom(section: HTMLElement): FleetScrollDom | null {
     outroLayer, outro,
     featuresWrap: section.querySelector<HTMLElement>(".scroll-sequence__features-wrap"),
     featuresCarousel: section.querySelector<HTMLElement>(".scroll-sequence__features"),
-    featureItems, loader,
+    featureItems,
+    vehiclePanel: section.querySelector<HTMLElement>(".scroll-sequence__vehicle-panel"),
+    loader,
   };
 }

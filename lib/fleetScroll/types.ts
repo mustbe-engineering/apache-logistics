@@ -44,6 +44,7 @@ export type FleetScrollDom = {
   featuresWrap: HTMLElement | null;
   featuresCarousel: HTMLElement | null;
   featureItems: NodeListOf<HTMLElement>;
+  vehiclePanel: HTMLElement | null;
   loader: HTMLElement;
 };
 

@@ -129,7 +129,54 @@
   pointer-events: none;
 }
 
+.scroll-sequence__vehicle-focus {
+  position: absolute;
+  left: var(--fleet-draw-x, 0px);
+  top: var(--fleet-draw-y, 0px);
+  width: var(--fleet-draw-w, 100%);
+  height: var(--fleet-draw-h, 100%);
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s var(--ease-out), visibility 0.35s;
+}
+
+.scroll-sequence[data-fleet-focus] .scroll-sequence__vehicle-focus {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-sequence__vehicle-focus-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  opacity: 0;
+  transform: scale(1.015);
+  filter: brightness(0.72) saturate(0.85);
+  mix-blend-mode: screen;
+  transition:
+    opacity 0.55s var(--ease-out),
+    transform 0.55s var(--ease-out),
+    filter 0.55s var(--ease-out);
+  will-change: opacity, transform, filter;
+}
+
+.scroll-sequence__vehicle-focus-img.is-active {
+  opacity: 1;
+  transform: scale(1);
+  filter:
+    brightness(1.12)
+    saturate(1.05)
+    drop-shadow(0 10px 28px rgba(24, 56, 104, 0.18));
+}
+
 .scroll-sequence__outro {
+  position: relative;
+  z-index: 1;
   width: min(42rem, 100%);
   text-align: center;
   transform: translateY(1.25rem);
@@ -165,6 +212,7 @@
 
 .scroll-sequence__features-wrap {
   position: relative;
+  z-index: 1;
   width: min(76rem, 100%);
   padding: clamp(1rem, 2.5vw, 1.75rem) clamp(0.75rem, 2vw, 1.5rem)
     clamp(0.5rem, 1.5vw, 1rem);
@@ -306,6 +354,14 @@
 
 .scroll-sequence__feature--center .scroll-sequence__feature-line--secondary {
   font-size: clamp(0.64rem, 1.28vw, 0.88rem);
+}
+
+.scroll-sequence__feature-tab {
+  display: none;
+}
+
+.scroll-sequence__vehicle-panel {
+  display: none;
 }
 
 .scroll-sequence__feature-index,
@@ -681,125 +737,222 @@
   .scroll-sequence__features-wrap {
     width: min(72rem, calc(100% - 2rem));
     padding: 0;
-    border-radius: 1rem 1rem 0.35rem 0.35rem;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.94);
-    border: 1px solid rgba(24, 56, 104, 0.1);
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.95) inset,
-      0 20px 44px rgba(24, 56, 104, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    margin-top: 2.45rem;
+    border-radius: 0;
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     pointer-events: auto;
   }
 
   .scroll-sequence__features {
+    position: relative;
+    z-index: 1;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     align-items: stretch;
-    gap: 0;
+    gap: 0.35rem;
   }
 
   .scroll-sequence__feature {
     --arc-offset: 0 !important;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    min-height: 9rem;
-    padding: 1rem 1.15rem 0.85rem;
+    z-index: 1;
+    display: block;
+    min-height: 0;
+    height: 0;
+    padding: 0;
     text-align: left;
     transform: none !important;
-    border-right: 1px solid rgba(24, 56, 104, 0.08);
+    border: none;
     border-radius: 0;
     background: transparent;
     box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    transition:
-      background 0.4s var(--ease-out),
-      border-color 0.4s var(--ease-out);
+    isolation: isolate;
   }
 
-  .scroll-sequence__feature:hover {
-    background: rgba(206, 216, 222, 0.18);
-  }
-
-  .scroll-sequence__feature-icon {
-    display: grid;
-    place-items: center;
-    width: 2.2rem;
-    height: 2.2rem;
-    margin-bottom: 0.55rem;
-    border-radius: 0.7rem;
-    border: 1px solid rgba(24, 56, 104, 0.12);
-    background: rgba(206, 216, 222, 0.32);
-    color: rgba(24, 56, 104, 0.82);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.65) inset;
-    transition:
-      border-color 0.4s var(--ease-out),
-      background 0.4s var(--ease-out),
-      color 0.4s var(--ease-out),
-      box-shadow 0.4s var(--ease-out);
-  }
-
-  .scroll-sequence__feature:hover .scroll-sequence__feature-icon {
-    border-color: rgba(224, 112, 47, 0.28);
-    background: rgba(224, 112, 47, 0.08);
-    color: rgba(224, 112, 47, 0.92);
-  }
-
-  .scroll-sequence__feature-icon svg {
-    width: 1.2rem;
-    height: 1.2rem;
-  }
-
-  .scroll-sequence__feature:last-child {
-    border-right: none;
-  }
-
-  .scroll-sequence__feature-index {
-    display: block;
-    position: absolute;
-    top: 0.8rem;
-    right: 0.8rem;
-    font-family: var(--font-pretendard), Pretendard, sans-serif;
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: rgba(24, 56, 104, 0.22);
-    transition: color 0.4s var(--ease-out);
-  }
-
-  .scroll-sequence__feature:hover .scroll-sequence__feature-index {
-    color: rgba(224, 112, 47, 0.45);
-  }
-
-  .scroll-sequence__feature-marker {
+  .scroll-sequence__feature::before {
     display: none;
   }
 
-  .scroll-sequence__feature-label {
+  .scroll-sequence__feature-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.55rem;
+    z-index: 0;
+    width: 100%;
+    min-height: 2.15rem;
+    height: auto;
+    padding: 0.28rem 0.55rem 0.65rem;
+    border-radius: 0.45rem 0.45rem 0 0;
+    border: 1px solid rgba(24, 56, 104, 0.12);
+    border-bottom: none;
+    background: rgba(190, 201, 210, 0.92);
+    box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.35) inset;
+    transform: translateY(70%);
+    will-change: transform;
+    pointer-events: none;
+  }
+
+  .scroll-sequence__feature-tab-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 1.35rem;
+    height: 1.35rem;
+    color: rgba(24, 56, 104, 0.78);
+  }
+
+  .scroll-sequence__feature-tab-icon svg {
+    width: 0.95rem;
+    height: 0.95rem;
+  }
+
+  .scroll-sequence__feature-tab-copy {
     display: flex;
     flex-direction: column;
-    gap: 0.28rem;
-    max-width: none;
-    margin: 0;
-    margin-top: auto;
+    gap: 0;
+    min-width: 0;
+    line-height: 1.1;
   }
 
-  .scroll-sequence__feature-line--title {
-    font-size: clamp(0.92rem, 1.02vw, 1.02rem);
-    line-height: 1.24;
+  .scroll-sequence__feature-tab-title {
+    font-family: var(--feature-title-font);
+    font-size: clamp(0.62rem, 0.72vw, 0.72rem);
+    font-weight: 600;
     letter-spacing: -0.01em;
-    text-wrap: balance;
-    transition: color 0.4s var(--ease-out);
+    color: rgba(24, 56, 104, 0.88);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .scroll-sequence__feature-line--desc {
-    font-size: clamp(0.68rem, 0.82vw, 0.76rem);
-    line-height: 1.42;
-    max-width: 11.5rem;
+  .scroll-sequence__feature-tab-desc {
+    font-family: var(--font-pretendard), Pretendard, sans-serif;
+    font-size: clamp(0.52rem, 0.62vw, 0.6rem);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    color: rgba(24, 56, 104, 0.55);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .scroll-sequence__feature-icon,
+  .scroll-sequence__feature-index,
+  .scroll-sequence__feature-marker,
+  .scroll-sequence__feature-label {
+    display: none;
+  }
+
+  .scroll-sequence__vehicle-panel {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.75rem 0.85rem;
+    align-items: center;
+    width: 100%;
+    padding: 0.85rem 0.75rem 0.95rem;
+    border-radius: 0.35rem;
+    border: 1px solid rgba(24, 56, 104, 0.1);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.95) inset,
+      0 12px 28px rgba(24, 56, 104, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    pointer-events: auto;
+  }
+
+  .scroll-sequence__vehicle-nav {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    padding: 0.2rem;
+    color: var(--feature-dot);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .scroll-sequence__vehicle-nav:focus-visible {
+    outline: 2px solid rgba(224, 112, 47, 0.45);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  .scroll-sequence__vehicle-stage {
+    position: relative;
+    min-width: 0;
+    min-height: 5.5rem;
+    overflow: hidden;
+  }
+
+  .scroll-sequence__vehicle-slide {
+    display: grid;
+    grid-template-columns: minmax(12rem, 1.15fr) minmax(0, 2fr);
+    gap: 0.85rem 1.5rem;
+    align-items: start;
+  }
+
+  .scroll-sequence__vehicle-head {
+    min-width: 0;
+  }
+
+  .scroll-sequence__vehicle-name {
+    margin: 0;
+    font-family: var(--feature-title-font);
+    font-size: clamp(0.82rem, 1.05vw, 1rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--outro-color);
+    text-wrap: balance;
+  }
+
+  .scroll-sequence__vehicle-tagline {
+    margin: 0.35rem 0 0;
+    font-family: var(--font-pretendard), Pretendard, sans-serif;
+    font-size: clamp(0.68rem, 0.82vw, 0.78rem);
+    line-height: 1.35;
+    color: var(--outro-color-soft);
+  }
+
+  .scroll-sequence__vehicle-specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem 1.25rem;
+    margin: 0;
+  }
+
+  .scroll-sequence__vehicle-spec {
+    min-width: 0;
+  }
+
+  .scroll-sequence__vehicle-spec dt {
+    margin: 0;
+    font-family: var(--font-pretendard), Pretendard, sans-serif;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(24, 56, 104, 0.42);
+  }
+
+  .scroll-sequence__vehicle-spec dd {
+    margin: 0.18rem 0 0;
+    font-family: var(--font-pretendard), Pretendard, sans-serif;
+    font-size: clamp(0.68rem, 0.8vw, 0.78rem);
+    line-height: 1.3;
+    color: var(--outro-color);
   }
 }
 
@@ -846,5 +999,9 @@
 @media (prefers-reduced-motion: reduce) {
   .scroll-sequence__loader-ring {
     animation: none;
+  }
+
+  .scroll-sequence__vehicle-focus-img {
+    transition: none;
   }
 }
