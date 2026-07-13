@@ -34,6 +34,7 @@ export function FleetVehicleCarousel() {
   const [index, setIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const [dir, setDir] = useState<Dir>("left");
+  const [timerKey, setTimerKey] = useState(0);
   const reduce = useReducedMotion();
   const { ref, visible } = useInViewport<HTMLElement>();
   const len = fleetVehicles.length;
@@ -43,6 +44,7 @@ export function FleetVehicleCarousel() {
     setDir(direction);
     setPrevIndex(index);
     setIndex(next);
+    setTimerKey((k) => k + 1);
   };
 
   useEffect(() => {
@@ -61,7 +63,7 @@ export function FleetVehicleCarousel() {
       });
     }, INTERVAL);
     return () => clearInterval(id);
-  }, [reduce, visible, len]);
+  }, [reduce, visible, len, timerKey]);
 
   const anim = !reduce && prevIndex !== null;
   const outClass = anim ? `absolute inset-0 about-carousel-out-${dir}` : "";
