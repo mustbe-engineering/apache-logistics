@@ -1018,6 +1018,41 @@ svg[data-routes-ready] .routes-map__line {
   -webkit-tap-highlight-color: transparent;
 }
 
+.btn-whatsapp {
+  @apply font-sans font-semibold tracking-[0.02em] text-base;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  background: linear-gradient(180deg, #2fe074 0%, #25d366 52%, #1ebe57 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
+    0 2px 10px rgba(37, 211, 102, 0.28);
+  transition:
+    transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) {
+  .btn-whatsapp:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(180deg, #3ae87e 0%, #2fe074 52%, #25d366 100%);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.16) inset,
+      0 6px 16px rgba(37, 211, 102, 0.34);
+  }
+}
+
+.btn-whatsapp:active {
+  transform: translateY(0);
+}
+
+.btn-whatsapp:focus-visible {
+  outline: 2px solid rgba(37, 211, 102, 0.55);
+  outline-offset: 2px;
+}
+
 .btn-cotizar::before {
   content: "";
   position: absolute;

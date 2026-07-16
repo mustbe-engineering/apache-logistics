@@ -2,6 +2,7 @@
 
 import { services } from "@/lib/data";
 import { siteAddressText, siteContact } from "@/lib/siteContact";
+import { WhatsappIcon } from "./FooterSocial";
 
 const serviceOptions = services.map((s) => s.name);
 
@@ -15,9 +16,20 @@ export function Contact() {
           <Field label="Email" name="email" type="email" />
           <SelectField label="Servicio" options={serviceOptions} />
           <AreaField label="Mensaje" name="message" />
-          <button type="submit" className="btn-cotizar w-full px-4 py-3 md:w-auto">
-            Cotiza tu envío.
-          </button>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <button type="submit" className="btn-cotizar w-full px-4 py-3 md:w-auto">
+              Cotiza tu envío.
+            </button>
+            <a
+              href={siteContact.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp inline-flex w-full items-center justify-center gap-2 px-4 py-3 md:w-auto"
+            >
+              <WhatsappIcon className="h-5 w-5 shrink-0" />
+              <span>Contactar con asesor</span>
+            </a>
+          </div>
         </form>
         <address className="compartment-dark not-italic lg:col-span-2">
           <div className="space-y-6 p-6 text-sm leading-relaxed">

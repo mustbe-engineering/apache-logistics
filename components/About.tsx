@@ -7,7 +7,7 @@ export function About() {
   return (
     <section
       id="nosotros"
-      className="group relative max-[1020px]:min-h-[max(22rem,calc(62dvh+60px))] overflow-hidden scroll-mt-[var(--nav-offset)] py-[var(--section-y)] text-nav min-[1021px]:min-h-[max(32rem,90dvh)]"
+      className="group relative max-[1020px]:min-h-[max(17.6rem,calc(49.6dvh+48px))] overflow-hidden scroll-mt-[var(--nav-offset)] py-[var(--section-y)] text-nav min-[1021px]:min-h-[max(32rem,90dvh)]"
     >
       <Image
         src="/images/assets/about-us-bk.webp"
@@ -35,7 +35,7 @@ export function About() {
               height={986}
               loading="lazy"
               decoding="async"
-              className="block h-auto w-[min(70vw,300px)] object-contain object-bottom !max-w-none min-[1021px]:w-[min(52vw,760px)]"
+              className="hidden h-auto w-[min(52vw,760px)] object-contain object-bottom !max-w-none min-[1021px]:block"
             />
           </Reveal>
         </div>

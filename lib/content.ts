@@ -28,6 +28,8 @@ export const clients = [
   { name: "DSV", logo: "/images/clients/8-DSV_LOGO.png", width: 558, height: 278, href: "https://google.com" },
   { name: "LCL Ports", logo: "/images/clients/9-LCLPORTS_LOGO.png", width: 1600, height: 515, href: "https://google.com" },
   { name: "Tradesal", logo: "/images/clients/10-TRADESAL_LOGO.png", width: 498, height: 150, href: "https://google.com" },
+  { name: "ESON Multiwin", logo: "/images/clients/11-ESONMULTIWIN_LOGO.png", width: 600, height: 600, href: "https://google.com" },
+  { name: "SB Logistics", logo: "/images/clients/12-SBLOGISTICS_LOGO.png", width: 1005, height: 245, href: "https://google.com" },
 ];
 
 export const quotes = [

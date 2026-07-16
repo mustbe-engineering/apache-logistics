@@ -4,6 +4,7 @@ import { MapPin, Phone } from "@phosphor-icons/react";
 import { useState } from "react";
 import { privacyContent, termsContent } from "@/lib/legalContent";
 import { siteContact } from "@/lib/siteContact";
+import { FloatingTruck } from "./FloatingTruck";
 import { FooterSocialLinks } from "./FooterSocial";
 import { LegalModal } from "./LegalModal";
 import { NavLogo } from "./NavLogo";
@@ -16,7 +17,8 @@ export function Footer() {
   const close = () => setLegal(null);
 
   return (
-    <footer className="border-t border-nav/10 bg-base text-nav">
+    <footer className="relative border-t border-nav/10 bg-base text-nav">
+      <FloatingTruck variant="footer" />
       <div className="site-container grid grid-cols-1 justify-items-start gap-10 py-12 min-[1021px]:grid-cols-4 min-[1021px]:gap-12">
         <div>
           <NavLogo lightText={false} loading="lazy" className={logoClass} />
