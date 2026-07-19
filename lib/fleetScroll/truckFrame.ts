@@ -16,7 +16,8 @@ export function syncTruckObjectPosition(
 ) {
   const viewportHeight = dom.sticky.clientHeight || window.innerHeight;
   let objectY: number;
-  if (mobileOutroActive && mobileTruckSlot && getViewportTier(dom.sticky.clientWidth) === "mobile") {
+  const mobile = getViewportTier(dom.sticky.clientWidth) === "mobile";
+  if (mobile && mobileTruckSlot) {
     objectY = Math.round(Math.min(72, Math.max(50, (mobileTruckSlot.centerY / viewportHeight) * 100)));
   } else {
     objectY = Math.round(Math.min(72, Math.max(50, (focusY - viewOffsetY * 0.45) * 100)));
@@ -57,16 +58,7 @@ export function measureTruckFrame(
   if (tier === "mobile") {
     const slot = { top: topBoundary, bottom: bottomBoundary, height: slotHeight, centerY: middleCenter };
     setSlot(slot);
-    if (mobileOutroActive) {
-      setActive({ ...base, fitMode: "slotCover", focusX: 0.5, focusY: 0.578, scaleBoost: 1.04, viewOffsetY: 0 });
-    } else {
-      setActive({
-        ...base, fitMode: "cover", focusX: 0.5,
-        focusY: Math.min(0.64, Math.max(0.54, base.focusY + centerDelta * 0.12)),
-        viewOffsetY: Math.min(0.01, Math.max(-0.12, base.viewOffsetY - centerDelta * 0.35)),
-        scaleBoost: 1.06,
-      });
-    }
+    setActive({ ...base, fitMode: "slotCover", focusX: 0.5, focusY: 0.578, scaleBoost: 0.56, viewOffsetY: 0 });
     syncTruckObjectPosition(dom, base.focusY, base.viewOffsetY, mobileOutroActive, slot);
     return;
   }

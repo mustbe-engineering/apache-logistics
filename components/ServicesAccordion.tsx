@@ -55,7 +55,6 @@ export function ServicesAccordion() {
             name={s.name}
             tagline={s.tagline}
             desc={s.desc}
-            benefits={s.benefits}
             tone={TONES[i] ?? TONES[0]}
             active={open === i}
             iconSrc={serviceIcons[s.icon]}

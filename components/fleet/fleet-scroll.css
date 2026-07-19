@@ -83,6 +83,14 @@
   will-change: transform, opacity, filter;
 }
 
+.scroll-sequence__title-set--desktop {
+  display: contents;
+}
+
+.scroll-sequence__title-set--mobile {
+  display: none;
+}
+
 .scroll-sequence__title-line {
   display: block;
   font-family: var(--font-stretch-pro), system-ui, sans-serif;
@@ -141,6 +149,14 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.35s var(--ease-out), visibility 0.35s;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
 .scroll-sequence[data-fleet-focus] .scroll-sequence__vehicle-focus {
@@ -452,6 +468,14 @@
     padding: 0 1.15rem;
   }
 
+  .scroll-sequence__title-set--desktop {
+    display: none;
+  }
+
+  .scroll-sequence__title-set--mobile {
+    display: contents;
+  }
+
   .scroll-sequence__title-line {
     font-size: clamp(1.35rem, 7.2vw, 2rem);
     white-space: normal;
@@ -480,12 +504,29 @@
 
   .scroll-sequence__features-wrap {
     width: 100%;
-    padding: 0.45rem 0 0.35rem;
+    padding: 0.25rem 0 0.2rem;
     overflow: hidden;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     background: rgba(255, 255, 255, 0.58);
     border-color: rgba(255, 255, 255, 0.72);
     box-shadow: 0 8px 24px rgba(24, 56, 104, 0.07);
+  }
+
+  .scroll-sequence__features {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0.35rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.2rem 0.65rem 0.3rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0.65rem;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     -webkit-mask-image: linear-gradient(
       90deg,
       transparent 0%,
@@ -500,23 +541,6 @@
       #000 93%,
       transparent 100%
     );
-  }
-
-  .scroll-sequence__features {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 0.5rem;
-    width: 100%;
-    margin: 0;
-    padding: 0.25rem 0.85rem 0.45rem;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 0.85rem;
-    touch-action: pan-y;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
   }
 
   .scroll-sequence__features.is-draggable {
@@ -540,16 +564,16 @@
 
   .scroll-sequence__feature {
     --arc-offset: 0 !important;
-    flex: 0 0 clamp(7.1rem, 42vw, 9.5rem);
+    flex: 0 0 clamp(4.6rem, 28vw, 6.25rem);
     scroll-snap-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    min-height: 5.35rem;
-    padding: 0.8rem 0.55rem 0.7rem;
-    border-radius: 0.95rem;
+    justify-content: center;
+    gap: 0.28rem;
+    min-height: 0;
+    padding: 0.45rem 0.35rem 0.4rem;
+    border-radius: 0.7rem;
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(24, 56, 104, 0.09);
     text-align: center;
@@ -567,12 +591,12 @@
   }
 
   .scroll-sequence__feature-dot {
-    width: 0.48rem;
-    height: 0.48rem;
+    width: 0.38rem;
+    height: 0.38rem;
     box-shadow:
-      0 0 0 0.2rem rgba(255, 255, 255, 0.95),
-      0 0 0 0.42rem rgba(224, 112, 47, 0.22),
-      0 0 0.75rem rgba(224, 112, 47, 0.28);
+      0 0 0 0.15rem rgba(255, 255, 255, 0.95),
+      0 0 0 0.32rem rgba(224, 112, 47, 0.22),
+      0 0 0.55rem rgba(224, 112, 47, 0.28);
   }
 
   .scroll-sequence__feature-stem {
@@ -582,7 +606,7 @@
   .scroll-sequence__feature-label {
     display: flex;
     flex-direction: column;
-    gap: 0.22rem;
+    gap: 0;
     align-items: center;
     max-width: 100%;
     margin: 0;
@@ -594,27 +618,125 @@
   }
 
   .scroll-sequence__feature-line--title {
-    font-size: 0.78rem;
-    line-height: 1.22;
+    font-size: 0.62rem;
+    line-height: 1.15;
     letter-spacing: -0.01em;
     text-align: center;
   }
 
   .scroll-sequence__feature-line--desc {
-    font-size: 0.66rem;
-    line-height: 1.35;
-    text-align: center;
+    display: none;
   }
 
   .scroll-sequence__feature--center {
-    flex-basis: clamp(7.6rem, 46vw, 10.25rem);
+    flex-basis: clamp(5rem, 30vw, 6.75rem);
     background: rgba(255, 255, 255, 0.98);
     border-color: rgba(24, 56, 104, 0.14);
-    box-shadow: 0 8px 20px rgba(24, 56, 104, 0.1);
+    box-shadow: 0 6px 14px rgba(24, 56, 104, 0.08);
   }
 
   .scroll-sequence__feature--center .scroll-sequence__feature-marker {
     background: none;
+  }
+
+  .scroll-sequence__vehicle-panel {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.35rem 0.45rem;
+    align-items: center;
+    width: calc(100% - 1.2rem);
+    margin: 0.35rem auto 0.15rem;
+    padding: 0.55rem 0.45rem 0.6rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(24, 56, 104, 0.1);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.95) inset,
+      0 8px 18px rgba(24, 56, 104, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    pointer-events: auto;
+  }
+
+  .scroll-sequence__vehicle-nav {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    color: var(--feature-dot);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .scroll-sequence__vehicle-nav svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .scroll-sequence__vehicle-stage {
+    position: relative;
+    min-width: 0;
+    min-height: 3.6rem;
+    overflow: hidden;
+  }
+
+  .scroll-sequence__vehicle-slide {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: stretch;
+  }
+
+  .scroll-sequence__vehicle-name {
+    margin: 0;
+    font-family: var(--feature-title-font);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--outro-color);
+    text-wrap: balance;
+  }
+
+  .scroll-sequence__vehicle-tagline {
+    margin: 0.2rem 0 0;
+    font-family: var(--font-pretendard), Pretendard, sans-serif;
+    font-size: 0.65rem;
+    line-height: 1.3;
+    color: var(--outro-color-soft);
+  }
+
+  .scroll-sequence__vehicle-specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.3rem 0.65rem;
+    margin: 0;
+  }
+
+  .scroll-sequence__vehicle-spec:nth-child(n + 3) {
+    display: none;
+  }
+
+  .scroll-sequence__vehicle-spec dt {
+    margin: 0;
+    font-size: 0.52rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--outro-color-soft);
+  }
+
+  .scroll-sequence__vehicle-spec dd {
+    margin: 0.1rem 0 0;
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--outro-color);
   }
 }
 

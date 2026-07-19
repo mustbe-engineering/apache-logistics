@@ -17,7 +17,7 @@ export function ServicesMobile() {
         <h2 className="mb-4 font-display text-4xl font-normal leading-[1.6] text-base md:text-5xl">Servicios</h2>
         <p className="max-w-3xl text-sm leading-[1.6] text-base/90">{mobileDesc}</p>
       </Reveal>
-      <div className="mt-6 h-[20.5rem] border border-white/10 bg-white/[0.05] sm:h-[22rem]">
+      <div className="mt-6 h-[26rem] border border-white/10 bg-white/[0.05] sm:h-[28rem]">
         <ServicesAccordion />
       </div>
     </>

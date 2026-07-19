@@ -7,7 +7,6 @@ type RowProps = {
   name: string;
   tagline: string;
   desc: string;
-  benefits: string;
   tone: string;
   active: boolean;
   iconSrc: string;
@@ -15,8 +14,13 @@ type RowProps = {
   onSelect: () => void;
 };
 
+function condense(desc: string) {
+  const end = desc.indexOf(". ");
+  return end > 0 ? desc.slice(0, end + 1) : desc;
+}
+
 export function ServiceAccordionRow({
-  name, tagline, desc, benefits, tone, active, iconSrc, aspect = 1, onSelect,
+  name, tagline, desc, tone, active, iconSrc, aspect = 1, onSelect,
 }: RowProps) {
   return (
     <div
@@ -41,16 +45,14 @@ export function ServiceAccordionRow({
       </button>
       <div
         aria-hidden={!active}
-        className={`flex flex-1 flex-col justify-end overflow-y-auto px-4 pb-5 sm:px-5 sm:pb-6 ${
+        className={`flex flex-1 flex-col justify-start overflow-hidden px-4 pb-4 pt-1 sm:px-5 sm:pb-5 ${
           active ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         style={{ transition: "opacity 0.65s cubic-bezier(0.32,0.72,0,1)" }}
       >
         <p className="text-[0.65rem] uppercase tracking-[0.12em] text-highlight">{tagline}</p>
-        <p className="mt-2 max-w-xl text-xs leading-relaxed text-white/80 sm:mt-3 sm:text-sm">{desc}</p>
-        <p className="mt-3 text-[0.6875rem] leading-relaxed text-white/60 sm:mt-4 sm:text-xs">
-          <span className="font-medium text-white/75">Beneficios clave: </span>
-          {benefits}
+        <p className="mt-1.5 line-clamp-3 text-xs leading-snug text-white/80 sm:text-sm">
+          {condense(desc)}
         </p>
       </div>
     </div>

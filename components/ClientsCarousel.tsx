@@ -16,8 +16,9 @@ function ClientSlide({ client }: { client: Client }) {
         alt={client.name}
         width={client.width}
         height={client.height}
-        sizes="12rem"
+        sizes="(max-width: 768px) 12rem, 16rem"
         className="clients-marquee__logo"
+        style={{ width: "auto", height: "var(--clients-logo-h)" }}
       />
     </div>
   );

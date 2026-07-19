@@ -1,6 +1,7 @@
 export type FleetVehicle = {
   name: string;
   tagline: string;
+  /** Focus overlay path; must be 1920×1080 to match animation frames. */
   image: string;
   specs: readonly { label: string; value: string }[];
 };
@@ -37,17 +38,6 @@ export const fleetVehicles: FleetVehicle[] = [
       { label: "Volumen", value: "9 CBM" },
       { label: "Ideal para", value: "Última milla y carga ligera" },
       { label: "Cobertura", value: "Rutas locales dentro de B.C." },
-    ],
-  },
-  {
-    name: "Unidad tipo Tractocamión",
-    tagline: "Transferencia y carga dedicada",
-    image: "/images/assets/4.webp",
-    specs: [
-      { label: "Capacidad", value: "hasta 25 tons" },
-      { label: "Volumen", value: "68 CBM" },
-      { label: "Ideal para", value: "Fulls, contenedores y carga dedicada" },
-      { label: "Cobertura", value: "BC, Sonora, Chihuahua y BCS" },
     ],
   },
 ];

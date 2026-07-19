@@ -11,7 +11,7 @@ export function FloatingTruck({ variant = "bridge" }: Props) {
           alt=""
           width={1344}
           height={752}
-          className="h-auto w-[496px] translate-x-[20%]"
+          className="h-auto w-[496px] translate-x-[calc(20%+10px)]"
           aria-hidden
         />
       </div>

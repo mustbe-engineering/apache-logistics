@@ -10,8 +10,12 @@ export function getFleetScrollDom(section: HTMLElement): FleetScrollDom | null {
   const outro = section.querySelector<HTMLElement>(".scroll-sequence__outro");
   const loader = section.querySelector<HTMLElement>(".scroll-sequence__loader");
   if (!canvas || !ctx || !sticky || !fallback || !title || !outroLayer || !outro || !loader) return null;
-  const titleLineWraps = section.querySelectorAll<HTMLElement>(".scroll-sequence__title-line-wrap");
-  const titleRevealLines = section.querySelectorAll<HTMLElement>(".scroll-sequence__title-line--reveal");
+  const mobile = window.matchMedia("(max-width: 767px)").matches;
+  const titleSet = section.querySelector<HTMLElement>(
+    mobile ? ".scroll-sequence__title-set--mobile" : ".scroll-sequence__title-set--desktop",
+  ) ?? title;
+  const titleLineWraps = titleSet.querySelectorAll<HTMLElement>(".scroll-sequence__title-line-wrap");
+  const titleRevealLines = titleSet.querySelectorAll<HTMLElement>(".scroll-sequence__title-line--reveal");
   const featureItems = section.querySelectorAll<HTMLElement>(".scroll-sequence__feature");
   if (!titleLineWraps.length || !titleRevealLines.length || !featureItems.length) return null;
   return {

@@ -13,14 +13,13 @@ export const FINAL_LOCK_PX = 960;
 export const FOCUS_START_PROGRESS = 0.985;
 export const TOTAL_TRAVEL_PX = INTRO_TRAVEL_PX + FRAME_TRAVEL_PX + FINAL_LOCK_PX;
 export const TITLE_LINE_STAGGER = 0.14;
-export const TITLE_LINE_COUNT = 2;
 export const REVEAL_MASK_FEATHER = 14;
 export const OUTRO_START_PROGRESS = 0.8;
 export const OUTRO_FEATURE_STAGGER = 0.07;
 export const SCENE_BG = "#e8e8e8";
 
 export const TRUCK_FRAME = {
-  desktop: { focusX: 0.49, focusY: 0.53, scaleBoost: 1, viewOffsetY: -0.04, fitMode: "cover" as const },
-  tablet: { focusX: 0.49, focusY: 0.56, scaleBoost: 1.05, viewOffsetY: -0.045, fitMode: "cover" as const },
-  mobile: { focusX: 0.49, focusY: 0.57, scaleBoost: 1.05, viewOffsetY: -0.03, fitMode: "cover" as const },
+  desktop: { focusX: 0.49, focusY: 0.53, scaleBoost: 0.7, viewOffsetY: -0.04, fitMode: "cover" as const },
+  tablet: { focusX: 0.49, focusY: 0.56, scaleBoost: 0.735, viewOffsetY: -0.045, fitMode: "cover" as const },
+  mobile: { focusX: 0.49, focusY: 0.57, scaleBoost: 0.56, viewOffsetY: -0.03, fitMode: "cover" as const },
 };

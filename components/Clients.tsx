@@ -20,7 +20,7 @@ export function Clients() {
       <div className="site-container relative z-10">
         <Reveal className="flex w-full justify-center">
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-10">
-            <h2 className="shrink-0 font-display text-4xl font-normal leading-[1.6] md:text-5xl">
+            <h2 className="-translate-y-2.5 shrink-0 font-display text-4xl font-normal leading-[0.5] md:text-5xl">
               <span className="block">Nuestros</span>
               <span className="block">clientes</span>
             </h2>
@@ -33,7 +33,7 @@ export function Clients() {
                 <strong className="font-semibold">dedicación</strong>, porque su satisfacción es nuestra
                 mayor prioridad.
               </p>
-              <hr className="mt-6 border-0 border-t border-base/20" />
+              <hr className="mt-[18px] border-0 border-t border-base/20" />
             </div>
           </div>
         </Reveal>

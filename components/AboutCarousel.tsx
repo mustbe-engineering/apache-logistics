@@ -8,6 +8,7 @@ import { useReducedMotion } from "./gsap/useReducedMotion";
 type Item = { term: string; text: string };
 type Dir = "left" | "right";
 const DURATION = 400;
+const INTERVAL = 12000;
 
 function Slide({ item, anim }: { item: Item; anim: string }) {
   return (
@@ -24,6 +25,7 @@ export function AboutCarousel({ items }: { items: Item[] }) {
   const [index, setIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const [dir, setDir] = useState<Dir>("left");
+  const [timerKey, setTimerKey] = useState(0);
   const reduce = useReducedMotion();
   const { ref, visible } = useInViewport<HTMLDivElement>();
 
@@ -32,6 +34,7 @@ export function AboutCarousel({ items }: { items: Item[] }) {
     setDir(direction);
     setPrevIndex(index);
     setIndex(next);
+    setTimerKey((k) => k + 1);
   };
 
   useEffect(() => {
@@ -48,9 +51,9 @@ export function AboutCarousel({ items }: { items: Item[] }) {
         setPrevIndex(v);
         return (v + 1) % items.length;
       });
-    }, 5000);
+    }, INTERVAL);
     return () => clearInterval(id);
-  }, [reduce, visible, items.length]);
+  }, [reduce, visible, items.length, timerKey]);
 
   const anim = !reduce && prevIndex !== null;
   const outClass = anim ? `absolute inset-x-0 top-0 about-carousel-out-${dir}` : "";

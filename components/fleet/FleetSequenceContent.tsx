@@ -9,14 +9,24 @@ function TitleLine({ text }: { text: string }) {
   );
 }
 
+function TitleSet({ lines, variant }: { lines: string[]; variant: "desktop" | "mobile" }) {
+  return (
+    <div className={`scroll-sequence__title-set scroll-sequence__title-set--${variant}`}>
+      {lines.map((text) => (
+        <TitleLine key={text} text={text} />
+      ))}
+    </div>
+  );
+}
+
 export function FleetSequenceContent() {
   return (
     <div className="scroll-sequence__sticky">
       <canvas className="scroll-sequence__canvas" aria-hidden="true" />
       <img className="scroll-sequence__fallback" alt="" hidden />
       <div className="scroll-sequence__title">
-        <TitleLine text="Unidades listas" />
-        <TitleLine text="para cualquier ruta." />
+        <TitleSet variant="desktop" lines={["Unidades listas", "para cualquier ruta."]} />
+        <TitleSet variant="mobile" lines={["Unidades", "listas para", "cualquier ruta."]} />
       </div>
       <div className="scroll-sequence__outro-layer" aria-hidden="true">
         <div className="scroll-sequence__outro">

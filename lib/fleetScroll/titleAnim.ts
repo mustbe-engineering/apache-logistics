@@ -1,11 +1,11 @@
 import { getGsap } from "@/lib/gsapCore";
-import { REVEAL_MASK_FEATHER, TITLE_LINE_COUNT, TITLE_LINE_STAGGER } from "./constants";
+import { REVEAL_MASK_FEATHER, TITLE_LINE_STAGGER } from "./constants";
 import { easeOutQuart, organicEase } from "./easing";
 import type { FleetScrollDom } from "./types";
 
-function lineReveal(global: number, lineIndex: number) {
+function lineReveal(global: number, lineIndex: number, count: number) {
   const raw = Math.min(1, Math.max(0, global));
-  const segment = 1 / TITLE_LINE_COUNT;
+  const segment = 1 / count;
   const start = lineIndex * segment;
   const end = (lineIndex + 1) * segment;
   if (raw <= start) return 0;
@@ -31,10 +31,11 @@ function applyReveal(line: HTMLElement, progress: number) {
 
 export function setRevealState(dom: FleetScrollDom, revealProgress: number) {
   const { gsap } = getGsap();
+  const count = dom.titleLineWraps.length;
   dom.title.style.visibility = "visible";
   dom.titleLineWraps.forEach((wrap, index) => {
     gsap.set(wrap, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" });
-    applyReveal(dom.titleRevealLines[index], lineReveal(revealProgress, index));
+    applyReveal(dom.titleRevealLines[index], lineReveal(revealProgress, index, count));
   });
 }
 
