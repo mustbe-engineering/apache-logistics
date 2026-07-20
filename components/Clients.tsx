@@ -20,7 +20,7 @@ export function Clients() {
       <div className="site-container relative z-10">
         <Reveal className="flex w-full justify-center">
           <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-10">
-            <h2 className="-translate-y-2.5 shrink-0 font-display text-4xl font-normal leading-[0.5] md:text-5xl">
+            <h2 className="-translate-y-2.5 shrink-0 font-display text-4xl font-normal leading-[0.9] md:text-5xl">
               <span className="block">Nuestros</span>
               <span className="block">clientes</span>
             </h2>
