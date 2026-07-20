@@ -10,7 +10,8 @@
     "clean": "rm -rf .next",
     "fonts:subset": "node scripts/subset-pretendard-latin.mjs",
     "hero:poster": "node scripts/generate-hero-poster.mjs",
-    "images:optimize": "node scripts/optimize-images.mjs"
+    "images:optimize": "node scripts/optimize-images.mjs",
+    "audio:encode": "ffmpeg -y -i assets/audio-source/focus.wav -t 60 -vn -c:a libopus -b:a 64k -ar 48000 public/audios/focus.webm && ffmpeg -y -i assets/audio-source/focus.wav -t 60 -vn -c:a libmp3lame -b:a 96k -ar 44100 public/audios/focus.mp3"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",

@@ -9,6 +9,7 @@ import { NavActiveLine } from "./nav/NavActiveLine";
 import { NAV_LINKS } from "./nav/links";
 import { useActiveSection } from "./nav/useActiveSection";
 import { usePastHero } from "./nav/usePastHero";
+import { MusicToggle } from "./MusicToggle";
 import { QuoteOpenButton } from "./QuoteOpenButton";
 import { SectionLink } from "./SectionLink";
 
@@ -62,6 +63,7 @@ export function Nav() {
         </nav>
 
         <div data-nav-actions className="ml-auto flex items-center gap-3 lg:ml-0 lg:justify-self-end">
+          <MusicToggle />
           <QuoteOpenButton className="btn-cotizar btn-cotizar-nav shrink-0" onClick={close}>
             <span>COTIZAR</span>
           </QuoteOpenButton>

@@ -907,26 +907,44 @@ svg[data-routes-ready] .routes-map__line {
     color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.nav-music-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.375rem;
+  color: inherit;
+  transition:
+    background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @media (hover: hover) {
-  .nav-menu-btn:hover {
+  .nav-menu-btn:hover,
+  .nav-music-btn:hover {
     background-color: rgba(255, 255, 255, 0.08);
   }
 
-  .nav-shell--glass .nav-menu-btn:hover {
+  .nav-shell--glass .nav-menu-btn:hover,
+  .nav-shell--glass .nav-music-btn:hover {
     background-color: rgba(22, 71, 117, 0.06);
   }
 }
 
-.nav-menu-btn:focus-visible {
+.nav-menu-btn:focus-visible,
+.nav-music-btn:focus-visible {
   outline: 2px solid rgba(253, 253, 253, 0.5);
   outline-offset: 2px;
 }
 
-.nav-shell--glass .nav-menu-btn {
+.nav-shell--glass .nav-menu-btn,
+.nav-shell--glass .nav-music-btn {
   color: #164775;
 }
 
-.nav-shell--glass .nav-menu-btn:focus-visible {
+.nav-shell--glass .nav-menu-btn:focus-visible,
+.nav-shell--glass .nav-music-btn:focus-visible {
   outline-color: rgba(22, 71, 117, 0.35);
 }
 

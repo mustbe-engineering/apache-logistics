@@ -23,3 +23,6 @@ next-env.d.ts
 
 # netlify
 .netlify/
+
+# large audio masters (encoded copies live in public/audios)
+assets/audio-source/
