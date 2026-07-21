@@ -5,7 +5,9 @@ type DrawRect = { offsetX: number; offsetY: number; drawWidth: number; drawHeigh
 function slotCoverDraw(
   image: HTMLImageElement, width: number, slot: MobileTruckSlot, frame: TruckFrameConfig,
 ): DrawRect {
-  const scale = Math.max(width / image.naturalWidth, slot.height / image.naturalHeight) * frame.scaleBoost;
+  // contain-then-boost so scaleBoost maps to visible size (max was already full-bleed)
+  const fit = Math.min(width / image.naturalWidth, slot.height / image.naturalHeight);
+  const scale = fit * frame.scaleBoost;
   const drawWidth = image.naturalWidth * scale;
   const drawHeight = image.naturalHeight * scale;
   let offsetX = width / 2 - drawWidth * frame.focusX;

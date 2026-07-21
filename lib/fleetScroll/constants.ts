@@ -21,5 +21,5 @@ export const SCENE_BG = "#e8e8e8";
 export const TRUCK_FRAME = {
   desktop: { focusX: 0.49, focusY: 0.53, scaleBoost: 0.7, viewOffsetY: -0.04, fitMode: "cover" as const },
   tablet: { focusX: 0.49, focusY: 0.56, scaleBoost: 0.735, viewOffsetY: -0.045, fitMode: "cover" as const },
-  mobile: { focusX: 0.49, focusY: 0.57, scaleBoost: 0.56, viewOffsetY: -0.03, fitMode: "cover" as const },
+  mobile: { focusX: 0.49, focusY: 0.57, scaleBoost: 1.38, viewOffsetY: -0.03, fitMode: "cover" as const },
 };
