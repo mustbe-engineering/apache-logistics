@@ -675,6 +675,10 @@ svg[data-routes-ready] .routes-map__line {
     filter 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.stats-bar__icon--deliver {
+  height: clamp(2.55rem, 6vw, 3.75rem);
+}
+
 @media (hover: hover) {
   .stats-bar__item:hover .stats-bar__icon-wrap::before {
     opacity: 1;

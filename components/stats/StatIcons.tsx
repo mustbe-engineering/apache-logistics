@@ -27,7 +27,7 @@ export function StatIcon({ id, className }: StatIconProps) {
       width={w}
       height={h}
       aria-hidden
-      className={className}
+      className={[className, `stats-bar__icon--${id}`].filter(Boolean).join(" ")}
     />
   );
 }

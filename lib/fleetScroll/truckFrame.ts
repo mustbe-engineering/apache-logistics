@@ -58,7 +58,7 @@ export function measureTruckFrame(
   if (tier === "mobile") {
     const slot = { top: topBoundary, bottom: bottomBoundary, height: slotHeight, centerY: middleCenter };
     setSlot(slot);
-    setActive({ ...base, fitMode: "slotCover", focusX: 0.5, focusY: 0.578, scaleBoost: 0.56, viewOffsetY: 0 });
+    setActive({ ...base, fitMode: "slotCover", focusX: 0.5, focusY: 0.55, scaleBoost: 1.12, viewOffsetY: 0 });
     syncTruckObjectPosition(dom, base.focusY, base.viewOffsetY, mobileOutroActive, slot);
     return;
   }

@@ -217,6 +217,10 @@
   margin: 0;
 }
 
+.scroll-sequence__outro-copy--mobile {
+  display: none;
+}
+
 .scroll-sequence__outro-line {
   display: block;
   font-family: var(--font-pretendard), Pretendard, sans-serif;
@@ -502,7 +506,18 @@
     line-height: 1.4;
   }
 
+  .scroll-sequence__outro-copy--desktop {
+    display: none;
+  }
+
+  .scroll-sequence__outro-copy--mobile {
+    display: flex;
+    font-size: clamp(0.78rem, 3.4vw, 0.92rem);
+    line-height: 1.35;
+  }
+
   .scroll-sequence__features-wrap {
+    bottom: 0.75rem;
     width: 100%;
     padding: 0.25rem 0 0.2rem;
     overflow: hidden;
