@@ -22,7 +22,15 @@ export function FacebookIcon({ className }: IconProps) {
 export function InstagramIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden>
-      <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5ZM17.8 6.3a1.2 1.2 0 1 1-1.2 1.2 1.2 1.2 0 0 1 1.2-1.2Z" />
+      <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5ZM17.8 6.3a1.2 1.2 0 1 1-1.2 1.2 1.2 0 0 1 1.2-1.2Z" />
+    </svg>
+  );
+}
+
+export function LinkedinIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden>
+      <path fill="currentColor" d="M6.5 9H3.6v11.5h2.9Zm-.1-4.4a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM20.4 14.2c0-3.2-1.7-4.7-4-4.7a3.5 3.5 0 0 0-3.1 1.7h-.1V9.1H10.4c0 .8 0 10.4 0 10.4h2.9v-5.8c0-.3 0-.6.1-.8a2 2 0 0 1 1.9-1.3c1.3 0 1.9 1 1.9 2.5v5.4h2.9v-5.7Z" />
     </svg>
   );
 }
@@ -31,6 +39,7 @@ export const footerSocials = [
   { label: "WhatsApp", href: siteContact.whatsappHref, Icon: WhatsappIcon },
   { label: "Facebook", href: "https://www.facebook.com/apachelogisticsbc", Icon: FacebookIcon },
   { label: "Instagram", href: "https://www.instagram.com/apachebc.logistics/", Icon: InstagramIcon },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/apache-logistics/", Icon: LinkedinIcon },
 ] as const;
 
 export function FooterSocialLinks() {

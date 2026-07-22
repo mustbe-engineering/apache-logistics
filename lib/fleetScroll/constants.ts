@@ -3,7 +3,7 @@ import { FRAME_COUNT } from "@/lib/fleetFrames";
 export const TRUCK_START_FRAME = 9;
 export const FRAME_PLAY_COUNT = FRAME_COUNT - TRUCK_START_FRAME;
 export const FRAME_TRAVEL_PX = (FRAME_PLAY_COUNT - 1) * 18;
-export const TITLE_REVEAL_PX = 960;
+export const TITLE_REVEAL_PX = 420;
 export const TITLE_HOLD_PX = 72;
 export const TITLE_FADE_PX = 320;
 export const TRUCK_OVERLAP_PX = 200;
