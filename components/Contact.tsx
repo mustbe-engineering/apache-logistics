@@ -15,12 +15,13 @@ export function Contact() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
     setStatus("sending");
     setError("");
     try {
-      await submitContact(payloadFromForm(e.currentTarget));
+      await submitContact(payloadFromForm(form));
       setStatus("ok");
-      e.currentTarget.reset();
+      form.reset();
     } catch (err) {
       setStatus("err");
       setError(err instanceof Error ? err.message : "Error al enviar");
