@@ -55,7 +55,15 @@ export function Footer() {
             Aviso de privacidad
           </button>
           <p className="mt-auto pt-8 text-nav/70">© 2026 Apache Logistics</p>
-          <p className="mt-2 text-nav/70">Permiso SCT vigente · Monitoreo GPS activo</p>
+          <a
+            href="https://www.instagram.com/kolosalwork/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Kolosal"
+            className="mt-2 inline-block opacity-80 transition-opacity hover:opacity-100"
+          >
+            <img src="/images/clients/Kolosal.svg" alt="Kolosal" className="h-5 w-auto" />
+          </a>
         </div>
         <div aria-hidden className="hidden min-[1021px]:block" />
       </div>
