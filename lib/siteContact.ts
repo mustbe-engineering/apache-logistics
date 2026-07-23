@@ -1,6 +1,6 @@
 export const siteContact = {
-  street: "Blvd. Colosio 1240, Col. Pitic",
-  city: "Hermosillo, Sonora, CP 83100",
+  street: "Callejon C #126. Col. El Naranjo",
+  city: "Ensenada, Baja California",
   mapsUrl: "https://maps.app.goo.gl/FYorUt7BE1wtsUM76",
   phone: "+52 646 150 9120",
   phoneHref: "tel:+526461509120",
