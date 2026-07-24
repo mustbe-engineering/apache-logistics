@@ -8,7 +8,7 @@ export type FleetVehicle = {
 
 export const fleetVehicles: FleetVehicle[] = [
   {
-    name: "Unidad tipo Rabón F-450",
+    name: "Unidad tipo Rabón E-450",
     tagline: "Rutas locales y foráneas",
     image: "/images/assets/1.webp",
     specs: [
@@ -19,7 +19,7 @@ export const fleetVehicles: FleetVehicle[] = [
     ],
   },
   {
-    name: "Unidad tipo Stepvan F-350",
+    name: "Unidad tipo Stepvan E-350",
     tagline: "Rutas locales y foráneas",
     image: "/images/assets/2.webp",
     specs: [

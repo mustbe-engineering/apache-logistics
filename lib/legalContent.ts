@@ -12,4 +12,4 @@ Recopilamos nombre, correo electrónico, teléfono y datos de envío cuando uste
 
 No vendemos ni compartimos datos personales con terceros, salvo obligación legal o proveedores necesarios para prestar el servicio bajo acuerdos de confidencialidad.
 
-Usted puede solicitar acceso, rectificación o cancelación de sus datos escribiendo a operaciones@apachelogistics.mx.`;
+Usted puede solicitar acceso, rectificación o cancelación de sus datos escribiendo a logistica@apachelogistics.mx.`;
