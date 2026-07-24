@@ -40,7 +40,7 @@ function bodyHtml(data) {
       ${field("Servicio", esc(data.service))}
       ${field("Mensaje", esc(data.message))}
     </table>
-    <p style="margin:24px 0 0;font:400 12px/1.5 Arial,sans-serif;color:${C.muted}">Responde a este correo para contactar al cliente.</p>
+    <p style="margin:24px 0 0;font:400 12px/1.5 Arial,sans-serif;color:${C.muted}">Responde dando click al correo del cliente.</p>
   </td></tr>`;
 }
 
