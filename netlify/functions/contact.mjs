@@ -1,3 +1,5 @@
+import { buildContactEmail } from "./emailTemplate.mjs";
+
 const TO = process.env.CONTACT_TO || "murillojorgealberto@gmail.com";
 
 function json(status, body) {
@@ -19,6 +21,7 @@ function parseBody(body) {
 async function sendEmail(data) {
   const key = process.env.RESEND_API_KEY;
   if (!key) throw new Error("RESEND_API_KEY missing");
+  const mail = buildContactEmail(data);
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -29,14 +32,9 @@ async function sendEmail(data) {
       from: "Apache Logistics <onboarding@resend.dev>",
       to: [TO],
       reply_to: data.email,
-      subject: `Cotización — ${data.name}`,
-      text: [
-        `Nombre: ${data.name}`,
-        `Email: ${data.email}`,
-        `Servicio: ${data.service}`,
-        "",
-        data.message,
-      ].join("\n"),
+      subject: mail.subject,
+      text: mail.text,
+      html: mail.html,
     }),
   });
   if (!res.ok) throw new Error(await res.text());
