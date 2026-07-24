@@ -4,8 +4,8 @@ type Props = { className?: string; imgClassName?: string };
 
 export function CanacarBadge({ className, imgClassName }: Props) {
   return (
-    <div className={`ml-8 flex flex-col items-start gap-2 text-sm text-nav/70 ${className ?? ""}`}>
-      <span>Miembros de CANACAR ©</span>
+    <div className={`flex flex-col items-start gap-2 text-sm text-nav/70 ${className ?? ""}`}>
+      <span>Miembros de </span>
       <img
         src="/images/clients/canacar.svg"
         alt="CANACAR"
