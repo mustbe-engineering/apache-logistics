@@ -26,7 +26,7 @@ export function FleetSequenceContent() {
       <img className="scroll-sequence__fallback" alt="" hidden />
       <div className="scroll-sequence__title">
         <TitleSet variant="desktop" lines={["Unidades listas", "para cualquier ruta."]} />
-        <TitleSet variant="mobile" lines={["Unidades listas", "para cualquier ruta."]} />
+        <TitleSet variant="mobile" lines={["Unidades", "listas para", "cualquier ruta."]} />
       </div>
       <div className="scroll-sequence__outro-layer" aria-hidden="true">
         <div className="scroll-sequence__outro">

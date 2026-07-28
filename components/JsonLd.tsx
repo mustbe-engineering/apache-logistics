@@ -17,9 +17,8 @@ export function JsonLd() {
         address: {
           "@type": "PostalAddress",
           streetAddress: siteContact.street,
-          addressLocality: "Hermosillo",
-          addressRegion: "Sonora",
-          postalCode: "83100",
+          addressLocality: "Ensenada",
+          addressRegion: "Baja California",
           addressCountry: "MX",
         },
       },
