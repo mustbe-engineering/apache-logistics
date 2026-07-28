@@ -18,7 +18,7 @@ const socialImage = {
   width: ogImageWidth,
   height: ogImageHeight,
   alt: ogImageAlt,
-  type: "image/jpeg",
+  type: "image/png",
 };
 
 export const siteMetadata: Metadata = {

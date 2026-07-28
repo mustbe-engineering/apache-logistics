@@ -13,10 +13,10 @@ export const ogTitle = "Conocemos el camino — Apache Logistics";
 export const ogDescription =
   "Transporte de carga con trato familiar y operación trazable. Rutas en Baja California, Sonora, Sinaloa y más. Cotiza tu servicio hoy.";
 
-export const ogImage = "/images/assets/og-truck.jpg";
+export const ogImage = "/logo/og-image.png";
 
 export const ogImageAlt =
-  "Logotipo de Apache Logistics en la puerta de un camión de carga blanco";
+  "Apache Logistics — Conocemos el camino. Flota de unidades con logo de la marca";
 
 export const ogImageWidth = 1200;
 export const ogImageHeight = 630;
